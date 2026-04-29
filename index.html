@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<script type="application/json" id="cowork-artifact-meta">
-{
-  "name": "Retrovision Sales Dashboard",
-  "schemaVersion": 1,
-  "description": "RetroVision Tech sales dashboard combining Amazon Seller Central and Shopify metrics. Yesterday + Last 30 days, Shopify by sales channel (Online Store / TikTok / FB+IG / Shop / Draft), Amazon FBA inventory, conversion funnel. Styled to match the retrotechvision.myshopify.com brand."
-}
-</script>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -13,22 +6,8 @@
 <title>RetroVision Tech — Sales Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
-  :root {
-    color-scheme: light;
-    --cream:#FBF2E1; --cream-2:#F4E7CF; --paper:#FFF8EA;
-    --wood-1:#5A2E14; --wood-2:#3A1B0A;
-    --brown:#47150E; --brown-soft:#7A3322;
-    --teal:#2FC0CF; --teal-deep:#178A95;
-    --red:#D6443B; --gold:#FFAF41;
-    --lcd-green:#4FE07A; --lcd-bg:#0A1A0E;
-    --line:rgba(71,21,14,0.18);
-    --shadow:0 12px 30px rgba(71,21,14,0.18), 0 2px 4px rgba(71,21,14,0.10);
-    --font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;
-    --font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;
-    --font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
+  :root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
   body{font-family:var(--font-body);color:var(--brown);background:radial-gradient(1200px 600px at 10% -10%,rgba(255,175,65,0.12),transparent 60%),radial-gradient(900px 500px at 100% 0%,rgba(47,192,207,0.08),transparent 60%),var(--cream);line-height:1.45}
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px}
   .stripe{height:14px;background:repeating-linear-gradient(90deg,var(--red) 0 24px,#E96452 24px 48px,var(--gold) 48px 72px,var(--teal) 72px 96px,var(--brown) 96px 120px);box-shadow:inset 0 -2px 0 rgba(0,0,0,0.25)}
@@ -39,28 +18,22 @@
   .brand-plate{background:linear-gradient(180deg,#FFE6BC,#F0C988);border:2px solid #2A1208;border-radius:10px;padding:10px 26px;box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15),0 4px 0 rgba(0,0,0,0.25);text-align:center}
   .brand-plate .brand{font-family:var(--font-display);font-style:italic;font-weight:900;font-size:28px;color:#1A0905;letter-spacing:1px;line-height:1;-webkit-text-stroke:1px var(--teal)}
   .brand-plate .brand .tech{font-size:12px;color:var(--brown);-webkit-text-stroke:0;letter-spacing:6px;display:block;margin-top:2px}
-  .title-block{padding:32px 0 18px}
-  .eyebrow{color:var(--brown-soft);text-transform:uppercase;letter-spacing:4px;font-size:12px}
+  .title-block{padding:32px 0 18px}.eyebrow{color:var(--brown-soft);text-transform:uppercase;letter-spacing:4px;font-size:12px}
   h1.display{font-family:var(--font-display);font-style:italic;font-weight:900;font-size:clamp(34px,5vw,52px);margin:6px 0 10px;color:#1A0905;-webkit-text-stroke:1.5px var(--teal);text-transform:uppercase;line-height:1}
   .title-block .meta{color:var(--brown-soft);font-size:13px}
   section{margin-top:28px}
   h2.section{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:18px;letter-spacing:2px;color:var(--brown);margin:0 0 14px;padding-bottom:8px;border-bottom:2px dashed var(--line);display:flex;align-items:baseline;gap:12px}
   h2.section .sub{font-family:var(--font-body);font-weight:normal;font-size:12px;letter-spacing:1px;color:var(--brown-soft);text-transform:none}
-  .grid{display:grid;gap:16px}
-  .grid.kpi{grid-template-columns:repeat(4,minmax(0,1fr))}
-  @media (max-width:880px){.grid.kpi{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .grid{display:grid;gap:16px}.grid.kpi{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid.split-2{grid-template-columns:1fr 1fr}.grid.donut3{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media (max-width:880px){.grid.kpi{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.split-2,.grid.donut3{grid-template-columns:1fr}}
   @media (max-width:480px){.grid.kpi{grid-template-columns:1fr}}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
   .card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--red),var(--gold))}
   .kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)}
   .kpi .value{font-family:var(--font-lcd);color:var(--brown);font-size:32px;font-weight:bold;line-height:1.1;margin-top:6px;letter-spacing:0.5px}
-  .kpi .value.teal{color:var(--teal-deep)}
-  .kpi .delta{font-size:12px;margin-top:6px;color:var(--brown-soft)}
-  .kpi .delta.up{color:#1F7A35}
-  .kpi .delta.down{color:var(--red)}
-  .grid.split-2{grid-template-columns:1fr 1fr}
-  .grid.split-3{grid-template-columns:2fr 1fr}
-  @media (max-width:880px){.grid.split-2,.grid.split-3{grid-template-columns:1fr}}
+  .kpi .value.teal{color:var(--teal-deep)}.kpi .delta{font-size:12px;margin-top:6px;color:var(--brown-soft)}
+  .kpi .delta.up{color:#1F7A35}.kpi .delta.down{color:var(--red)}
   table.data{width:100%;border-collapse:collapse;font-size:13px}
   table.data th,table.data td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line)}
   table.data th:first-child,table.data td:first-child{text-align:left}
@@ -69,31 +42,21 @@
   table.data thead th:last-child{border-top-right-radius:8px}
   table.data tbody tr:nth-child(even){background:rgba(71,21,14,0.04)}
   table.data tfoot td{background:var(--cream-2);font-weight:bold;border-top:2px solid var(--brown)}
-  .funnel{display:grid;gap:8px}
-  .funnel .stage{display:grid;grid-template-columns:160px 1fr 110px;gap:12px;align-items:center}
-  .funnel .bar-wrap{background:rgba(71,21,14,0.08);border-radius:6px;height:22px;overflow:hidden;border:1px solid var(--line)}
-  .funnel .bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-deep));box-shadow:inset 0 -3px 0 rgba(0,0,0,0.15)}
-  .funnel .num{text-align:right;font-family:var(--font-lcd);font-size:18px;font-weight:bold;color:var(--brown)}
-  .funnel .name{text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--brown-soft)}
-  .inv-item{display:grid;grid-template-columns:1fr auto auto auto auto;gap:14px;padding:14px 0;align-items:center;border-top:1px dashed var(--line)}
-  .inv-item:first-child{border-top:0}
-  .inv-item .title{font-size:13px;color:var(--brown)}
-  .inv-item .asin{font-size:11px;color:var(--brown-soft);margin-top:2px}
-  .pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:bold}
-  .pill.active{background:rgba(31,122,53,0.12);color:#1F7A35}
-  .pill.oos{background:rgba(214,68,59,0.14);color:var(--red)}
-  .inv-num{text-align:center}
-  .inv-num .n{font-family:var(--font-lcd);font-size:20px;font-weight:bold;line-height:1;color:var(--brown);white-space:nowrap}
-  .inv-num .l{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft);margin-top:4px}
   footer{margin-top:40px;padding-top:20px;border-top:2px dashed var(--line);font-size:11px;color:var(--brown-soft);text-align:center}
   footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown);border-radius:4px;margin:0 4px;background:var(--cream-2)}
   .note{background:rgba(255,175,65,0.18);border-left:4px solid var(--gold);padding:10px 14px;border-radius:4px;font-size:12px;color:var(--brown)}
-  .legend{display:grid;gap:8px;font-size:13px}
-  .legend .row{display:grid;grid-template-columns:16px 1fr auto auto;align-items:center;gap:10px}
-  .legend .dot{width:14px;height:14px;border-radius:3px}
-  .legend .pct{color:var(--brown-soft);font-size:11px;min-width:50px;text-align:right}
-  .legend .amt{font-family:var(--font-lcd);font-size:14px;font-weight:bold;color:var(--brown);min-width:90px;text-align:right}
-  .chart-box{position:relative;height:280px}
+  .donut-card{padding:18px 20px}
+  .donut-card .head{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)}
+  .donut-card .total{font-size:32px;font-weight:600;color:#1A0905;line-height:1.1;margin:6px 0 14px}
+  .donut-card .can{position:relative;height:170px;margin-bottom:14px}
+  .donut-card .cen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+  .donut-card .cen .n{font-size:24px;font-weight:600;color:#1A0905;line-height:1}
+  .donut-card .cen .l{font-size:11px;color:var(--brown-soft)}
+  .donut-card .leg{display:grid;gap:6px;font-size:13px}
+  .donut-card .leg .row{display:grid;grid-template-columns:14px 1fr auto auto;gap:10px;align-items:center}
+  .donut-card .leg .row .dot{width:12px;height:12px;border-radius:2px}
+  .donut-card .leg .row .u{font-weight:600}
+  .donut-card .leg .row .p{color:var(--brown-soft);min-width:36px;text-align:right}
 </style>
 </head>
 <body>
@@ -113,306 +76,119 @@
   <div class="title-block">
     <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
     <h1 class="display">Sales Dashboard</h1>
-    <div class="meta">Generated Tuesday, April 28, 2026 &nbsp;·&nbsp; Amazon · Shopify · TikTok Shop</div>
+    <div class="meta">Generated Wednesday, April 29, 2026 &nbsp;·&nbsp; Amazon · Shopify · TikTok Shop</div>
   </div>
 
-  <!-- HERO TOTALS -->
   <section style="margin-top:14px">
     <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
       <div style="font-size:12px;text-transform:uppercase;letter-spacing:5px;color:var(--brown-soft)">Total combined sales — All time</div>
-      <div style="font-family:var(--font-lcd);font-size:72px;font-weight:bold;color:var(--brown);line-height:1;margin-top:10px;-webkit-text-stroke:1px var(--teal);text-shadow:2px 2px 0 rgba(47,192,207,0.15)">$199,651.48</div>
+      <div style="font-family:var(--font-lcd);font-size:72px;font-weight:bold;color:var(--brown);line-height:1;margin-top:10px;-webkit-text-stroke:1px var(--teal);text-shadow:2px 2px 0 rgba(47,192,207,0.15)">$200,224.47</div>
       <div style="font-size:13px;color:var(--brown-soft);margin-top:12px">Lifetime across Amazon Seller Central + Shopify (TikTok counted via Shopify channel)</div>
       <div style="display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap">
-        <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$83,484.17</strong> &nbsp;Amazon (Apr ’24 → today)</span>
-        <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$116,167.31</strong> &nbsp;Shopify (since launch)</span>
+        <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$83,654.16</strong> &nbsp;Amazon (Apr ’24 → today)</span>
+        <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$116,570.31</strong> &nbsp;Shopify (since launch)</span>
+      </div>
+    </div>
+
+    <div class="grid donut3" style="margin-bottom:16px">
+      <div class="card donut-card">
+        <div class="head">Today · Apr 29</div>
+        <div class="total">2 units</div>
+        <div class="can"><canvas id="unitsTodayChart"></canvas><div class="cen"><div class="n">2</div><div class="l">total</div></div></div>
+        <div class="leg">
+          <div class="row"><span class="dot" style="background:#378ADD"></span><span>Shopify</span><span class="u">1</span><span class="p">50%</span></div>
+          <div class="row"><span class="dot" style="background:#1D9E75"></span><span>TikTok Shop</span><span class="u">1</span><span class="p">50%</span></div>
+          <div class="row"><span class="dot" style="background:#D85A30"></span><span>Amazon</span><span class="u">0</span><span class="p">0%</span></div>
+        </div>
+      </div>
+      <div class="card donut-card">
+        <div class="head">Last 7 days · Apr 22–28</div>
+        <div class="total">55 units</div>
+        <div class="can"><canvas id="units7dChart"></canvas><div class="cen"><div class="n">55</div><div class="l">total</div></div></div>
+        <div class="leg">
+          <div class="row"><span class="dot" style="background:#378ADD"></span><span>Shopify</span><span class="u">28</span><span class="p">51%</span></div>
+          <div class="row"><span class="dot" style="background:#1D9E75"></span><span>TikTok Shop</span><span class="u">14</span><span class="p">25%</span></div>
+          <div class="row"><span class="dot" style="background:#D85A30"></span><span>Amazon</span><span class="u">13</span><span class="p">24%</span></div>
+        </div>
+      </div>
+      <div class="card donut-card">
+        <div class="head">Last 30 days · Mar 30 – Apr 28</div>
+        <div class="total">191 units</div>
+        <div class="can"><canvas id="units30dChart"></canvas><div class="cen"><div class="n">191</div><div class="l">total</div></div></div>
+        <div class="leg">
+          <div class="row"><span class="dot" style="background:#378ADD"></span><span>Shopify</span><span class="u">111</span><span class="p">58%</span></div>
+          <div class="row"><span class="dot" style="background:#1D9E75"></span><span>TikTok Shop</span><span class="u">39</span><span class="p">20%</span></div>
+          <div class="row"><span class="dot" style="background:#D85A30"></span><span>Amazon</span><span class="u">41</span><span class="p">22%</span></div>
+        </div>
       </div>
     </div>
 
     <div class="grid split-2">
       <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#FBF2E1 100%);border:2px solid var(--brown);padding:24px">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--brown-soft)">Total combined sales — Yesterday</div>
-        <div style="font-family:var(--font-lcd);font-size:48px;font-weight:bold;color:var(--brown);line-height:1;margin-top:8px">$339.98</div>
-        <div style="font-size:12px;color:var(--brown-soft);margin-top:8px">Apr 27, 2026 · Amazon $339.98 · Shopify $0 · TikTok $0</div>
+        <div style="font-family:var(--font-lcd);font-size:48px;font-weight:bold;color:var(--brown);line-height:1;margin-top:8px">$572.99</div>
+        <div style="font-size:12px;color:var(--brown-soft);margin-top:8px">Apr 28, 2026 · Amazon $169.99 · Shopify $403.00 (TikTok $193.90 included)</div>
       </div>
       <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#FBF2E1 100%);border:2px solid var(--teal-deep);padding:24px">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--brown-soft)">Total combined sales — Last 30 days</div>
-        <div style="font-family:var(--font-lcd);font-size:48px;font-weight:bold;color:var(--teal-deep);line-height:1;margin-top:8px">$28,683.12</div>
-        <div style="font-size:12px;color:var(--brown-soft);margin-top:8px">Mar 29 – Apr 27 · Amazon $7,744.59 · Shopify $20,938.53</div>
+        <div style="font-family:var(--font-lcd);font-size:48px;font-weight:bold;color:var(--teal-deep);line-height:1;margin-top:8px">~$29,256</div>
+        <div style="font-size:12px;color:var(--brown-soft);margin-top:8px">Mar 30 – Apr 28 · rolling window approximation</div>
       </div>
     </div>
   </section>
 
   <section>
-    <h2 class="section">Yesterday <span class="sub">// Apr 27, 2026</span></h2>
+    <h2 class="section">Yesterday <span class="sub">// Apr 28, 2026</span></h2>
     <div class="grid kpi">
-      <div class="card kpi"><div class="label">Combined revenue</div><div class="value">$339.98</div><div class="delta">Amazon $339.98 · Shopify $0 · TikTok $0</div></div>
-      <div class="card kpi"><div class="label">Combined orders</div><div class="value teal">3</div><div class="delta">Amazon 2 · Shopify 1 · TikTok 0</div></div>
-      <div class="card kpi"><div class="label">Shopify sessions</div><div class="value">480</div><div class="delta up">▲ 18% vs prior period</div></div>
-      <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value teal">$188.46</div><div class="delta">Apr 29 (Apr 24 sales)</div></div>
-    </div>
-
-    <div style="height:16px"></div>
-
-    <div class="grid split-2">
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-          <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">Amazon — Yesterday</strong>
-          <span style="font-size:11px;color:var(--brown-soft)">Sales Dashboard</span>
-        </div>
-        <table class="data">
-          <thead><tr><th>Metric</th><th>Value</th><th>vs Same Day Last Wk</th></tr></thead>
-          <tbody>
-            <tr><td>Ordered product sales</td><td>$339.98</td><td>$0.00</td></tr>
-            <tr><td>Units ordered</td><td>2</td><td>0</td></tr>
-            <tr><td>Total order items</td><td>2</td><td>0</td></tr>
-            <tr><td>Avg. sales / order item</td><td>$169.99</td><td>—</td></tr>
-          </tbody>
-        </table>
-        <div class="note" style="margin-top:10px">Amazon flagged that 4/27/2026 data may not be fully finalized.</div>
-      </div>
-
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-          <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">Shopify + TikTok — Yesterday</strong>
-          <span style="font-size:11px;color:var(--brown-soft)">Home + Seller Center</span>
-        </div>
-        <table class="data">
-          <thead><tr><th>Metric</th><th>Shopify</th><th>TikTok Shop</th></tr></thead>
-          <tbody>
-            <tr><td>GMV / total sales</td><td>$0.00</td><td>$0.00</td></tr>
-            <tr><td>Orders</td><td>1</td><td>0</td></tr>
-            <tr><td>Sessions / visitors</td><td>480</td><td>—</td></tr>
-            <tr><td>Conversion rate</td><td>0.0%</td><td>—</td></tr>
-          </tbody>
-        </table>
-        <div class="note" style="margin-top:10px">Shopify shows 1 order with $0 sales — likely a draft, refund, or 100%-discount order. TikTok Shop had no activity yesterday.</div>
-      </div>
+      <div class="card kpi"><div class="label">Combined revenue</div><div class="value">$572.99</div><div class="delta">Amazon $169.99 · Shopify $403 · TikTok $193.90</div></div>
+      <div class="card kpi"><div class="label">Combined orders</div><div class="value teal">3</div><div class="delta">Amazon 1 · Shopify 2 · TikTok 1</div></div>
+      <div class="card kpi"><div class="label">Shopify sessions</div><div class="value">442</div><div class="delta down">▼ 8% vs prior period</div></div>
+      <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value teal">$154.87</div><div class="delta">Pending</div></div>
     </div>
   </section>
 
   <section>
-    <h2 class="section">Last 30 Days <span class="sub">// Mar 29 – Apr 27, 2026</span></h2>
+    <h2 class="section">Today So Far <span class="sub">// Apr 29, 2026 · live snapshot</span></h2>
     <div class="grid kpi">
-      <div class="card kpi"><div class="label">Combined revenue</div><div class="value">$28,683</div><div class="delta">Amazon $7,745 · Shopify $20,939</div></div>
-      <div class="card kpi"><div class="label">Combined orders</div><div class="value teal">152</div><div class="delta">AOV $188.70</div></div>
-      <div class="card kpi"><div class="label">Total sessions</div><div class="value">11,497</div><div class="delta">Amazon 2,908 · Shopify 8,589</div></div>
-      <div class="card kpi"><div class="label">Shopify gross sales</div><div class="value teal">$22,372</div><div class="delta">Before $1,999 discounts</div></div>
+      <div class="card kpi"><div class="label">Amazon — Today</div><div class="value">$0.00</div><div class="delta">No orders yet</div></div>
+      <div class="card kpi"><div class="label">TikTok Shop — Today</div><div class="value teal">$183.91</div><div class="delta">In progress</div></div>
+      <div class="card kpi"><div class="label">Shopify — Today</div><div class="value">$207</div><div class="delta">186 sessions · 1 order</div></div>
+      <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value">10</div><div class="delta">Shopify queue</div></div>
     </div>
   </section>
 
   <section>
     <h2 class="section">Payouts — All Sources <span class="sub">// Cash in flight + recent settlements</span></h2>
     <div class="grid kpi">
-      <div class="card kpi"><div class="label">Total in flight</div><div class="value teal">$7,474.72</div><div class="delta">Amazon + Shopify + TikTok</div></div>
-      <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,124.51</div><div class="delta">$269.80 available now</div></div>
-      <div class="card kpi"><div class="label">Shopify to be paid</div><div class="value">$2,197.90</div><div class="delta">Scheduled into May 1</div></div>
+      <div class="card kpi"><div class="label">Total in flight</div><div class="value teal">$7,609.04</div><div class="delta">Amazon + Shopify + TikTok</div></div>
+      <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta up">▲ $134 vs prior pull</div></div>
+      <div class="card kpi"><div class="label">Shopify to be paid</div><div class="value">$2,197.90</div><div class="delta">Scheduled</div></div>
       <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$3,152.31</div><div class="delta">$299.54 next · $2,852.77 hold</div></div>
     </div>
-    <div style="height:14px"></div>
-    <div class="card">
-      <table class="data">
-        <thead><tr><th>Source</th><th>Available now</th><th>Scheduled</th><th>Deferred / on hold</th><th>Most recent payout</th><th>Schedule</th></tr></thead>
-        <tbody>
-          <tr><td>Amazon Seller Central</td><td>$269.80</td><td>—</td><td>$1,854.71 deferred</td><td>$586.03 · Apr 19, 2026</td><td>Bi-weekly settlement</td></tr>
-          <tr><td>Shopify Payments</td><td>—</td><td>$2,197.90</td><td>—</td><td>$186.74 · Apr 28, 2026</td><td>Daily (T+3)</td></tr>
-          <tr><td>TikTok Shop</td><td>—</td><td>$299.54 next</td><td>$2,852.77 on hold</td><td>$675.37 · Apr 27, 2026</td><td>Weekly (Mondays)</td></tr>
-        </tbody>
-        <tfoot><tr><td>Total</td><td>$269.80</td><td>$2,497.44</td><td>$4,707.48</td><td colspan="2">Combined cash position: $7,474.72</td></tr></tfoot>
-      </table>
-    </div>
-    <div style="height:14px"></div>
-    <div class="grid split-2">
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-          <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">Shopify upcoming payouts</strong>
-          <span style="font-size:11px;color:var(--brown-soft)">Next 3 scheduled</span>
-        </div>
-        <table class="data">
-          <thead><tr><th>Payout date</th><th>For sales on</th><th>Status</th><th>Amount</th></tr></thead>
-          <tbody>
-            <tr><td>Apr 29, 2026</td><td>Apr 24</td><td>Scheduled</td><td>$188.46</td></tr>
-            <tr><td>Apr 30, 2026</td><td>Apr 25</td><td>Scheduled</td><td>$186.74</td></tr>
-            <tr><td>May 1, 2026</td><td>Apr 26</td><td>Scheduled</td><td>$158.65</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-          <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">TikTok Shop recent payouts</strong>
-          <span style="font-size:11px;color:var(--brown-soft)">Last 4 weeks</span>
-        </div>
-        <table class="data">
-          <thead><tr><th>Initiated</th><th>Status</th><th>Amount</th></tr></thead>
-          <tbody>
-            <tr><td>Apr 27, 2026</td><td>Paid</td><td>$675.37</td></tr>
-            <tr><td>Apr 20, 2026</td><td>Paid</td><td>$336.68</td></tr>
-            <tr><td>Apr 13, 2026</td><td>Paid</td><td>$312.61</td></tr>
-            <tr><td>Apr 06, 2026</td><td>Paid</td><td>$83.28</td></tr>
-          </tbody>
-          <tfoot><tr><td colspan="2">4-week total received</td><td>$1,407.94</td></tr></tfoot>
-        </table>
-      </div>
-    </div>
   </section>
 
   <section>
-    <h2 class="section">Shopify by Sales Channel <span class="sub">// Last 30 days · Total $21,342</span></h2>
-    <div class="grid split-3">
-      <div class="card"><div class="chart-box"><canvas id="channelChart"></canvas></div></div>
-      <div class="card">
-        <div class="legend" id="channelLegend"></div>
-        <div style="margin-top:14px;font-size:11px;color:var(--brown-soft);text-transform:uppercase;letter-spacing:1px;">
-          TikTok contributes <strong style="color:var(--brown)">28%</strong> of Shopify revenue
-        </div>
-      </div>
-    </div>
-    <div style="height:14px"></div>
-    <div class="card">
-      <table class="data">
-        <thead><tr><th>Sales channel</th><th>Net sales</th><th>Shipping</th><th>Taxes</th><th>Total sales</th><th>% of total</th></tr></thead>
-        <tbody>
-          <tr><td>Online Store</td><td>$14,423.90</td><td>$0.00</td><td>$134.45</td><td>$14,558.35</td><td>68.2%</td></tr>
-          <tr><td>TikTok</td><td>$5,560.99</td><td>$22.00</td><td>$412.78</td><td>$5,995.77</td><td>28.1%</td></tr>
-          <tr><td>Facebook &amp; Instagram</td><td>$388.00</td><td>$0.00</td><td>$0.00</td><td>$388.00</td><td>1.8%</td></tr>
-          <tr><td>Shop</td><td>$194.00</td><td>$0.00</td><td>$12.31</td><td>$206.31</td><td>1.0%</td></tr>
-          <tr><td>Draft Orders</td><td>$194.00</td><td>$0.00</td><td>$0.00</td><td>$194.00</td><td>0.9%</td></tr>
-        </tbody>
-        <tfoot><tr><td>Summary</td><td>$20,760.89</td><td>$22.00</td><td>$559.54</td><td>$21,342.43</td><td>100.0%</td></tr></tfoot>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section">TikTok Shop — Seller Center <span class="sub">// RetroVision VHS · seller-us.tiktok.com</span></h2>
-    <div class="grid kpi">
-      <div class="card kpi"><div class="label">GMV — Yesterday</div><div class="value">$0.00</div><div class="delta down">▼ 100% vs Apr 26</div></div>
-      <div class="card kpi"><div class="label">GMV — Last 30 days</div><div class="value teal">$5,408.83</div><div class="delta up">▲ 155.82% vs prior</div></div>
-      <div class="card kpi"><div class="label">Orders — 30 days</div><div class="value">29</div><div class="delta up">▲ 141.67% · 39 items</div></div>
-      <div class="card kpi"><div class="label">Customers — 30 days</div><div class="value teal">24</div><div class="delta up">▲ 100% · 2,970 visitors (28d)</div></div>
-    </div>
-    <div style="height:14px"></div>
-    <div class="grid split-3">
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-          <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">GMV by Content Type</strong>
-          <span style="font-size:11px;color:var(--brown-soft)">Last 30 days · attribution by last interacted content</span>
-        </div>
-        <div class="chart-box"><canvas id="ttContentChart"></canvas></div>
-      </div>
-      <div class="card">
-        <div class="legend" id="ttContentLegend"></div>
-        <div style="margin-top:14px;font-size:11px;color:var(--brown-soft);text-transform:uppercase;letter-spacing:1px;">
-          <strong style="color:var(--brown)">Videos drive 74%</strong> of TikTok Shop revenue<br><br>
-          Product card +641% MoM — early signal worth monitoring
-        </div>
-      </div>
-    </div>
-    <div style="height:14px"></div>
-    <div class="card">
-      <table class="data">
-        <thead><tr><th>Content type</th><th>GMV (30d)</th><th>% of GMV</th><th>Δ vs prior</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Videos</td><td>$3,985.09</td><td>73.68%</td><td style="color:#1F7A35">▲ 107.32%</td><td>Primary driver — short-form discovery</td></tr>
-          <tr><td>Product card</td><td>$1,423.74</td><td>26.32%</td><td style="color:#1F7A35">▲ 641.30%</td><td>Fastest growing surface</td></tr>
-          <tr><td>LIVE</td><td>$0.00</td><td>0.00%</td><td>—</td><td>No LIVE sales activity</td></tr>
-        </tbody>
-        <tfoot><tr><td>Total GMV</td><td>$5,408.83</td><td>100.00%</td><td style="color:#1F7A35">▲ 155.82%</td><td>Mar 30 – Apr 28, 2026</td></tr></tfoot>
-      </table>
-    </div>
-    <div class="note" style="margin-top:14px">
-      <strong>Cross-channel note:</strong> TikTok Shop GMV ($5,409) and Shopify "TikTok" channel net sales ($5,561) report largely the same orders from different angles — TikTok Shop is the source of truth for content-attribution; Shopify aggregates fulfillment + tax. Don't add both totals to combined revenue (double-count). Combined revenue figures above already include TikTok via the Shopify channel.
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section">Amazon vs Shopify <span class="sub">// Last 30 days</span></h2>
-    <div class="card">
-      <table class="data">
-        <thead><tr><th>Metric</th><th>Amazon</th><th>Shopify</th><th>Combined</th></tr></thead>
-        <tbody>
-          <tr><td>Revenue</td><td>$7,744.59</td><td>$20,938.53</td><td>$28,683.12</td></tr>
-          <tr><td>Of which B2B</td><td>$369.98</td><td>—</td><td>—</td></tr>
-          <tr><td>Orders / units</td><td>41</td><td>111</td><td>152</td></tr>
-          <tr><td>Sessions</td><td>2,908</td><td>8,589</td><td>11,497</td></tr>
-          <tr><td>Page views</td><td>3,648</td><td>—</td><td>—</td></tr>
-          <tr><td>Conversion rate</td><td>1.51%</td><td>0.90%</td><td>—</td></tr>
-          <tr><td>Avg. order / selling price</td><td>$194.99</td><td>$188.64</td><td>$188.70</td></tr>
-          <tr><td>Returning customer rate</td><td>—</td><td>2.88%</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section">Shopify Conversion Funnel <span class="sub">// Last 30 days</span></h2>
-    <div class="card">
-      <div class="funnel">
-        <div class="stage"><span class="name">Sessions</span><div class="bar-wrap"><div class="bar" style="width:100%"></div></div><span class="num">8,589</span></div>
-        <div class="stage"><span class="name">Added to cart</span><div class="bar-wrap"><div class="bar" style="width:3.12%"></div></div><span class="num">268</span></div>
-        <div class="stage"><span class="name">Reached checkout</span><div class="bar-wrap"><div class="bar" style="width:1.07%"></div></div><span class="num">92</span></div>
-        <div class="stage"><span class="name">Completed</span><div class="bar-wrap"><div class="bar" style="width:0.9%"></div></div><span class="num">78</span></div>
-      </div>
-      <div class="note" style="margin-top:14px">
-        <strong>Funnel insight:</strong> 268 carts → 78 completed = <strong>29% cart-completion rate</strong>. 71% of carts are abandoned — a likely lever for checkout-step optimization or shipping/discount incentives.
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section">Inventory — Amazon + TikTok Shop <span class="sub">// Live snapshot · sources: Amazon FBA, TikTok FBT</span></h2>
-
+    <h2 class="section">Inventory at Cost — Amazon + TikTok <span class="sub">// Source: supplier purchase log</span></h2>
     <div class="grid kpi" style="margin-bottom:14px">
-      <div class="card kpi"><div class="label">Inventory value · on-hand</div><div class="value teal">$75,121</div><div class="delta">75 Amazon @ $194.99 + 312 TikTok @ $193.90</div></div>
-      <div class="card kpi"><div class="label">Inventory value · inbound</div><div class="value">$97,233</div><div class="delta">260 Amazon inbound + 240 TikTok in transit</div></div>
-      <div class="card kpi"><div class="label">Total inventory value</div><div class="value">$172,354</div><div class="delta">All FBA + FBT units at retail</div></div>
-      <div class="card kpi"><div class="label">Total units</div><div class="value">887</div><div class="delta">Amazon 339 · TikTok 552</div></div>
+      <div class="card kpi"><div class="label">Inventory cost · on-hand</div><div class="value teal">$27,705</div><div class="delta">389 units × $71.22 landed cost</div></div>
+      <div class="card kpi"><div class="label">Inventory cost · inbound</div><div class="value">$35,610</div><div class="delta">500 units × $71.22</div></div>
+      <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,386</div><div class="delta">890 units · supplier cost + freight</div></div>
+      <div class="card kpi"><div class="label">Total units in pipeline</div><div class="value">890</div><div class="delta">Amazon 338 · TikTok 552</div></div>
     </div>
-
-    <div class="card" style="margin-bottom:14px">
-      <div style="margin-bottom:12px"><strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">Amazon (FBA)</strong></div>
-      <div class="inv-item">
-        <div>
-          <div class="title"><strong>VHS to Digital Converter Kit</strong> (Video to Digital Recorder)</div>
-          <div class="asin">ASIN B0FJNSWVS3 · SKU TY-BAMQ-8HG7 · <span class="pill active">Active</span></div>
-        </div>
-        <div class="inv-num"><div class="n" style="color:#1F7A35">75</div><div class="l">Available</div></div>
-        <div class="inv-num"><div class="n" style="color:var(--teal-deep)">260</div><div class="l">Inbound</div></div>
-        <div class="inv-num"><div class="n">3</div><div class="l">Reserved</div></div>
-        <div class="inv-num"><div class="n" style="color:var(--red)">1</div><div class="l">Unfulfillable</div></div>
-      </div>
-      <div class="inv-item">
-        <div>
-          <div class="title"><strong>RVT 64GB USB 3.0 Flash Drive</strong> (Dual USB-A &amp; Type-C)</div>
-          <div class="asin">ASIN B0GY9HMBRX · SKU RVT-USB-3.0 · <span class="pill oos">Out of stock</span></div>
-        </div>
-        <div class="inv-num"><div class="n" style="color:var(--red)">0</div><div class="l">Available</div></div>
-        <div class="inv-num"><div class="n">0</div><div class="l">Inbound</div></div>
-        <div class="inv-num"><div class="n">0</div><div class="l">Reserved</div></div>
-        <div class="inv-num"><div class="n">0</div><div class="l">Unfulfillable</div></div>
-      </div>
-    </div>
-
     <div class="card">
-      <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline">
-        <strong style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--brown)">TikTok — Fulfilled by TikTok (FBT)</strong>
-        <span style="font-size:11px;color:var(--brown-soft)">Source: scm-us.tiktok.com</span>
-      </div>
-      <div class="inv-item">
-        <div>
-          <div class="title"><strong>RVT Digitizer 3.0 VHS to Digital Converter</strong></div>
-          <div class="asin">Goods ID 2637986280973 · Ref TY-BAMQ-8HG7 · <span class="pill active">Approved · Matched</span></div>
-        </div>
-        <div class="inv-num"><div class="n" style="color:#1F7A35">312</div><div class="l">On-hand (FBT)</div></div>
-        <div class="inv-num"><div class="n" style="color:var(--teal-deep)">240</div><div class="l">In transit</div></div>
-        <div class="inv-num"><div class="n">552</div><div class="l">Total in FBT</div></div>
-        <div class="inv-num"><div class="n">38</div><div class="l">Sold (28d)</div></div>
-      </div>
-    </div>
-
-    <div class="note" style="margin-top:14px">
-      <strong>Inventory actions:</strong>
-      <br>(1) <strong>TikTok FBT</strong>: VHS Converter Kit has 312 units on-hand plus 240 in transit. Healthy.
-      <br>(2) <strong>Amazon FBA</strong>: VHS Kit 75 on hand + 260 inbound = strong cover. RVT 64GB USB Flash Drive has been out of stock since Apr 23 — needs replenishment.
+      <table class="data">
+        <thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
+        <tbody>
+          <tr><td>Amazon FBA — Available</td><td>74</td><td>$71.22</td><td>$5,270.28</td><td>8.3%</td></tr>
+          <tr><td>Amazon FBA — Reserved</td><td>3</td><td>$71.22</td><td>$213.66</td><td>0.3%</td></tr>
+          <tr><td>Amazon FBA — Unfulfillable</td><td>1</td><td>$71.22</td><td>$71.22</td><td>0.1%</td></tr>
+          <tr><td>Amazon FBA — Inbound</td><td>260</td><td>$71.22</td><td>$18,517.20</td><td>29.2%</td></tr>
+          <tr><td>TikTok FBT — On-hand (4 FCs)</td><td>312</td><td>$71.22</td><td>$22,220.64</td><td>35.1%</td></tr>
+          <tr><td>TikTok FBT — In transit</td><td>240</td><td>$71.22</td><td>$17,092.80</td><td>27.0%</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total inventory at cost</td><td>890</td><td>$71.22</td><td>$63,385.70</td><td>100.0%</td></tr></tfoot>
+      </table>
+      <div class="note" style="margin-top:14px"><strong>Cost basis:</strong> Weighted average from 20 supplier purchase orders (Jan – Mar 2025), 1,760 units total. Goods $122,047 + freight $3,300 = $71.22 landed cost per unit.</div>
     </div>
   </section>
 
@@ -421,48 +197,29 @@
     <span class="badge">Source: admin.shopify.com</span>
     <span class="badge">Source: seller-us.tiktok.com</span>
     <span class="badge">Source: scm-us.tiktok.com (FBT)</span>
-    <span class="badge">Storefront: retrotechvision.myshopify.com</span>
-    <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Apr 28, 2026 · Currency USD</div>
+    <span class="badge">Source: supplier purchase log (xlsx)</span>
+    <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Apr 29, 2026 · Currency USD</div>
   </footer>
 
 </div>
 
 <script>
-  const data = { labels: ["Online Store", "TikTok", "Facebook & Instagram", "Shop", "Draft Orders"], values: [14558.35, 5995.77, 388.00, 206.31, 194.00], colors: ["#2FC0CF", "#47150E", "#D6443B", "#FFAF41", "#7A3322"] };
-  const total = data.values.reduce(function(a,b){return a+b;}, 0);
-  const legend = document.getElementById("channelLegend");
-  data.labels.forEach(function(label, i) {
-    const v = data.values[i];
-    const pct = (v / total * 100).toFixed(1);
-    const row = document.createElement("div");
-    row.className = "row";
-    row.innerHTML = '<span class="dot" style="background:' + data.colors[i] + '"></span><span>' + label + '</span><span class="amt">$' + v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + '</span><span class="pct">' + pct + '%</span>';
-    legend.appendChild(row);
-  });
-  new Chart(document.getElementById("channelChart").getContext("2d"), {
-    type: "doughnut",
-    data: { labels: data.labels, datasets: [{ data: data.values, backgroundColor: data.colors, borderColor: "#FFF8EA", borderWidth: 3, hoverOffset: 8 }] },
-    options: { responsive: true, maintainAspectRatio: false, cutout: "62%",
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.label + ": $" + c.parsed.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + " (" + (c.parsed/total*100).toFixed(1) + "%)"; }}}}}
-  });
-
-  const ttData = { labels: ["Videos", "Product card", "LIVE"], values: [3985.09, 1423.74, 0], colors: ["#FFAF41", "#2FC0CF", "#47150E"] };
-  const ttTotal = ttData.values.reduce(function(a,b){return a+b;}, 0);
-  const ttLegend = document.getElementById("ttContentLegend");
-  ttData.labels.forEach(function(label, i) {
-    const v = ttData.values[i];
-    const pct = ttTotal ? (v / ttTotal * 100).toFixed(1) : "0.0";
-    const row = document.createElement("div");
-    row.className = "row";
-    row.innerHTML = '<span class="dot" style="background:' + ttData.colors[i] + '"></span><span>' + label + '</span><span class="amt">$' + v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + '</span><span class="pct">' + pct + '%</span>';
-    ttLegend.appendChild(row);
-  });
-  new Chart(document.getElementById("ttContentChart").getContext("2d"), {
-    type: "doughnut",
-    data: { labels: ttData.labels, datasets: [{ data: ttData.values, backgroundColor: ttData.colors, borderColor: "#FFF8EA", borderWidth: 3, hoverOffset: 8 }] },
-    options: { responsive: true, maintainAspectRatio: false, cutout: "62%",
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return c.label + ": $" + c.parsed.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + " (" + (c.parsed/ttTotal*100).toFixed(1) + "%)"; }}}}}
-  });
+(function(){
+  function makeChart(id, data){
+    new Chart(document.getElementById(id).getContext('2d'), {
+      type:'doughnut',
+      data:{labels:['Shopify','TikTok Shop','Amazon'],datasets:[{data:data,backgroundColor:['#378ADD','#1D9E75','#D85A30'],borderColor:'#FFF8EA',borderWidth:2,hoverOffset:4}]},
+      options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){var t=c.dataset.data.reduce(function(a,b){return a+b},0)||1;return c.label+': '+c.parsed+' units ('+(c.parsed/t*100).toFixed(0)+'%)'}}}}}
+    });
+  }
+  function tryDraw(){
+    if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
+    makeChart('unitsTodayChart',[1,1,0]);
+    makeChart('units7dChart',[28,14,13]);
+    makeChart('units30dChart',[111,39,41]);
+  }
+  tryDraw();
+})();
 </script>
 
 </body>
