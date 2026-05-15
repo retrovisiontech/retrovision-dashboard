@@ -129,6 +129,17 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 </section>
 
 <section>
+  <h2 class="section">TikTok Ad Performance <span class="sub">// Windsor AI · May 2026</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Blended ROAS</div><div class="value teal">57.5×</div><div class="delta">Revenue ÷ TikTok ad spend</div></div>
+    <div class="card kpi"><div class="label">TikTok Ad Spend (May)</div><div class="value">$138.65</div><div class="delta">May 1–4, 2026 · TikTok Ads</div></div>
+    <div class="card kpi"><div class="label">Revenue (May to date)</div><div class="value">$7,971</div><div class="delta">Shopify · May 1–11, 2026</div></div>
+    <div class="card kpi"><div class="label">Cost per $1 earned</div><div class="value teal">$0.017</div><div class="delta">Ad spend ÷ Revenue</div></div>
+  </div>
+  <div class="note" style="margin-top:14px"><strong>Blended ROAS</strong> = total Shopify revenue ÷ total TikTok Ads spend for the same period. Includes revenue from all channels (organic, TikTok, Amazon referral, direct) — not TikTok-attributed only. Via <strong>Windsor AI</strong> · TikTok Ads connector.</div>
+</section>
+
+<section>
   <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 9, 2026 – May 10, 2026</span></h2>
   <div class="card visitor-card">
     <div class="visitor-headline">
@@ -212,11 +223,11 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
     });
     var amzLabels = ["Feb 15","Feb 22","Mar 1","Mar 8","Mar 15","Mar 22","Mar 29","Apr 5","Apr 12","Apr 19","Apr 26","May 3","May 10"];
-    var amzData = [480,510,540.560,580,600,610,630,660,680,700,720,588];
+    var amzData = [480,510,540,560,580,600,610,630,660,680,700,720,588];
     new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
       type:'bar',
       data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'s7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
     });
   }
   tryDraw();
