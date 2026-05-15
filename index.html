@@ -52,15 +52,6 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 .visitor-headline .num.teal{color:var(--teal-deep)}
 .visitor-headline .lbl{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-top:4px}
 .visitor-chart-wrap{height:240px;position:relative}
-
-/* Kadie Tapes mascot card */
-.kadie-card{padding:0;overflow:hidden;display:flex;align-items:stretch;border:3px solid var(--teal-deep);background:linear-gradient(135deg,var(--paper) 0%,var(--cream-2) 100%);gap:0;border-radius:14px;box-shadow:var(--shadow)}
-.kadie-card::before{display:none}
-.kadie-photo{width:160px;min-height:180px;flex-shrink:0;overflow:hidden;background:linear-gradient(180deg,var(--teal-deep),var(--wood-2));position:relative}
-.kadie-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.kadie-info{padding:22px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px;flex:1}
-.kadie-rvt{display:flex;align-items:center;padding:20px 24px;flex-shrink:0;border-left:1px solid var(--line)}
-@media(max-width:600px){.kadie-card{flex-direction:column}.kadie-photo{width:100%;height:200px}.kadie-rvt{display:none}}
 </style>
 </head>
 <body>
@@ -83,22 +74,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 
 <div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 2 fields fell back to last-known values: amazon.lifetimeSales, tiktok.fbtInventory.</div>
 
-<div class="card kadie-card" style="margin-bottom:18px">
-  <div class="kadie-photo">
-    <img src="Kadie%20tapes.png" alt="Kadie Tapes mascot" />
-  </div>
-  <div class="kadie-info">
-    <div style="font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--teal-deep);font-weight:bold">Meet the Mascot</div>
-    <div style="font-family:var(--font-lcd);font-size:28px;color:var(--brown);line-height:1.1;margin-top:4px">Kadie Tapes</div>
-    <div style="font-size:13px;color:var(--brown-soft);margin-top:6px">RetroVision Tech's VHS tape mascot. Part nostalgia, part magic — Kadie represents the spirit of vintage media brought back to life.</div>
-    <div style="font-size:11px;color:var(--teal-deep);margin-top:8px;font-weight:bold">retrovisiontech.com · VHS · Vintage Tech</div>
-  </div>
-  <div class="kadie-rvt">
-    <div style="text-align:center">
-      <div style="font-family:var(--font-lcd);font-size:14px;color:var(--brown);letter-spacing:2px">RVT</div>
-      <div style="font-size:10px;color:var(--brown-soft);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Retro<br>Vision<br>Tech</div>
-    </div>
-  </div>
+
 
 <section style="margin-top:14px">
   <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
@@ -227,7 +203,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
     new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
       type:'bar',
       data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'s7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
     });
   }
   tryDraw();
