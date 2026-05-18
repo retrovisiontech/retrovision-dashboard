@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbN5OhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
 :root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
@@ -90,113 +90,141 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <h2 class="section">Yesterday <span class="sub">// May 17, 2026 · live from Shopify admin</span></h2>
   <div class="grid kpi">
     <div class="card kpi"><div class="label">Shopify revenue</div><div class="value">$795</div><div class="delta">vs prior day</div></div>
-    <div cla�H��\��H��]��\��H�X�[����Y�Hܙ\���]��]��\��H��[YHX[����]��]��\��H�[H�����[܈^O�]���]���]��\��H��\��H��]��\��H�X�[����Y�H�\��[ۜ��]��]��\��H��[YH���
-O�]��]��\��H�[H�����[܈^O�]���]���]��\��H��\��H��]��\��H�X�[���۝�\��[ۈ�]O�]��]��\��H��[YHX[���N	O�]��]��\��H�[H�����[܈^O�]���]����]���]��\��H�ܚY�H��[OH�X\��[�]��M���]��\��H��\��H��]��\��H�X�[���^��Y�H^[�]�]��]��\��H��[YH���%�]��]��\��H�[H��[�[���]���]���]��\��H��\��H��]��\��H�X�[��ܙ\����[�[�]��]��\��H��[YHX[��M��]��]��\��H�[H����Y�H]Y]YO�]���]���]��\��H��\��H��]��\��H�X�[����Y�[ۈ
-�
-O�]��]��\��H��[YH��[OH��۝\�^�N�N�[�KZZY��K�����[Y�ܛ�XO�]��]��\��H�[H���Hܙ\���[��]���]���]��\��H��\��H��]��\��H�X�[���]\��[���\��Y\��]O�]��]��\��H��[YH����O�]��]��\��H�[H��\��^\��]���]����]�����X�[ۏ����X�[ۏ����\��H��X�[ۈ���X��]H�\�]ܜ��[��\��H��X�������Y�H0��\�L^\�0���X��X\�HM����8�$�X^HN�����[������]��\��H��\��\�]܋X�\����]��\��H��\�]܋ZXY[�H���]��]��\��H��[HX[����
-LO�]��]��\��H�����[�\��[ۜ��]���]���]��]��\��H��[H���
+    <div class="card kpi"><div class="label">Shopify orders</div><div class="value teal">3</div><div class="delta">vs prior day</div></div>
+    <div class="card kpi"><div class="label">Shopify sessions</div><div class="value">305</div><div class="delta">vs prior day</div></div>
+    <div class="card kpi"><div class="label">Conversion rate</div><div class="value teal">0.98%</div><div class="delta">vs prior day</div></div>
+  </div>
+  <div class="grid kpi" style="margin-top:14px">
+    <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value">—</div><div class="delta">Pending</div></div>
+    <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">16</div><div class="delta">Shopify queue</div></div>
+    <div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">California</div><div class="delta">By order count</div></div>
+    <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">0.02%</div><div class="delta">Last 30 days</div></div>
+  </div>
+</section>
 
-��]��]��\��H����[�\]YH�\�]ܜ��]���]���]��]��\��H��[H��[OH���܎��Q��L�H�����
-LIO�]��]��\��H�������[܈L^\�
-M
-�O�]���]����]���]��\��H��\�]܋X�\�]ܘ\���[��\�YH��\�]ܐ�\�����[��\Ϗ�]���]��\��H���H��[OH�X\��[�]��M����ۙϔ��\��N����ۙψ��Y�H[�[]X��8����\��[ۜ�ݙ\�[YK��X��]�\�H�YZ�HY�ܙY�]\ˏ�]����]�����X�[ۏ����X�[ۏ����\��H��X�[ۈ��[X^�ۈY�H�Y]���[��\��H��X�����\�L^\�0���ܘ\Y���H�[\��[��[��[������]��\��H��\��\�]܋X�\���[OH��ܙ\�X��܎��
-PL����]��\��H��\�]܋ZXY[�H���]��]��\��H��[H��[OH���܎��
-PL���K
-�NO�]��]��\��H�����[Y�H�Y]���]���]���]��]��\��H��[H���
-�N�]��]��\��H�����[�\��[ۜ��]���]���]��]��\��H��[H��[OH���܎��Q��L�H����LIO�]��]��\��H����ܙ\�][H�\��[ۈ�]O�]���]����]���]��\��H��\�]܋X�\�]ܘ\���[��\�YH�[X^�۔Y�U�Y]���\�����[��\Ϗ�]���]��\��H���H��[OH�X\��[�]��M����ۙϔ��\��N����ۙψ[X^�ۈ�[\��[��[8����\�[�\���\ܝ�8����[\�[��Y��XˈLY^H�[�	�
-LM��X��[\�0��M[�]���0��	MK�N]���[H\�ܙ\�][K��]����]�����X�[ۏ����X�[ۏ����\��H��X�[ۈ����Y�H0��Y�][YH\��ܛX[��H�[��\��H��X�����[][YH�[����H[�[]X��ݙ\��Y]���[������]��\��H�ܚY�H���]��\��H��\��H��]��\��H�X�[��ܛ����[\��]��]��\��H��[YH��L�
-�LO�]��]��\��H�[H��[][YO�]���]���]��\��H��\��H��]��\��H�X�[���]�[\��]��]��\��H��[YHX[��L�K���]��]��\��H�[H��Y�\�\���[��
-��]\����]���]���]��\��H��\��H��]��\��H�X�[���[ܙ\���]��]��\��H��[YH���
-��]��]��\��H�[H��[][YO�]���]���]��\��H��\��H��]��\��H�X�[���[�[\��]��]��\��H��[YH��L�
-O�]��]��\��H�[H���]
-��\[��
-�^�]���]����]�����X�[ۏ����X�[ۏ����\��H��X�[ۈ��[X^�ۈ	�[\�Z���ۘ\���[��\��H��X������[[��\�[�[��[�ܞH]�Y��\�[YO��[������]��\��H�ܚY�H���]��\��H��\��H��]��\��H�X�[��[X^�ۈ�[[��O�]��]��\��H��[YH����N���]��]��\��H�[H��\�و���L
-L�O�]���]���]��\��H��\��H��]��\��H�X�[��Z���[�[��
-���]��]��\��H��[YH���ML���O�]��]��\��H�[H���NK�M�^0��	�
-L������]���]���]��\��H��\��H��]��\��H�X�[���[^[�]�[��Y��]��]��\��H��[YHX[��
-K
-LK�M�]��]��\��H�[H��[X^�ۈ
-�Z���
-���Y�H�^�]���]���]��\��H��\��H��]��\��H�X�[���[[��[�ܞH]����]��]��\��H��[YH��
-���
-��]��]��\��H�[H��L[�]�0��	
-�K���[�Y�]���]����]���]��\��H��\���[OH�X\��[�]��M���X�H�\��H�]H���XY������][ۏ���[�]����[�]����������[YO���Hو�[������XY����O������[X^�ۈ��H8�%]�Z[X�O�������
-�K������
-K���������O���������[X^�ۈ��H8�%�\�\��Y�������
-�K�������Lˍ�������O���������[X^�ۈ��H8�%[��[�[X�O���O���
-�K������
-�K�������IO���������[X^�ۈ��H8�%[���[���������
-�K������N
-LMˌ�����K��O���������Z�����8�%ۋZ[�
+<section>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 16, 2026 – May 18, 2026</span></h2>
+  <div class="card visitor-card">
+    <div class="visitor-headline">
+      <div><div class="num teal">22,501</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">20,474</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num" style="color:#1F7A35">▲ 51%</div><div class="lbl">vs prior 90 days (14,887)</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
+  </div>
+</section>
 
-���O����L����
-�K����������������K�IO���������Z�����8�%[��[��]�������
-�K������M�L������ˌ	O���������O����������[[��[�ܞH]������L���
-�K������
-���
-K����L�	O������������X�O��]��\��H���H��[OH�X\��[�]��M����ۙϐ����\�\Ώ���ۙψ�ZY�Y]�\�Y�H���H��\Y\�\��\�Hܙ\��
-�[�8�$�X\���JKK
-͌[�]��[�����	L��
+<section>
+  <h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · scraped from Seller Central</span></h2>
+  <div class="card visitor-card" style="border-color:#D85A30">
+    <div class="visitor-headline">
+      <div><div class="num" style="color:#D85A30">9,759</div><div class="lbl">Total page views</div></div>
+      <div><div class="num">7,698</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num" style="color:#1F7A35">2.11%</div><div class="lbl">Order item session rate</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="amazonPageViewsChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Amazon Seller Central → Business Reports → Sales and Traffic. 90-day total: $28,514 product sales · 148 units sold · $149.18 avg sale per order item.</div>
+  </div>
+</section>
 
-�
-���ZY�	��H	
-�K���[�Y���\�[�]��]����]�����X�[ۏ�����X�[ۈYH��\����[�]��ȏ����\��H��X�[ۈ���\�����]����[��\��H��X������ڙX�Y0��ш[�[0��X^HN�����[������]��\��H�ܚY�H��[OH�X\��[�X���N�M���]��\��H��\��H��]��\��H�X�[��\��[۝H�]�[�YO�]��]��\��H��[YH��K
-̍K
-�
-��]��]��\��H�[H��[�[��[�0���[��]O�]���]���]��\��H��\��H��]��\��H�X�[��ܛ����ٚ]
-�ˍIJO�]��]��\��H��[YHX[��
+<section>
+  <h2 class="section">Shopify �� Lifetime Performance <span class="sub">// All-time totals from Analytics overview</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Gross sales</div><div class="value">$138,691</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Net sales</div><div class="value teal">$125,827</div><div class="delta">After discounts + returns</div></div>
+    <div class="card kpi"><div class="label">Total orders</div><div class="value">687</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Total sales</div><div class="value">$130,489</div><div class="delta">Net + shipping + tax</div></div>
+  </div>
+</section>
 
-�
-M��]��]��\��H�[H��Y�\������]���]���]��\��H��\��H��]��\��H�X�[��[۝H�^�]��]��\��H��[YH��L�]��]��\��H�[H���^Yݙ\�XY�]���]���]��\��H��\��H��]��\��H�X�[��[۝H�]�]��]��\��H��[YH��[OH���܎��M�NMH���
+<section>
+  <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta">As of 2026-04-29</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$3,152.31</div><div class="delta">$299.54 next · $2,852.77 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,411.14</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,386</div><div class="delta">890 units · $71.22 landed</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <table class="data">
+      <thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
+      <tbody>
+        
+        <tr><td>Amazon FBA — Available</td><td>74</td><td>$71.22</td><td>$5,270.28</td><td>8.3%</td></tr>
+        <tr><td>Amazon FBA — Reserved</td><td>3</td><td>$71.22</td><td>$213.66</td><td>0.3%</td></tr>
+        <tr><td>Amazon FBA — Unfulfillable</td><td>1</td><td>$71.22</td><td>$71.22</td><td>0.1%</td></tr>
+        <tr><td>Amazon FBA — Inbound</td><td>260</td><td>$71.22</td><td>$18,517.20</td><td>29.2%</td></tr>
+        <tr><td>TikTok FBT — On-hand (4 FCs)</td><td>312</td><td>$71.22</td><td>$22,220.64</td><td>35.1%</td></tr>
+        <tr><td>TikTok FBT — In transit</td><td>240</td><td>$71.22</td><td>$17,092.80</td><td>27.0%</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total inventory at cost</td><td>890</td><td>$71.22</td><td>$63,385.80</td><td>100.0%</td></tr></tfoot>
+    </table>
+    <div class="note" style="margin-top:14px"><strong>Cost basis:</strong> Weighted average from 20 supplier purchase orders (Jan – Mar 2025), 1,760 units total. Goods $122,047 + freight $3,300 = $71.22 landed cost per unit.</div>
+  </div>
+</section>
 
-�
-M��]��]��\��H�[H��ܛ����ٚ]8�$��^�]���]����]���]��\��H�ܚY�H���]��\��H��\��H��]��\��H�X�[���\�ۈ[��]��]��\��H��[YH��L�]��]��\��H�[H���[���[[��O�]���]���]��\��H��\��H��]��\��H�X�[����]�Z[X�O�]��]��\��H��[YHX[��
-K�]��]��\��H�[H��[�HوܙY]�]���]���]��\��H��\��H��]��\��H�X�[���[\]ZY]O�]��]��\��H��[YH��MK�]��]��\��H�[H���\�
-����]���]���]��\��H��\��H��]��\��H�X�[����XZ�Y]�[�[�]��[��]��]��\��H��[YHX[��M�]��]��\��H�[H��]	NHT�0��	�[�Y�]���]����]���]��\��H��\���[OH�X\��[�]��M�Y[�ΌN��ؘX��ܛ�[��[�X\�YܘYY[�
-L�YY�э����	K�N��HL	JN؛ܙ\��K�\��Y�QQQLȏ��]��[OH��۝\�^�N�L����܎���L�̌��]\�\�X�[�Ό\ٛ۝]�ZY����^]�[�ٛܛN�\\��\�N�X\��[�X���N�L��[�[\��[\[ۜ��]���]��[OH�\�^N��^��\��ٛ^]ܘ\�ܘ\ٛ۝\�^�N�L����܎��L�LMH����[��T����ۙωNO���ۙϏ��[����[��[�Y������ۙω����ۙϏ��[����[��X\��[����ۙό�ˍIO���ۙϏ��[����[���^���ۙωL�[����ۙϏ��[����[�����[[��N���ۙω
-K���ۙϏ��[����[���\����ۙωL���ۙϏ��[����[��\��[�]��[Έ��ۙϟ�LL�O���ۙϏ��[����]���]��[OH�X\��[�]��ٛ۝\�^�N�L\���܎��P���MNٛ۝\�[N�][Xȏ��[�\�]H�]�[�YH\�]�Y���H�X�[�
-]�YZ��\��[ۈ]�\�Y�H0���۝�\��[ۈ�]H0��T��[X^�ۈ���HLY^H��X��[\��ˈZ���\�[X]Y]
-IHو��Y�K�Y]ш�ۜ�[��[��\����\]��Z���\]H\��[\[ۜˏ�]����]�����X�[ۏ������\����[��\��H��Y�H����\��N�YZ[����Y�K���O��[����[��\��H��Y�H����\��N��[\��[��[�[X^�ۋ���O��[����[��\��H��Y�H����\��N��[\�]\˝Z��˘��O��[����[��\��H��Y�H����\��N���K]\˝Z��˘��O��[����[��\��H��Y�H����\��N��\Y\�\��\�H��
-�
-O��[���]��[OH�X\��[�]��L���]�՚\�[ۈX�0���[\�\���\�0���[�\�]Y[ۙ^KX^HN���0���\��[��HT��]���ٛ��\�����]����ܚ\���[��[ۊ
-^�[��[ۈ�Q�]�
-^Y�
-\[و�\�OOI�[�Y�[�Y	�^��][Y[�]
-�Q�]�L
-Nܙ]\���B��\�X�[�Hȑ�X�M����X��ȋ�X\����X\�H��X\�M���X\��ȋ�X\����\�
-���\�Lȋ�\����\��ȋ�X^H
-��X^HLH��X^HN�N�\�]HH�MMLMKLL�M��L�̋LM
-ML�NM��LM���͋�NMK�N
-��
-
-M�N�]��\�
-��[Y[���][[Y[��RY
-	ݚ\�]ܐ�\�	�K��]�۝^
-	̙	�K\N�ؘ\���]N��X�[ΛX�[�]\�]Ζ��X�[���\��[ۜ�\��YZ��]N�]K�X��ܛ�[���܎�ܙؘJ
 
-�NL��
-��MJI��ܙ\���܎���M�NMI��ܙ\��Y�K�K�ܙ\��Y]\Ό�W_K��[ۜΞܙ\�ۜ�]�N��YKXZ[�Z[�\�X��][Ι�[�KY�[�Ξ�Y�[���\�^N��[�_K��\���[�X��Ξ�X�[��[��[ۊ�^ܙ]\��˜\��Y�K����[T��[��
-J���\��[ۜ��___K��[\Ξ�N�ؙY�[�]�\�Ν�YKܚY����܎�ܙؘJ
-�K�KM�
-I�KX��Ξ���܎����L�̌���[�X�Ι�[��[ۊ�^ܙ]\�������[T��[��
-___K��ܚY��\�^N��[�_KX��Ξ���܎����L�̌��___B�JN�\�[^�X�[�Hȑ�X�ȋ��X�L���X�Mȋ��X����X\�ȋ�X\�L��X\�Mȋ�X\����X\��H��\�
-ȋ�\�M��\��H��\���N�\�[^�]HH�̌
-�
-�
-N
-̌
-�
-�L�
-��
-̌
-�WN�]��\�
-��[Y[���][[Y[��RY
-	�[X^�۔Y�U�Y]���\�	�K��]�۝^
-	̙	�K\N�ؘ\���]N��X�[Θ[^�X�[�]\�]Ζ��X�[��Y�H�Y]��\��YZ��]N�[^�]K�X��ܛ�[���܎�ܙؘJ�M�L
-�MJI��ܙ\���܎���L�LP���ܙ\��Y�K�K�ܙ\��Y]\Ό�W_K��[ۜΞܙ\�ۜ�]�N��YKXZ[�Z[�\�X��][Ι�[�KY�[�Ξ�Y�[���\�^N��[�_K��\���[�X��Ξ�X�[��[��[ۊ�^ܙ]\��˜\��Y�K����[T��[��
-J��Y�H�Y]���___K��[\Ξ�N�ؙY�[�]�\�Ν�YKܚY����܎�ܙؘJ
-�K�KM�
-I�KX��Ξ���܎����L�̌���[�X�Ι�[��[ۊ�^ܙ]\�������[T��[��
-___K��ܚY��\�^N��[�_KX��Ξ���܎����L�̌��___B�JNB��Q�]�
-NJJ
-N��ܚ\��؛�O���[�
+<section id="cashflow-outlook">
+  <h2 class="section">Cashflow Outlook <span class="sub">// Projected · CF model · May 18, 2026</span></h2>
+  <div class="grid kpi" style="margin-bottom:14px">
+    <div class="card kpi"><div class="label">Est. Monthly Revenue</div><div class="value">$1,725,687</div><div class="delta">All channels · run rate</div></div>
+    <div class="card kpi"><div class="label">Gross Profit (27.5%)</div><div class="value teal">$474,564</div><div class="delta">After COGS</div></div>
+    <div class="card kpi"><div class="label">Monthly OpEx</div><div class="value">$10,000</div><div class="delta">Fixed overhead</div></div>
+    <div class="card kpi"><div class="label">Monthly Net</div><div class="value" style="color:#178A95">+$464,564</div><div class="delta">Gross profit − OpEx</div></div>
+  </div>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Cash on Hand</div><div class="value">$10,000</div><div class="delta">Bank balance</div></div>
+    <div class="card kpi"><div class="label">LOC Available</div><div class="value teal">$85,000</div><div class="delta">Line of credit</div></div>
+    <div class="card kpi"><div class="label">Total Liquidity</div><div class="value">$95,000</div><div class="delta">Cash + LOC</div></div>
+    <div class="card kpi"><div class="label">Break-even Units/Mo</div><div class="value teal">94</div><div class="delta">At $189 ASP · $82 landed</div></div>
+  </div>
+  <div class="card" style="margin-top:14px;padding:18px 22px;background:linear-gradient(135deg,#F4FBFC 0%,#E8F8FA 100%);border:1.5px solid #9EDAE3">
+    <div style="font-size:12px;color:#7A3322;letter-spacing:1px;font-weight:700;text-transform:uppercase;margin-bottom:10px">Model Assumptions</div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:13px;color:#4A2515">
+      <span>ASP: <strong>$189</strong></span>
+      <span>Landed cost: <strong>$82</strong></span>
+      <span>Margin: <strong>27.5%</strong></span>
+      <span>OpEx: <strong>$10,000/mo</strong></span>
+      <span>LOC balance: <strong>$85,000</strong></span>
+      <span>Cash: <strong>$10,000</strong></span>
+      <span>Est. units/mo: <strong>~9131</strong></span>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:#9B6B55;font-style:italic">Run-rate revenue derived from recent 4-week session average × conversion rate × ASP. Amazon from 90-day productSales/3. TikTok estimated at 5% of Shopify. Edit CF constants in cashflow-patch.mjs to update assumptions.</div>
+  </div>
+</section>
+
+<footer>
+  <span class="badge">Source: admin.shopify.com</span>
+  <span class="badge">Source: sellercentral.amazon.com</span>
+  <span class="badge">Source: seller-us.tiktok.com</span>
+  <span class="badge">Source: scm-us.tiktok.com</span>
+  <span class="badge">Source: supplier purchase log (xlsx)</span>
+  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Monday, May 18, 2026 · Currency USD</div>
+</footer>
+
+</div>
+<script>
+(function(){
+  function tryDraw(){
+    if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
+    var labels = ["Feb 16","Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18"];
+    var data = [954,1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,57];
+    new Chart(document.getElementById('visitorChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
+    var amzLabels = ["Feb 3","Feb 10","Feb 17","Feb 24","Mar 3","Mar 10","Mar 17","Mar 24","Mar 31","Apr 7","Apr 14","Apr 21","Apr 28"];
+    var amzData = [720,680,640,580,720,740,800,870,900,830,770,720,789];
+    new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
+  }
+  tryDraw();
+})();
+</script>
+</body>
+</html>
