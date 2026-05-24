@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbN5OhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
 :root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
@@ -59,7 +59,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <header class="deck">
   <div class="deck-inner">
     <div style="text-align:left"><div class="lcd"><small>SALES</small> 03</div></div>
-    <div class="brand-plate"><div class="brand">RetroVision<span class="tech">TECH</span></div></div>
+    <div class="brand-plate"><div class="brand">RetroVision<span class="tech">TECH5�pan></div></div>
     <div style="text-align:right"><div class="lcd"><small>STORES</small> 03</div></div>
   </div>
 </header>
@@ -69,10 +69,10 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="title-block">
   <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
   <h1 class="display">Sales Dashboard</h1>
-  <div class="meta">Generated Sunday, May 24, 2026 · Amazon · Shopify · TikTok Shop</div>
+  <div class="meta">Generated Sunday, May 24, 2026 · Amazon B� Shopify · TikTok Shop</div>
 </div>
 
-<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 7 fields fell back to last-known values: amazon.lifetimeSales, amazon.balance, amazon.pageViews90d, amazon.fbaInventory, tiktok.pendingPlusHold, tiktok.fbtInventory, shopify.returningCustomerRate.</div>
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 2 fields fell back to last-known values: amazon.lifetimeSales, amazon.pageViews90d.</div>
 
 <section style="margin-top:14px">
   <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
@@ -98,17 +98,17 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
     <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value">—</div><div class="delta">Pending</div></div>
     <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">18</div><div class="delta">Shopify queue</div></div>
     <div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">California</div><div class="delta">By order count</div></div>
-    <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">—</div><div class="delta">Last 30 days</div></div>
+    <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">0.01%</div><div class="delta">Last 30 days</div></div>
   </div>
 </section>
 
 <section>
-  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 23, 2026 – May 24, 2026</span></h2>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 23, 2026 – May 18, 2026</span></h2>
   <div class="card visitor-card">
     <div class="visitor-headline">
-      <div><div class="num teal">23,028</div><div class="lbl">Total sessions</div></div>
-      <div><div class="num">20,857</div><div class="lbl">Unique visitors</div></div>
-      <div><div class="num" style="color:#1F7A35">▲ 46.6%</div><div class="lbl">vs prior 90 days (15,706)</div></div>
+      <div><div class="num teal">23,002</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">20,835</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num" style="color:#1F7A35">▲ 46%</div><div class="lbl">vs prior 90 days (15,706)</div></div>
     </div>
     <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
     <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
@@ -141,114 +141,29 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <section>
   <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
   <div class="grid kpi">
-    <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta">As of 2026-04-29</div></div>
-    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$3,152.31</div><div class="delta">$299.54 next · $2,852.77 hold</div></div>
-    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,411.14</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
-    <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,386</div><div class="delta">890 units · $71.22 landed</div></div>
+    <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,368.49</div><div class="delta">As of 2026-05-24</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$2,635.10</div><div class="delta">$859.04 next · $1,776.06 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,003.59</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$53,914</div><div class="delta">757 units · $71.22 landed</div></div>
   </div>
   <div class="card" style="margin-top:14px">
     <table class="data">
       <thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
       <tbody>
         
-        <tr><td>Amazon FBA — Available</td><td>74</td><td>$71.22</td><td>$5,270.28</td><td>8.3%</td></tr>
-        <tr><td>Amazon FBA — Reserved</td><td>3</td><td>$71.22</td><td>$213.66</td><td>0.3%</td></tr>
-        <tr><td>Amazon FBA — Unfulfillable</td><td>1</td><td>$71.22</td><td>$71.22</td><td>0.1%</td></tr>
-        <tr><td>Amazon FBA — Inbound</td><td>260</td><td>$71.22</td><td>$18,517.20</td><td>29.2%</td></tr>
-        <tr><td>TikTok FBT — On-hand (4 FCs)</td><td>312</td><td>$71.22</td><td>$22,220.64</td><td>35.1%</td></tr>
-        <tr><td>TikTok FBT — In transit</td><td>240</td><td>$71.22</td><td>$17,092.80</td><td>27.0%</td></tr>
+        <tr><td>Amazon FBA — Available</td><td>224</td><td>$71.22</td><td>$15,953.28</td><td>29.6%</td></tr>
+        <tr><td>Amazon FBA — Reserved</td><td>7</td><td>$71.22</td><td>$498.54</td><td>0.9%</td></tr>
+        <tr><td>Amazon FBA — Unfulfillable</td><td>0</td><td>$71.22</td><td>$0.00</td><td>0.0%</td></tr>
+        <tr><td>Amazon FBA — Inbound</td><td>40</td><td>$71.22</td><td>$2,848.80</td><td>5.3%</td></tr>
+        <tr><td>TikTok FBT — On-hand (5 FCs)</td><td>285</td><td>$71.22</td><td>$20,297.70</td><td>37.6%</td></tr>
+        <tr><td>TikTok FBT — In transit</td><td>201</td><td>$71.22</td><td>$14,315.22</td><td>26.6%</td></tr>
       </tbody>
-      <tfoot><tr><td>Total inventory at cost</td><td>890</td><td>$71.22</td><td>$63,385.80</td><td>100.0%</td></tr></tfoot>
+      <tfoot><tr><td>Total inventory at cost</td><td>757</td><td>$71.22</td><td>$53,913.54</td><td>100.0%</td></tr></tfoot>
     </table>
     <div class="note" style="margin-top:14px"><strong>Cost basis:</strong> Weighted average from 20 supplier purchase orders (Jan – Mar 2025), 1,760 units total. Goods $122,047 + freight $3,300 = $71.22 landed cost per unit.</div>
   </div>
 </section>
 
-
-<section id="cashflow-outlook">
-  <h2 class="section">Cashflow Outlook <span class="sub">// 13-week projection · LOC $85K outstanding</span></h2>
-
-  <div class="grid kpi">
-    <div class="card kpi">
-      <div class="label">Cash on hand</div>
-      <div class="value" style="color:#1F7A35">$10,000</div>
-      <div class="delta">Current</div>
-    </div>
-    <div class="card kpi">
-      <div class="label">Monthly operating CF</div>
-      <div class="value" style="color:var(--red);font-size:24px">−$8.0K/mo</div>
-      <div class="delta">$1,995 GP − $10K OpEx</div>
-    </div>
-    <div class="card kpi">
-      <div class="label">Runway</div>
-      <div class="value" style="color:var(--teal-deep)">11.1 mo</div>
-      <div class="delta">At current burn · LOC + cash</div>
-    </div>
-    <div class="card kpi">
-      <div class="label">Daily units to break even</div>
-      <div class="value teal">6.4</div>
-      <div class="delta">1.3 projected · 38/mo est.</div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:14px">
-    <div style="display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:center">
-      <div>
-        <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">LOC Utilization</div>
-        <div style="background:var(--cream-2);border-radius:8px;height:28px;overflow:hidden;border:1px solid var(--line)">
-          <div style="background:var(--red);height:100%;width:88.5%;border-radius:8px;display:flex;align-items:center;padding-left:10px">
-            <span style="color:white;font-weight:bold;font-size:13px;font-family:var(--font-lcd)">88.5%</span>
-          </div>
-        </div>
-        <div style="font-size:12px;color:var(--brown-soft);margin-top:6px">$85,000 drawn · $567/mo interest</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-family:var(--font-lcd);font-size:34px;font-weight:bold;color:var(--red)">−$8.6K</div>
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Net monthly CF</div>
-        <div style="font-size:12px;color:var(--brown-soft);margin-top:4px">After LOC interest</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:14px">
-    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:12px">13-Week Cash Projection · 3 Scenarios</div>
-    <div style="height:220px;position:relative"><canvas id="cashflowChart"></canvas></div>
-    <div style="display:flex;gap:18px;margin-top:10px;flex-wrap:wrap">
-      <span style="font-size:12px;color:#1F7A35">■ Bull (+50% revenue)</span>
-      <span style="font-size:12px;color:var(--teal-deep)">■ Base (current run rate)</span>
-      <span style="font-size:12px;color:var(--red)">■ Bear (−50% revenue)</span>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:14px">
-    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:12px">Scenario Outcomes at 13 Weeks</div>
-    <table class="data">
-      <thead><tr><th>Scenario</th><th>Monthly CF</th><th>End Cash</th><th>LOC Status</th></tr></thead>
-      <tbody>
-        <tr style="color:#1F7A35"><td>🟢 Bull (+50% revenue)</td><td>−$12.9K/mo</td><td>$28,603</td><td>Drawing LOC</td></tr>
-        <tr><td>🟡 Base (current run rate)</td><td>−$8.6K/mo</td><td>$15,735</td><td>Drawing LOC</td></tr>
-        <tr style="color:var(--red)"><td>🔴 Bear (−50% revenue)</td><td>−$4.3K/mo</td><td>$2,868</td><td>LOC pressure</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card" style="margin-top:14px">
-    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:12px">Unit Economics</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center">
-      <div style="padding:12px;background:var(--cream-2);border-radius:8px"><div style="font-family:var(--font-lcd);font-size:22px;color:var(--brown)">$189</div><div style="font-size:11px;color:var(--brown-soft);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Avg Sell Price</div></div>
-      <div style="padding:12px;background:var(--cream-2);border-radius:8px"><div style="font-family:var(--font-lcd);font-size:22px;color:var(--red)">$82</div><div style="font-size:11px;color:var(--brown-soft);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Landed Cost</div></div>
-      <div style="padding:12px;background:var(--cream-2);border-radius:8px"><div style="font-family:var(--font-lcd);font-size:22px;color:#1F7A35">$52</div><div style="font-size:11px;color:var(--brown-soft);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Net Contribution</div></div>
-      <div style="padding:12px;background:var(--cream-2);border-radius:8px"><div style="font-family:var(--font-lcd);font-size:22px;color:var(--teal-deep)">27.5%</div><div style="font-size:11px;color:var(--brown-soft);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Net Margin</div></div>
-    </div>
-  </div>
-
-  <div class="note" style="margin-top:14px">
-    <strong>Three plays to cycle the LOC:</strong>
-    (1) Drive 6.4+ orders/day on any channel → gross profit covers OpEx.
-    (2) Negotiate 60-day supplier terms → free up $40K+ cash for next PO cycle.
-    (3) Pull TikTok FBT units into active FBA replenishment → convert static inventory into revenue faster.
-  </div>
-</section>
 <footer>
   <span class="badge">Source: admin.shopify.com</span>
   <span class="badge">Source: sellercentral.amazon.com</span>
@@ -264,10 +179,10 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   function tryDraw(){
     if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
     var labels = ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18"];
-    var data = [1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1538];
+    var data = [1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1512];
     new Chart(document.getElementById('visitorChart').getContext('2d'),{
       type:'bar',
-      data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'|178A95',borderWidth:1.5,borderRadius:3}]},
+      data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
     });
     var amzLabels = ["Feb 3","Feb 10","Feb 17","Feb 24","Mar 3","Mar 10","Mar 17","Mar 24","Mar 31","Apr 7","Apr 14","Apr 21","Apr 28"];
@@ -279,38 +194,6 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
     });
   }
   tryDraw();
-})();
-</script>
-<script>
-(function(){
-  function drawCF(){
-    if(typeof Chart==='undefined'){setTimeout(drawCF,100);return;}
-    var labels=["Wk 1","Wk 2","Wk 3","Wk 4","Wk 5","Wk 6","Wk 7","Wk 8","Wk 9","Wk 10","Wk 11","Wk 12","Wk 13"];
-    var base=[8020,6041,4061,2081,102,-1878,-3857,-5837,-7817,-9796,-11776,-13756,-15735];
-    var bull=[7031,4061,1092,-1878,-4847,-7817,-10786,-13756,-16725,-19695,-22664,-25633,-28603];
-    var bear=[9010,8020,7031,6041,5051,4061,3071,2081,1092,102,-888,-1878,-2868];
-    new Chart(document.getElementById('cashflowChart').getContext('2d'),{
-      type:'line',
-      data:{labels:labels,datasets:[
-        {label:'Bull',data:bull,borderColor:'#1F7A35',backgroundColor:'rgba(31,122,53,0.08)',borderWidth:2,pointRadius:2,fill:false,tension:0.3},
-        {label:'Base',data:base,borderColor:'#178A95',backgroundColor:'rgba(23,138,149,0.10)',borderWidth:2.5,pointRadius:3,fill:false,tension:0.3},
-        {label:'Bear',data:bear,borderColor:'#D6443B',backgroundColor:'rgba(214,68,59,0.08)',borderWidth:2,pointRadius:2,fill:false,tension:0.3}
-      ]},
-      options:{
-        responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+': 
-</html>
-+c.parsed.y.toLocaleString()}}}},
-        scales:{
-          y:{grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return '
-</html>
-+v.toLocaleString()}}},
-          x:{grid:{display:false},ticks:{color:'#7A3322'}}
-        }
-      }
-    });
-  }
-  drawCF();
 })();
 </script>
 </body>
