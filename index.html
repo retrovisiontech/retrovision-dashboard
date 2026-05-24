@@ -1,661 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=PT+Mono&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
-  /* === BRAND COLORS (RetroVision Tech Brand Guide) === */
-  :root {
-    --brown:    #47150e;
-    --cyan:     #2fc0cf;
-    --berry:    #d2415b;
-    --coral:    #ef4850;
-    --orange:   #f26b4f;
-    --mustard:  #fbb259;
-    --offwhite: #fbf2e1;
-
-    /* Semantic aliases */
-    --bg:       #fbf2e1;
-    --text:     #47150e;
-    --muted:    #7a4a3a;
-
-    /* Channel colors — all from brand palette */
-    --shopify:  #2fc0cf;
-    --amazon:   #fbb259;
-    --tiktok:   #d2415b;
-    --klaviyo:  #f26b4f;
-
-    --radius: 10px;
-    --shadow: 0 2px 12px rgba(71,21,14,0.10);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Lexend', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 18px;
-    line-height: 1.75;
-    letter-spacing: 0.02em;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* VHS Color Band — brand signature */
-  .color-band {
-    height: 10px;
-    background: linear-gradient(to right,
-      var(--berry)   0%   14%,
-      var(--coral)   14%  28%,
-      var(--orange)  28%  45%,
-      var(--mustard) 45%  72%,
-      var(--cyan)    72%  100%
-    );
-  }
-
-  /* === HEADER === */
-  header {
-    background: var(--brown);
-    color: var(--offwhite);
-    padding: 24px 32px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .brand-name {
-    font-family: 'PT Mono', monospace;
-    font-size: 22px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--offwhite);
-  }
-  .brand-name span {
-    color: var(--mustard);
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    display: block;
-    margin-top: 2px;
-  }
-  .gen-line {
-    font-family: 'PT Mono', monospace;
-    font-size: 13px;
-    color: rgba(251,242,225,0.55);
-    letter-spacing: 0.08em;
-    text-align: right;
-  }
-  .tagline {
-    font-size: 13px;
-    color: var(--mustard);
-    letter-spacing: 0.1em;
-    font-family: 'PT Mono', monospace;
-    margin-top: 2px;
-  }
-
-  /* === LAYOUT === */
-  .wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 28px 20px 48px;
-  }
-
-  /* === HERO STRIP === */
-  .hero {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  .hero-card {
-    background: var(--brown);
-    color: var(--offwhite);
-    border-radius: var(--radius);
-    padding: 22px 24px;
-    text-align: center;
-  }
-  .hero-label {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(251,242,225,0.6);
-    font-family: 'PT Mono', monospace;
-    margin-bottom: 6px;
-  }
-  .hero-value {
-    font-family: 'PT Mono', monospace;
-    font-size: 38px;
-    font-weight: bold;
-    color: var(--mustard);
-    line-height: 1.1;
-  }
-  .hero-sub {
-    font-size: 13px;
-    color: rgba(251,242,225,0.5);
-    margin-top: 4px;
-    font-family: 'PT Mono', monospace;
-  }
-
-  /* === SECTION HEADER === */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 28px 0 14px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid currentColor;
-  }
-  .section-header .icon { font-size: 22px; }
-  .section-header h2 {
-    font-family: 'PT Mono', monospace;
-    font-size: 14px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: normal;
-  }
-
-  .sec-shopify  { color: var(--shopify); }
-  .sec-amazon   { color: var(--amazon);  }
-  .sec-tiktok   { color: var(--tiktok);  }
-  .sec-klaviyo  { color: var(--klaviyo); }
-  .sec-yesterday { color: var(--brown);  }
-
-  /* === CARD GRID === */
-  .card-grid {
-    display: grid;
-    gap: 14px;
-  }
-  .grid-2 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-  /* === CARD === */
-  .card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    border-left: 6px solid var(--brown);
-    box-shadow: var(--shadow);
-  }
-  .card-shopify  { border-left-color: var(--shopify); }
-  .card-amazon   { border-left-color: var(--amazon);  }
-  .card-tiktok   { border-left-color: var(--tiktok);  }
-  .card-klaviyo  { border-left-color: var(--klaviyo); }
-
-  .card-label {
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: 'PT Mono', monospace;
-    margin-bottom: 6px;
-  }
-  .card-value {
-    font-family: 'PT Mono', monospace;
-    font-size: 38px;
-    font-weight: bold;
-    color: var(--brown);
-    line-height: 1.1;
-  }
-  .v-md { font-size: 30px; }
-  .v-sm { font-size: 24px; }
-  .v-xs { font-size: 18px; }
-
-  .card-sub {
-    font-size: 14px;
-    color: var(--muted);
-    margin-top: 5px;
-  }
-  .delta {
-    display: inline-block;
-    font-size: 13px;
-    font-family: 'PT Mono', monospace;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-left: 6px;
-    font-weight: bold;
-    vertical-align: middle;
-  }
-  .delta-up   { background: #e6f9e6; color: #1a6b1a; }
-  .delta-down { background: #fde8e8; color: #a81a1a; }
-  .delta-flat { background: #f0f0f0; color: #666; }
-
-  /* === CHART === */
-  .chart-wrap {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    margin-top: 14px;
-  }
-  .chart-title {
-    font-family: 'PT Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-
-  /* === INVENTORY TABLE === */
-  .inv-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
-  }
-  .inv-table th {
-    font-family: 'PT Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: left;
-    padding: 6px 10px;
-    border-bottom: 1px solid rgba(71,21,14,0.12);
-  }
-  .inv-table td {
-    padding: 10px;
-    border-bottom: 1px solid rgba(71,21,14,0.07);
-    color: var(--text);
-  }
-  .inv-table tr:last-child td { border-bottom: none; }
-  .inv-val {
-    font-family: 'PT Mono', monospace;
-    font-weight: bold;
-    font-size: 17px;
-    text-align: right;
-  }
-  .inv-total {
-    background: rgba(71,21,14,0.05);
-    font-weight: bold;
-  }
-
-  /* === NOTICE === */
-  .notice {
-    background: rgba(251,178,89,0.18);
-    border-left: 4px solid var(--mustard);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 15px;
-    color: var(--text);
-    margin-top: 12px;
-    line-height: 1.6;
-  }
-
-  /* Responsive */
-  @media (max-width: 700px) {
-    .hero { grid-template-columns: 1fr; }
-    .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
-    .grid-2 { grid-template-columns: 1fr; }
-    .hero-value, .card-value { font-size: 30px; }
-  }
-
-  .sec-social { color: var(--orange); }
-  .card-facebook { border-left-color: var(--coral); }
-  .card-youtube  { border-left-color: var(--orange); }
-  .card-warn     { border-left-color: #a81a1a; background: rgba(168,26,26,0.04); }
-  .insight-box {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    background: rgba(47,192,207,0.10);
-    border-left: 4px solid var(--cyan);
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin-top: 14px;
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--text);
-  }
-  .insight-icon { font-size: 22px; flex-shrink: 0; }
+:root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--font-body);color:var(--brown);background:radial-gradient(1200px 600px at 10% -10%,rgba(255,175,65,0.12),transparent 60%),radial-gradient(900px 500px at 100% 0%,rgba(47,192,207,0.08),transparent 60%),var(--cream);line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px}
+.stripe{height:14px;background:repeating-linear-gradient(90deg,var(--red) 0 24px,#E96452 24px 48px,var(--gold) 48px 72px,var(--teal) 72px 96px,var(--brown) 96px 120px);box-shadow:inset 0 -2px 0 rgba(0,0,0,0.25)}
+.deck{background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0)),repeating-linear-gradient(90deg,var(--wood-1) 0 6px,#4D2510 6px 9px),linear-gradient(180deg,var(--wood-1),var(--wood-2));border-bottom:4px solid #2A1208;box-shadow:0 6px 20px rgba(0,0,0,0.25);padding:22px 0}
+.deck-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center}
+.lcd{display:inline-flex;align-items:center;gap:6px;background:var(--lcd-bg);color:var(--lcd-green);padding:6px 12px;border-radius:4px;font-family:var(--font-lcd);font-size:18px;font-weight:bold;letter-spacing:2px;border:2px solid #061107;box-shadow:inset 0 0 8px rgba(0,0,0,0.7),0 0 14px rgba(79,224,122,0.25);text-shadow:0 0 6px rgba(79,224,122,0.6);min-width:88px;justify-content:center}
+.lcd small{color:rgba(79,224,122,0.6);font-size:11px}
+.brand-plate{background:linear-gradient(180deg,#FFE6BC,#F0C988);border:2px solid #2A1208;border-radius:10px;padding:10px 26px;box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15),0 4px 0 rgba(0,0,0,0.25);text-align:center}
+.brand-plate .brand{font-family:var(--font-display);font-style:italic;font-weight:900;font-size:28px;color:#1A0905;letter-spacing:1px;line-height:1;-webkit-text-stroke:1px var(--teal)}
+.brand-plate .brand .tech{font-size:12px;color:var(--brown);-webkit-text-stroke:0;letter-spacing:6px;display:block;margin-top:2px}
+.title-block{padding:32px 0 18px}.eyebrow{color:var(--brown-soft);text-transform:uppercase;letter-spacing:4px;font-size:12px}
+h1.display{font-family:var(--font-display);font-style:italic;font-weight:900;font-size:clamp(34px,5vw,52px);margin:6px 0 10px;color:#1A0905;-webkit-text-stroke:1.5px var(--teal);text-transform:uppercase;line-height:1}
+.title-block .meta{color:var(--brown-soft);font-size:13px}
+section{margin-top:28px}
+h2.section{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:18px;letter-spacing:2px;color:var(--brown);margin:0 0 14px;padding-bottom:8px;border-bottom:2px dashed var(--line);display:flex;align-items:baseline;gap:12px}
+h2.section .sub{font-family:var(--font-body);font-weight:normal;font-size:12px;letter-spacing:1px;color:var(--brown-soft);text-transform:none}
+.grid{display:grid;gap:16px}.grid.kpi{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid.split-2{grid-template-columns:1fr 1fr}.grid.donut3{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:880px){.grid.kpi{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.split-2,.grid.donut3{grid-template-columns:1fr}}
+@media (max-width:480px){.grid.kpi{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--red),var(--gold))}
+.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)}
+.kpi .value{font-family:var(--font-lcd);color:var(--brown);font-size:32px;font-weight:bold;line-height:1.1;margin-top:6px;letter-spacing:0.5px}
+.kpi .value.teal{color:var(--teal-deep)}.kpi .delta{font-size:12px;margin-top:6px;color:var(--brown-soft)}
+.kpi .delta.up{color:#1F7A35}.kpi .delta.down{color:var(--red)}
+table.data{width:100%;border-collapse:collapse;font-size:13px}
+table.data th,table.data td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line)}
+table.data th:first-child,table.data td:first-child{text-align:left}
+table.data thead th{background:var(--brown);color:var(--cream);font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:11px}
+table.data thead th:first-child{border-top-left-radius:8px}
+table.data thead th:last-child{border-top-right-radius:8px}
+table.data tbody tr:nth-child(even){background:rgba(71,21,14,0.04)}
+table.data tfoot td{background:var(--cream-2);font-weight:bold;border-top:2px solid var(--brown)}
+footer{margin-top:40px;padding-top:20px;border-top:2px dashed var(--line);font-size:11px;color:var(--brown-soft);text-align:center}
+footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown);border-radius:4px;margin:0 4px;background:var(--cream-2)}
+.note{background:rgba(255,175,65,0.18);border-left:4px solid var(--gold);padding:10px 14px;border-radius:4px;font-size:12px;color:var(--brown)}
+.note.stale{background:rgba(214,68,59,0.10);border-left-color:var(--red)}
+.visitor-card{padding:24px;background:linear-gradient(135deg,#FFF8EA 0%,#FBF2E1 100%);border:2px solid var(--teal-deep)}
+.visitor-headline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+.visitor-headline .num{font-family:var(--font-lcd);font-size:36px;font-weight:bold;color:var(--brown);line-height:1}
+.visitor-headline .num.teal{color:var(--teal-deep)}
+.visitor-headline .lbl{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-top:4px}
+.visitor-chart-wrap{height:240px;position:relative}
 </style>
 </head>
 <body>
-
-<div class="color-band"></div>
-
-<header>
-  <div>
-    <div class="brand-name">RetroVision<span>TECH</span></div>
-    <div class="tagline">Your Memories. Your Tapes.</div>
-  </div>
-  <div>
-    <div class="gen-line">SALES DASHBOARD</div>
-    <div class="gen-line">Generated 2026-05-24</div>
+<div class="stripe"></div>
+<header class="deck">
+  <div class="deck-inner">
+    <div style="text-align:left"><div class="lcd"><small>SALES</small> 03</div></div>
+    <div class="brand-plate"><div class="brand">RetroVision<span class="tech">TECH</span></div></div>
+    <div style="text-align:right"><div class="lcd"><small>STORES</small> 03</div></div>
   </div>
 </header>
+<div class="stripe"></div>
+<div class="wrap">
 
-<div class="wrapper">
+<div class="title-block">
+  <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
+  <h1 class="display">Sales Dashboard</h1>
+  <div class="meta">Generated Sunday, May 24, 2026 · Amazon · Shopify · TikTok Shop</div>
+</div>
 
-  <!-- HERO: Combined Lifetime -->
-  <div class="hero">
-    <div class="hero-card">
-      <div class="hero-label">Combined Lifetime Revenue</div>
-      <div class="hero-value">$221,757</div>
-      <div class="hero-sub">Shopify + Amazon (all channels)</div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-label">Total Lifetime Orders</div>
-      <div class="hero-value">699</div>
-      <div class="hero-sub">Shopify orders (Amazon separate)</div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-label">90-Day Site Sessions</div>
-      <div class="hero-value">23,083</div>
-      <div class="hero-sub">+47% vs prior 90 days</div>
-    </div>
-  </div>
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 6 fields fell back to last-known values: amazon.lifetimeSales, amazon.pageViews90d.weeklyLabels, amazon.pageViews90d.weeklyData, amazon.fbaInventory.reserved, amazon.fbaInventory.unfulfillable, amazon.fbaInventory.inbound.</div>
 
-  <!-- YESTERDAY -->
-  <div class="section-header sec-yesterday">
-    <span class="icon">📅</span>
-    <h2>Yesterday — May 23, 2026</h2>
-  </div>
-  <div class="card-grid grid-4">
-    <div class="card">
-      <div class="card-label">Revenue</div>
-      <div class="card-value">$0</div>
-      <div class="card-sub">Shopify only</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Orders</div>
-      <div class="card-value">0</div>
-      <div class="card-sub">—</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Sessions</div>
-      <div class="card-value v-md">229</div>
-      <div class="card-sub">Store visits</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Pending Fulfillment</div>
-      <div class="card-value v-md">18</div>
-      <div class="card-sub">Unfulfilled + paid</div>
+<section style="margin-top:14px">
+  <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
+    <div style="font-size:12px;text-transform:uppercase;letter-spacing:5px;color:var(--brown-soft)">Total combined sales — All time</div>
+    <div style="font-family:var(--font-lcd);font-size:72px;font-weight:bold;color:var(--brown);line-height:1;margin-top:10px;-webkit-text-stroke:1px var(--teal);text-shadow:2px 2px 0 rgba(47,192,207,0.15)">$217,679.07</div>
+    <div style="font-size:13px;color:var(--brown-soft);margin-top:12px">Lifetime across Amazon Seller Central + Shopify (TikTok counted via Shopify channel)</div>
+    <div style="display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$83,654.16</strong> Amazon (Apr '24 → today)</span>
+      <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$134,024.91</strong> Shopify (since launch)</span>
     </div>
   </div>
+</section>
 
-  <!-- SHOPIFY -->
-  <div class="section-header sec-shopify">
-    <span class="icon">🛍️</span>
-    <h2>Shopify</h2>
+<section>
+  <h2 class="section">Yesterday <span class="sub">// May 23, 2026 · live from Shopify admin</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Shopify revenue</div><div class="value">$0</div><div class="delta">vs prior day</div></div>
+    <div class="card kpi"><div class="label">Shopify orders</div><div class="value teal">0</div><div class="delta">vs prior day</div></div>
+    <div class="card kpi"><div class="label">Shopify sessions</div><div class="value">229</div><div class="delta">vs prior day</div></div>
+    <div class="card kpi"><div class="label">Conversion rate</div><div class="value teal">0.00%</div><div class="delta">vs prior day</div></div>
   </div>
-  <div class="card-grid grid-4">
-    <div class="card card-shopify">
-      <div class="card-label">Lifetime Gross Sales</div>
-      <div class="card-value v-md">$142,039</div>
-    </div>
-    <div class="card card-shopify">
-      <div class="card-label">Lifetime Net Sales</div>
-      <div class="card-value v-md">$128,966</div>
-    </div>
-    <div class="card card-shopify">
-      <div class="card-label">Lifetime Total Sales</div>
-      <div class="card-value v-md">$133,718</div>
-    </div>
-    <div class="card card-shopify">
-      <div class="card-label">Lifetime Orders</div>
-      <div class="card-value v-md">699</div>
-    </div>
+  <div class="grid kpi" style="margin-top:14px">
+    <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value">—</div><div class="delta">Pending</div></div>
+    <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">19</div><div class="delta">Shopify queue</div></div>
+    <div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">California</div><div class="delta">By order count</div></div>
+    <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">0.01%</div><div class="delta">Last 30 days</div></div>
   </div>
-  <div class="card-grid grid-3" style="margin-top:14px">
-    <div class="card card-shopify">
-      <div class="card-label">90-Day Sessions</div>
-      <div class="card-value v-md">23,083</div>
-      <div class="card-sub">+47% vs prior 90d</div>
-    </div>
-    <div class="card card-shopify">
-      <div class="card-label">Top Region (30d)</div>
-      <div class="card-value v-sm">California</div>
-      <div class="card-sub">18 orders</div>
-    </div>
-    <div class="card card-shopify">
-      <div class="card-label">Returning Customers (30d)</div>
-      <div class="card-value v-sm">0.96%</div>
-      <div class="card-sub">Early-stage, building</div>
-    </div>
-  </div>
-  <div class="chart-wrap" style="margin-top:14px">
-    <div class="chart-title">Shopify Weekly Sessions — 90 Days</div>
-    <canvas id="shopifyChart" height="90"></canvas>
-  </div>
+</section>
 
-  <!-- AMAZON -->
-  <div class="section-header sec-amazon">
-    <span class="icon">📦</span>
-    <h2>Amazon</h2>
+<section>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 23, 2026 – May 24, 2026</span></h2>
+  <div class="card visitor-card">
+    <div class="visitor-headline">
+      <div><div class="num teal">23,168</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">20,983</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num" style="color:#1F7A35">▲ 48%</div><div class="lbl">vs prior 90 days (15,706)</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
   </div>
-  <div class="card-grid grid-4">
-    <div class="card card-amazon">
-      <div class="card-label">Lifetime Sales</div>
-      <div class="card-value v-md">$88,039</div>
-      <div class="card-sub">Apr 2024 → today</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">Account Balance</div>
-      <div class="card-value v-md">$1,317</div>
-      <div class="card-sub">As of 2026-05-24</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">90-Day Product Sales</div>
-      <div class="card-value v-md">$21,954</div>
-      <div class="card-sub">115 units sold</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">FBA Available Units</div>
-      <div class="card-value v-md">224</div>
-      <div class="card-sub">+40 inbound</div>
-    </div>
-  </div>
-  <div class="card-grid grid-3" style="margin-top:14px">
-    <div class="card card-amazon">
-      <div class="card-label">90-Day Page Views</div>
-      <div class="card-value v-md">9,447</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">90-Day Sessions</div>
-      <div class="card-value v-md">7,044</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">Order / Session Rate</div>
-      <div class="card-value v-md">1.68%</div>
-      <div class="card-sub">Avg $192.91 / order</div>
-    </div>
-  </div>
+</section>
 
-  <!-- TIKTOK -->
-  <div class="section-header sec-tiktok">
-    <span class="icon">🎵</span>
-    <h2>TikTok Shop</h2>
+<section>
+  <h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · scraped from Seller Central</span></h2>
+  <div class="card visitor-card" style="border-color:#D85A30">
+    <div class="visitor-headline">
+      <div><div class="num" style="color:#D85A30">2,712</div><div class="lbl">Total page views</div></div>
+      <div><div class="num">2,367</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num" style="color:#1F7A35">1.77%</div><div class="lbl">Order item session rate</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="amazonPageViewsChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Amazon Seller Central → Business Reports → Sales and Traffic. 90-day total: $6,425 product sales · 35 units sold · $129.06 avg sale per order item.</div>
   </div>
-  <div class="card-grid grid-3">
-    <div class="card card-tiktok">
-      <div class="card-label">Pending + On Hold</div>
-      <div class="card-value v-md">$2,475</div>
-      <div class="card-sub">Next payout: $698.65</div>
-    </div>
-    <div class="card card-tiktok">
-      <div class="card-label">Hold Amount</div>
-      <div class="card-value v-md">$1,776</div>
-    </div>
-    <div class="card card-tiktok">
-      <div class="card-label">FBT On-Hand Units</div>
-      <div class="card-value v-md">285</div>
-      <div class="card-sub">+ 201 in transit</div>
-    </div>
+</section>
+
+<section>
+  <h2 class="section">Shopify · Lifetime Performance <span class="sub">// All-time totals from Analytics overview</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Gross sales</div><div class="value">$142,318</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Net sales</div><div class="value teal">$129,245</div><div class="delta">After discounts + returns</div></div>
+    <div class="card kpi"><div class="label">Total orders</div><div class="value">700</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Total sales</div><div class="value">$134,025</div><div class="delta">Net + shipping + tax</div></div>
   </div>
-  <div class="card card-tiktok" style="margin-top:14px">
-    <div class="card-label">FBT Inventory by Fulfillment Center</div>
-    <table class="inv-table" style="margin-top:10px">
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th style="text-align:right">Units</th>
-          <th style="text-align:right">Value @ $71.22</th>
-        </tr>
-      </thead>
+</section>
+
+<section>
+  <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$1,317.45</div><div class="delta">As of 2026-05-24</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$2,688.62</div><div class="delta">$698.65 next · $1,989.97 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$4,006.07</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$69,297</div><div class="delta">973 units · $71.22 landed</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <table class="data">
+      <thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
       <tbody>
-        <tr><td>FC01_ONT2 — Ontario, CA</td><td class="inv-val">40</td><td class="inv-val">$2,849</td></tr>
-        <tr><td>FC09_ATL2 — Atlanta, GA</td><td class="inv-val">35</td><td class="inv-val">$2,493</td></tr>
-        <tr><td>FC07_ONT3 — Ontario, CA</td><td class="inv-val">83</td><td class="inv-val">$5,911</td></tr>
-        <tr><td>FC06_HOU2 — Houston, TX</td><td class="inv-val">59</td><td class="inv-val">$4,202</td></tr>
-        <tr><td>FC14_EWR4 — Newark, NJ</td><td class="inv-val">68</td><td class="inv-val">$4,843</td></tr>
-        <tr><td>In Transit</td><td class="inv-val">201</td><td class="inv-val">$14,315</td></tr>
-        <tr class="inv-total"><td><strong>Total FBT</strong></td><td class="inv-val">486</td><td class="inv-val">$34,613</td></tr>
+        
+        <tr><td>Amazon FBA — Available</td><td>223</td><td>$71.22</td><td>$15,882.06</td><td>22.9%</td></tr>
+        <tr><td>Amazon FBA — Reserved</td><td>3</td><td>$71.22</td><td>$213.66</td><td>0.3%</td></tr>
+        <tr><td>Amazon FBA — Unfulfillable</td><td>1</td><td>$71.22</td><td>$71.22</td><td>0.1%</td></tr>
+        <tr><td>Amazon FBA — Inbound</td><td>260</td><td>$71.22</td><td>$18,517.20</td><td>26.7%</td></tr>
+        <tr><td>TikTok FBT — On-hand (8 FCs)</td><td>285</td><td>$71.22</td><td>$20,297.70</td><td>29.3%</td></tr>
+        <tr><td>TikTok FBT — In transit</td><td>201</td><td>$71.22</td><td>$14,315.22</td><td>20.7%</td></tr>
       </tbody>
+      <tfoot><tr><td>Total inventory at cost</td><td>973</td><td>$71.22</td><td>$69,297.06</td><td>100.0%</td></tr></tfoot>
     </table>
+    <div class="note" style="margin-top:14px"><strong>Cost basis:</strong> Weighted average from 20 supplier purchase orders (Jan – Mar 2025), 1,760 units total. Goods $122,047 + freight $3,300 = $71.22 landed cost per unit.</div>
   </div>
+</section>
 
-  <!-- EMAIL / KLAVIYO -->
-  <div class="section-header sec-klaviyo">
-    <span class="icon">📧</span>
-    <h2>Email — Klaviyo</h2>
-  </div>
-  <div class="card-grid grid-3">
-    <div class="card card-klaviyo">
-      <div class="card-label">Total Subscribers</div>
-      <div class="card-value v-md">1,451</div>
-      <div class="card-sub">Net active list</div>
-    </div>
-    <div class="card card-klaviyo">
-      <div class="card-label">New This Month</div>
-      <div class="card-value v-md">+45</div>
-      <div class="card-sub">May 2026</div>
-    </div>
-    <div class="card card-klaviyo">
-      <div class="card-label">Active Flows</div>
-      <div class="card-value v-md">1</div>
-      <div class="card-sub">Welcome Series live</div>
-    </div>
-  </div>
-  <div class="notice">
-    💡 <strong>Campaigns:</strong> No campaigns sent yet. First campaign in draft — ready to schedule when list reaches target threshold.
-  </div>
+<footer>
+  <span class="badge">Source: admin.shopify.com</span>
+  <span class="badge">Source: sellercentral.amazon.com</span>
+  <span class="badge">Source: seller-us.tiktok.com</span>
+  <span class="badge">Source: scm-us.tiktok.com</span>
+  <span class="badge">Source: supplier purchase log (xlsx)</span>
+  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Sunday, May 24, 2026 · Currency USD</div>
+</footer>
 
-  <!-- SOCIAL MEDIA — ORGANIC -->
-  <div class="section-header sec-social">
-    <span class="icon">📱</span>
-    <h2>Social Media — Organic (30 days)</h2>
-  </div>
-  <div class="card-grid grid-3">
-    <div class="card card-tiktok">
-      <div class="card-label">TikTok Organic — Video Views</div>
-      <div class="card-value v-md">116,435</div>
-      <div class="card-sub">1,118 likes · 149 shares · 18 comments</div>
-    </div>
-    <div class="card card-facebook">
-      <div class="card-label">Facebook — Page Fans</div>
-      <div class="card-value v-md">4,491</div>
-      <div class="card-sub">+68 new this month · 472,748 impressions</div>
-    </div>
-    <div class="card card-youtube">
-      <div class="card-label">YouTube — Views</div>
-      <div class="card-value v-md">11,013</div>
-      <div class="card-sub">134 subscribers · +22 this month · 1,904 min watched</div>
-    </div>
-  </div>
-
-  <!-- ORGANIC vs PAID CALLOUT -->
-  <div class="insight-box">
-    <div class="insight-icon">💡</div>
-    <div>
-      <strong>Organic is massively outperforming paid on TikTok</strong><br>
-      Your free content got <strong>116,435 views</strong> this month. Your $138.65 in TikTok ads got only <strong>2,379 impressions</strong>. That's 49× more reach for free. Double down on organic content before scaling ad spend.
-    </div>
-  </div>
-
-  <!-- TIKTOK PAID ADS -->
-  <div class="section-header sec-amazon">
-    <span class="icon">💸</span>
-    <h2>TikTok Ads — Paid (30 days)</h2>
-  </div>
-  <div class="card-grid grid-4">
-    <div class="card card-amazon">
-      <div class="card-label">Ad Spend</div>
-      <div class="card-value v-md">$138.65</div>
-      <div class="card-sub">Last 30 days</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">Impressions</div>
-      <div class="card-value v-md">2,379</div>
-    </div>
-    <div class="card card-amazon">
-      <div class="card-label">Clicks</div>
-      <div class="card-value v-md">80</div>
-      <div class="card-sub">CTR 3.36% — healthy</div>
-    </div>
-    <div class="card card-warn">
-      <div class="card-label">Conversions</div>
-      <div class="card-value v-md" style="color:#a81a1a">0 ⚠️</div>
-      <div class="card-sub">CPM $58.28 / 1K impressions</div>
-    </div>
-  </div>
-  <div class="notice" style="border-left-color:#a81a1a; background:rgba(168,26,26,0.07)">
-    ⚠️ <strong>Action needed:</strong> People are clicking your TikTok ads (3.36% CTR is solid) but zero tracked conversions. Check your Shopify pixel setup, landing page speed, and that the purchase event is firing correctly.
-  </div>
-
-  <!-- GOOGLE ORGANIC SEARCH -->
-  <div class="section-header" style="color:var(--brown)">
-    <span class="icon">🔍</span>
-    <h2>Google — Organic Search (30 days)</h2>
-  </div>
-  <div class="card-grid grid-4">
-    <div class="card">
-      <div class="card-label">Organic Clicks</div>
-      <div class="card-value v-md">16</div>
-      <div class="card-sub">shop.retrovisiontech.com</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Impressions</div>
-      <div class="card-value v-md">148</div>
-      <div class="card-sub">Times shown in Google</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Click-Through Rate</div>
-      <div class="card-value v-md">10.8%</div>
-      <div class="card-sub">Strong when visible</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Avg Google Position</div>
-      <div class="card-value v-md">#5.3</div>
-      <div class="card-sub">Page 1, but low volume</div>
-    </div>
-  </div>
-  <div class="notice">
-    💡 <strong>Low volume, high intent:</strong> Your CTR when people see you (10.8%) is excellent — they click. The problem is almost nobody is searching for you yet. SEO content around "VHS digitizer", "how to convert VHS to digital" would unlock free traffic at scale.
-  </div>
-
-</div><!-- /wrapper -->
-
+</div>
 <script>
-const ctx = document.getElementById('shopifyChart').getContext('2d');
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18"],
-    datasets: [{
-      label: 'Sessions',
-      data: [1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1593],
-      backgroundColor: 'rgba(47,192,207,0.25)',
-      borderColor: '#2fc0cf',
-      borderWidth: 2,
-      borderRadius: 4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: { legend: { display: false } },
-    scales: {
-      x: { grid: { display: false }, ticks: { font: { family: 'PT Mono', size: 11 }, color: '#7a4a3a' } },
-      y: { grid: { color: 'rgba(71,21,14,0.07)' }, ticks: { font: { family: 'PT Mono', size: 11 }, color: '#7a4a3a' } }
-    }
+(function(){
+  function tryDraw(){
+    if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
+    var labels = ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18"];
+    var data = [1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1678];
+    new Chart(document.getElementById('visitorChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
+    var amzLabels = ["Feb 3","Feb 10","Feb 17","Feb 24","Mar 3","Mar 10","Mar 17","Mar 24","Mar 31","Apr 7","Apr 14","Apr 21","Apr 28"];
+    var amzData = [720,680,640,580,720,740,800,870,900,830,770,720,789];
+    new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
   }
-});
+  tryDraw();
+})();
 </script>
-
 </body>
 </html>
