@@ -294,6 +294,25 @@
     .grid-2 { grid-template-columns: 1fr; }
     .hero-value, .card-value { font-size: 30px; }
   }
+
+  .sec-social { color: var(--orange); }
+  .card-facebook { border-left-color: var(--coral); }
+  .card-youtube  { border-left-color: var(--orange); }
+  .card-warn     { border-left-color: #a81a1a; background: rgba(168,26,26,0.04); }
+  .insight-box {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: rgba(47,192,207,0.10);
+    border-left: 4px solid var(--cyan);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .insight-icon { font-size: 22px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -515,6 +534,99 @@
   </div>
   <div class="notice">
     💡 <strong>Campaigns:</strong> No campaigns sent yet. First campaign in draft — ready to schedule when list reaches target threshold.
+  </div>
+
+  <!-- SOCIAL MEDIA — ORGANIC -->
+  <div class="section-header sec-social">
+    <span class="icon">📱</span>
+    <h2>Social Media — Organic (30 days)</h2>
+  </div>
+  <div class="card-grid grid-3">
+    <div class="card card-tiktok">
+      <div class="card-label">TikTok Organic — Video Views</div>
+      <div class="card-value v-md">116,435</div>
+      <div class="card-sub">1,118 likes · 149 shares · 18 comments</div>
+    </div>
+    <div class="card card-facebook">
+      <div class="card-label">Facebook — Page Fans</div>
+      <div class="card-value v-md">4,491</div>
+      <div class="card-sub">+68 new this month · 472,748 impressions</div>
+    </div>
+    <div class="card card-youtube">
+      <div class="card-label">YouTube — Views</div>
+      <div class="card-value v-md">11,013</div>
+      <div class="card-sub">134 subscribers · +22 this month · 1,904 min watched</div>
+    </div>
+  </div>
+
+  <!-- ORGANIC vs PAID CALLOUT -->
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <div>
+      <strong>Organic is massively outperforming paid on TikTok</strong><br>
+      Your free content got <strong>116,435 views</strong> this month. Your $138.65 in TikTok ads got only <strong>2,379 impressions</strong>. That's 49× more reach for free. Double down on organic content before scaling ad spend.
+    </div>
+  </div>
+
+  <!-- TIKTOK PAID ADS -->
+  <div class="section-header sec-amazon">
+    <span class="icon">💸</span>
+    <h2>TikTok Ads — Paid (30 days)</h2>
+  </div>
+  <div class="card-grid grid-4">
+    <div class="card card-amazon">
+      <div class="card-label">Ad Spend</div>
+      <div class="card-value v-md">$138.65</div>
+      <div class="card-sub">Last 30 days</div>
+    </div>
+    <div class="card card-amazon">
+      <div class="card-label">Impressions</div>
+      <div class="card-value v-md">2,379</div>
+    </div>
+    <div class="card card-amazon">
+      <div class="card-label">Clicks</div>
+      <div class="card-value v-md">80</div>
+      <div class="card-sub">CTR 3.36% — healthy</div>
+    </div>
+    <div class="card card-warn">
+      <div class="card-label">Conversions</div>
+      <div class="card-value v-md" style="color:#a81a1a">0 ⚠️</div>
+      <div class="card-sub">CPM $58.28 / 1K impressions</div>
+    </div>
+  </div>
+  <div class="notice" style="border-left-color:#a81a1a; background:rgba(168,26,26,0.07)">
+    ⚠️ <strong>Action needed:</strong> People are clicking your TikTok ads (3.36% CTR is solid) but zero tracked conversions. Check your Shopify pixel setup, landing page speed, and that the purchase event is firing correctly.
+  </div>
+
+  <!-- GOOGLE ORGANIC SEARCH -->
+  <div class="section-header" style="color:var(--brown)">
+    <span class="icon">🔍</span>
+    <h2>Google — Organic Search (30 days)</h2>
+  </div>
+  <div class="card-grid grid-4">
+    <div class="card">
+      <div class="card-label">Organic Clicks</div>
+      <div class="card-value v-md">16</div>
+      <div class="card-sub">shop.retrovisiontech.com</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Impressions</div>
+      <div class="card-value v-md">148</div>
+      <div class="card-sub">Times shown in Google</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Click-Through Rate</div>
+      <div class="card-value v-md">10.8%</div>
+      <div class="card-sub">Strong when visible</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avg Google Position</div>
+      <div class="card-value v-md">#5.3</div>
+      <div class="card-sub">Page 1, but low volume</div>
+    </div>
+  </div>
+  <div class="notice">
+    💡 <strong>Low volume, high intent:</strong> Your CTR when people see you (10.8%) is excellent — they click. The problem is almost nobody is searching for you yet. SEO content around "VHS digitizer", "how to convert VHS to digital" would unlock free traffic at scale.
   </div>
 
 </div><!-- /wrapper -->
