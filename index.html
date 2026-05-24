@@ -5,354 +5,545 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RetroVision Tech — Sales Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=PT+Mono&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --brand-dark:#2C1204;--brand-amber:#E8941A;
-  --amazon:#E07B00;--amazon-light:#FFF4E0;
-  --shopify:#4A7A28;--shopify-light:#EAF3DE;
-  --tiktok:#CC1A3A;--tiktok-light:#FFE8ED;
-  --klaviyo:#5C22A8;--klaviyo-light:#F2EBF9;
-  --bg:#F4F1EC;--card:#FFFFFF;
-  --text:#1A1108;--text-muted:#6B6258;--border:#E3DDD5;
-  --radius:14px;--gap:20px;
-}
-body{font-family:'Lexend',Arial,Helvetica,sans-serif;font-size:18px;line-height:1.75;letter-spacing:.025em;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
-/* HEADER */
-.header{background:var(--brand-dark);padding:18px 36px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.header-brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.header-logo{font-size:22px;font-weight:700;color:var(--brand-amber);letter-spacing:.04em}
-.header-pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
-.pill-amazon{background:var(--amazon-light);color:var(--amazon)}
-.pill-shopify{background:var(--shopify-light);color:var(--shopify)}
-.pill-tiktok{background:var(--tiktok-light);color:var(--tiktok)}
-.pill-klaviyo{background:var(--klaviyo-light);color:var(--klaviyo)}
-.header-meta{font-size:13px;color:#9A8A7A;text-align:right;line-height:1.5}
-/* LAYOUT */
-.container{max-width:1140px;margin:0 auto;padding:36px 28px 56px;display:flex;flex-direction:column;gap:32px}
-/* HERO */
-.hero{background:var(--brand-dark);border-radius:var(--radius);padding:40px 44px;text-align:center}
-.hero-eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-amber);margin-bottom:10px}
-.hero-number{font-size:72px;font-weight:700;color:#fff;line-height:1;margin-bottom:20px;letter-spacing:-.01em}
-.hero-split{display:flex;justify-content:center}
-.hero-item{padding:0 32px;text-align:center}
-.hero-item+.hero-item{border-left:1px solid rgba(255,255,255,.15)}
-.hero-amount{font-size:24px;font-weight:700;color:#fff}
-.hero-sublabel{font-size:13px;color:#9A8A7A;margin-top:2px}
-/* SECTION */
-.section{display:flex;flex-direction:column;gap:14px}
-.section-head{display:flex;align-items:center;gap:12px;padding:0 2px}
-.section-icon{font-size:26px;line-height:1}
-.section-title{font-size:22px;font-weight:700}
-.section-badge{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-left:auto}
-/* GRIDS */
-.grid{display:grid;gap:var(--gap)}
-.grid-4{grid-template-columns:repeat(4,1fr)}
-.grid-3{grid-template-columns:repeat(3,1fr)}
-.grid-2{grid-template-columns:repeat(2,1fr)}
-/* CARDS */
-.card{background:var(--card);border-radius:var(--radius);padding:24px 26px;border:1.5px solid var(--border);border-left-width:6px}
-.card-amazon{border-left-color:var(--amazon)}
-.card-shopify{border-left-color:var(--shopify)}
-.card-tiktok{border-left-color:var(--tiktok)}
-.card-klaviyo{border-left-color:var(--klaviyo)}
-.card-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:8px}
-.card-value{font-size:40px;font-weight:700;line-height:1.05;color:var(--text)}
-.v-md{font-size:32px}.v-sm{font-size:26px}.v-text{font-size:22px;font-weight:700}
-.card-sub{font-size:14px;color:var(--text-muted);margin-top:6px}
-.card-sub b{color:var(--text)}
-/* DIVIDER */
-.divider{border:none;border-top:2px solid var(--border)}
-/* TABLE */
-.dt{width:100%;border-collapse:collapse;font-size:17px;margin-top:12px}
-.dt th{text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);padding:8px 14px;border-bottom:2px solid var(--border)}
-.dt td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
-.dt tr:last-child td{border-bottom:none}
-.dt .num{font-size:22px;font-weight:700}
-.dt .val{font-size:14px;color:var(--text-muted)}
-.dt .tr td{font-weight:700;background:#FAF7F2}
-.dt .r{text-align:right}
-/* CHART */
-.chart-card{background:var(--card);border-radius:var(--radius);padding:24px 26px;border:1.5px solid var(--border)}
-.chart-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:16px}
-/* NOTICE */
-.notice{background:#FEFBF0;border:1.5px solid #F0D880;border-left:6px solid #D4A800;border-radius:var(--radius);padding:16px 22px;font-size:16px;color:#5A4500;display:flex;align-items:flex-start;gap:12px}
-.notice-icon{font-size:22px;flex-shrink:0;margin-top:1px}
-/* FOOTER */
-.footer{text-align:center;padding:28px 0 12px;font-size:14px;color:var(--text-muted)}
-/* RESPONSIVE */
-@media(max-width:860px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}.hero-number{font-size:52px}}
-@media(max-width:560px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.header-meta{text-align:left}.hero-split{flex-direction:column;gap:12px}.hero-item+.hero-item{border-left:none;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}}
+  /* === BRAND COLORS (RetroVision Tech Brand Guide) === */
+  :root {
+    --brown:    #47150e;
+    --cyan:     #2fc0cf;
+    --berry:    #d2415b;
+    --coral:    #ef4850;
+    --orange:   #f26b4f;
+    --mustard:  #fbb259;
+    --offwhite: #fbf2e1;
+
+    /* Semantic aliases */
+    --bg:       #fbf2e1;
+    --text:     #47150e;
+    --muted:    #7a4a3a;
+
+    /* Channel colors — all from brand palette */
+    --shopify:  #2fc0cf;
+    --amazon:   #fbb259;
+    --tiktok:   #d2415b;
+    --klaviyo:  #f26b4f;
+
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(71,21,14,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lexend', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* VHS Color Band — brand signature */
+  .color-band {
+    height: 10px;
+    background: linear-gradient(to right,
+      var(--berry)   0%   14%,
+      var(--coral)   14%  28%,
+      var(--orange)  28%  45%,
+      var(--mustard) 45%  72%,
+      var(--cyan)    72%  100%
+    );
+  }
+
+  /* === HEADER === */
+  header {
+    background: var(--brown);
+    color: var(--offwhite);
+    padding: 24px 32px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .brand-name {
+    font-family: 'PT Mono', monospace;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+  }
+  .brand-name span {
+    color: var(--mustard);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-top: 2px;
+  }
+  .gen-line {
+    font-family: 'PT Mono', monospace;
+    font-size: 13px;
+    color: rgba(251,242,225,0.55);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+  .tagline {
+    font-size: 13px;
+    color: var(--mustard);
+    letter-spacing: 0.1em;
+    font-family: 'PT Mono', monospace;
+    margin-top: 2px;
+  }
+
+  /* === LAYOUT === */
+  .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 48px;
+  }
+
+  /* === HERO STRIP === */
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .hero-card {
+    background: var(--brown);
+    color: var(--offwhite);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    text-align: center;
+  }
+  .hero-label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(251,242,225,0.6);
+    font-family: 'PT Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .hero-value {
+    font-family: 'PT Mono', monospace;
+    font-size: 38px;
+    font-weight: bold;
+    color: var(--mustard);
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(251,242,225,0.5);
+    margin-top: 4px;
+    font-family: 'PT Mono', monospace;
+  }
+
+  /* === SECTION HEADER === */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+  .section-header .icon { font-size: 22px; }
+  .section-header h2 {
+    font-family: 'PT Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  .sec-shopify  { color: var(--shopify); }
+  .sec-amazon   { color: var(--amazon);  }
+  .sec-tiktok   { color: var(--tiktok);  }
+  .sec-klaviyo  { color: var(--klaviyo); }
+  .sec-yesterday { color: var(--brown);  }
+
+  /* === CARD GRID === */
+  .card-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* === CARD === */
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    border-left: 6px solid var(--brown);
+    box-shadow: var(--shadow);
+  }
+  .card-shopify  { border-left-color: var(--shopify); }
+  .card-amazon   { border-left-color: var(--amazon);  }
+  .card-tiktok   { border-left-color: var(--tiktok);  }
+  .card-klaviyo  { border-left-color: var(--klaviyo); }
+
+  .card-label {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'PT Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: 'PT Mono', monospace;
+    font-size: 38px;
+    font-weight: bold;
+    color: var(--brown);
+    line-height: 1.1;
+  }
+  .v-md { font-size: 30px; }
+  .v-sm { font-size: 24px; }
+  .v-xs { font-size: 18px; }
+
+  .card-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+  .delta {
+    display: inline-block;
+    font-size: 13px;
+    font-family: 'PT Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  .delta-up   { background: #e6f9e6; color: #1a6b1a; }
+  .delta-down { background: #fde8e8; color: #a81a1a; }
+  .delta-flat { background: #f0f0f0; color: #666; }
+
+  /* === CHART === */
+  .chart-wrap {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-top: 14px;
+  }
+  .chart-title {
+    font-family: 'PT Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  /* === INVENTORY TABLE === */
+  .inv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  .inv-table th {
+    font-family: 'PT Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid rgba(71,21,14,0.12);
+  }
+  .inv-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(71,21,14,0.07);
+    color: var(--text);
+  }
+  .inv-table tr:last-child td { border-bottom: none; }
+  .inv-val {
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: right;
+  }
+  .inv-total {
+    background: rgba(71,21,14,0.05);
+    font-weight: bold;
+  }
+
+  /* === NOTICE === */
+  .notice {
+    background: rgba(251,178,89,0.18);
+    border-left: 4px solid var(--mustard);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: var(--text);
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .hero-value, .card-value { font-size: 30px; }
+  }
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-brand">
-    <div class="header-logo">RetroVision Tech</div>
-    <div class="header-pills">
-      <span class="pill pill-amazon">Amazon</span>
-      <span class="pill pill-shopify">Shopify</span>
-      <span class="pill pill-tiktok">TikTok</span>
-      <span class="pill pill-klaviyo">Email</span>
-    </div>
+<div class="color-band"></div>
+
+<header>
+  <div>
+    <div class="brand-name">RetroVision<span>TECH</span></div>
+    <div class="tagline">Your Memories. Your Tapes.</div>
   </div>
-  <div class="header-meta">
-    <div>Sales Dashboard</div>
-    <div>Generated Sunday, May 24, 2026</div>
+  <div>
+    <div class="gen-line">SALES DASHBOARD</div>
+    <div class="gen-line">Generated 2026-05-24</div>
   </div>
 </header>
 
-<main class="container">
+<div class="wrapper">
 
-  <!-- HERO -->
+  <!-- HERO: Combined Lifetime -->
   <div class="hero">
-    <div class="hero-eyebrow">Total Combined Sales — All Time</div>
-    <div class="hero-number">$221,757</div>
-    <div class="hero-split">
-      <div class="hero-item">
-        <div class="hero-amount">$88,039</div>
-        <div class="hero-sublabel">Amazon · Apr '24 → today</div>
-      </div>
-      <div class="hero-item">
-        <div class="hero-amount">$133,718</div>
-        <div class="hero-sublabel">Shopify · since launch</div>
-      </div>
+    <div class="hero-card">
+      <div class="hero-label">Combined Lifetime Revenue</div>
+      <div class="hero-value">$221,757</div>
+      <div class="hero-sub">Shopify + Amazon (all channels)</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-label">Total Lifetime Orders</div>
+      <div class="hero-value">699</div>
+      <div class="hero-sub">Shopify orders (Amazon separate)</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-label">90-Day Site Sessions</div>
+      <div class="hero-value">23,083</div>
+      <div class="hero-sub">+47% vs prior 90 days</div>
     </div>
   </div>
 
   <!-- YESTERDAY -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">📅</span>
-      <span class="section-title">Yesterday — May 23, 2026</span>
-      <span style="font-size:13px;color:var(--text-muted);margin-left:auto">live · Shopify</span>
+  <div class="section-header sec-yesterday">
+    <span class="icon">📅</span>
+    <h2>Yesterday — May 23, 2026</h2>
+  </div>
+  <div class="card-grid grid-4">
+    <div class="card">
+      <div class="card-label">Revenue</div>
+      <div class="card-value">$0</div>
+      <div class="card-sub">Shopify only</div>
     </div>
-    <div class="grid grid-4">
-      <div class="card card-shopify">
-        <div class="card-label">Revenue</div>
-        <div class="card-value">$0</div>
-        <div class="card-sub">vs prior day</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Orders</div>
-        <div class="card-value">0</div>
-        <div class="card-sub">vs prior day</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Sessions</div>
-        <div class="card-value">229</div>
-        <div class="card-sub">vs prior day</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Conversion</div>
-        <div class="card-value">0.00%</div>
-        <div class="card-sub">vs prior day</div>
-      </div>
+    <div class="card">
+      <div class="card-label">Orders</div>
+      <div class="card-value">0</div>
+      <div class="card-sub">—</div>
     </div>
-  </section>
-
-  <hr class="divider">
+    <div class="card">
+      <div class="card-label">Sessions</div>
+      <div class="card-value v-md">229</div>
+      <div class="card-sub">Store visits</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pending Fulfillment</div>
+      <div class="card-value v-md">18</div>
+      <div class="card-sub">Unfulfilled + paid</div>
+    </div>
+  </div>
 
   <!-- SHOPIFY -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">🛍️</span>
-      <span class="section-title">Shopify</span>
-      <span class="section-badge" style="background:var(--shopify-light);color:var(--shopify)">retrotechvision</span>
+  <div class="section-header sec-shopify">
+    <span class="icon">🛍️</span>
+    <h2>Shopify</h2>
+  </div>
+  <div class="card-grid grid-4">
+    <div class="card card-shopify">
+      <div class="card-label">Lifetime Gross Sales</div>
+      <div class="card-value v-md">$142,039</div>
     </div>
-    <div class="grid grid-4">
-      <div class="card card-shopify">
-        <div class="card-label">Lifetime Sales</div>
-        <div class="card-value v-md">$133,718</div>
-        <div class="card-sub"><b>$142,039</b> gross</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Lifetime Orders</div>
-        <div class="card-value v-md">699</div>
-        <div class="card-sub">since launch</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Pending Fulfillment</div>
-        <div class="card-value v-md">18</div>
-        <div class="card-sub">orders to ship</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Top Region · 30 Days</div>
-        <div class="card-value v-text">California</div>
-        <div class="card-sub"><b>18 orders</b></div>
-      </div>
+    <div class="card card-shopify">
+      <div class="card-label">Lifetime Net Sales</div>
+      <div class="card-value v-md">$128,966</div>
     </div>
-    <div class="grid grid-2">
-      <div class="card card-shopify">
-        <div class="card-label">90-Day Visitors</div>
-        <div class="card-value v-md">23,083</div>
-        <div class="card-sub"><b>+47%</b> vs prior 90 days</div>
-      </div>
-      <div class="card card-shopify">
-        <div class="card-label">Returning Customers</div>
-        <div class="card-value v-md">0.96%</div>
-        <div class="card-sub">30-day rate</div>
-      </div>
+    <div class="card card-shopify">
+      <div class="card-label">Lifetime Total Sales</div>
+      <div class="card-value v-md">$133,718</div>
     </div>
-    <div class="chart-card">
-      <div class="chart-label">Weekly Sessions — Last 90 Days</div>
-      <canvas id="shopifyChart" height="70"></canvas>
+    <div class="card card-shopify">
+      <div class="card-label">Lifetime Orders</div>
+      <div class="card-value v-md">699</div>
     </div>
-  </section>
-
-  <hr class="divider">
+  </div>
+  <div class="card-grid grid-3" style="margin-top:14px">
+    <div class="card card-shopify">
+      <div class="card-label">90-Day Sessions</div>
+      <div class="card-value v-md">23,083</div>
+      <div class="card-sub">+47% vs prior 90d</div>
+    </div>
+    <div class="card card-shopify">
+      <div class="card-label">Top Region (30d)</div>
+      <div class="card-value v-sm">California</div>
+      <div class="card-sub">18 orders</div>
+    </div>
+    <div class="card card-shopify">
+      <div class="card-label">Returning Customers (30d)</div>
+      <div class="card-value v-sm">0.96%</div>
+      <div class="card-sub">Early-stage, building</div>
+    </div>
+  </div>
+  <div class="chart-wrap" style="margin-top:14px">
+    <div class="chart-title">Shopify Weekly Sessions — 90 Days</div>
+    <canvas id="shopifyChart" height="90"></canvas>
+  </div>
 
   <!-- AMAZON -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">📦</span>
-      <span class="section-title">Amazon Seller Central</span>
-      <span class="section-badge" style="background:var(--amazon-light);color:var(--amazon)">FBA</span>
+  <div class="section-header sec-amazon">
+    <span class="icon">📦</span>
+    <h2>Amazon</h2>
+  </div>
+  <div class="card-grid grid-4">
+    <div class="card card-amazon">
+      <div class="card-label">Lifetime Sales</div>
+      <div class="card-value v-md">$88,039</div>
+      <div class="card-sub">Apr 2024 → today</div>
     </div>
-    <div class="grid grid-4">
-      <div class="card card-amazon">
-        <div class="card-label">Balance Available</div>
-        <div class="card-value v-md">$1,317</div>
-        <div class="card-sub">as of May 24, 2026</div>
-      </div>
-      <div class="card card-amazon">
-        <div class="card-label">90-Day Sales</div>
-        <div class="card-value v-md">$21,954</div>
-        <div class="card-sub"><b>115</b> units sold</div>
-      </div>
-      <div class="card card-amazon">
-        <div class="card-label">90-Day Page Views</div>
-        <div class="card-value v-md">9,447</div>
-        <div class="card-sub"><b>7,044</b> sessions</div>
-      </div>
-      <div class="card card-amazon">
-        <div class="card-label">Conversion Rate</div>
-        <div class="card-value v-md">1.68%</div>
-        <div class="card-sub"><b>$193</b> avg per order</div>
-      </div>
+    <div class="card card-amazon">
+      <div class="card-label">Account Balance</div>
+      <div class="card-value v-md">$1,317</div>
+      <div class="card-sub">As of 2026-05-24</div>
     </div>
-    <div class="card card-amazon" style="padding-bottom:8px">
-      <div class="card-label">FBA Inventory</div>
-      <table class="dt">
-        <thead><tr><th>Status</th><th class="r">Units</th><th class="r">Value @ $71.22</th></tr></thead>
-        <tbody>
-          <tr><td>Available</td><td class="r"><span class="num">224</span></td><td class="r val">$15,953</td></tr>
-          <tr><td>Reserved</td><td class="r"><span class="num">6</span></td><td class="r val">$427</td></tr>
-          <tr><td>Unfulfillable</td><td class="r"><span class="num">0</span></td><td class="r val">$0</td></tr>
-          <tr><td>Inbound</td><td class="r"><span class="num">40</span></td><td class="r val">$2,849</td></tr>
-          <tr class="tr"><td>Total</td><td class="r"><span class="num">270</span></td><td class="r" style="font-size:14px;font-weight:700">$19,229</td></tr>
-        </tbody>
-      </table>
+    <div class="card card-amazon">
+      <div class="card-label">90-Day Product Sales</div>
+      <div class="card-value v-md">$21,954</div>
+      <div class="card-sub">115 units sold</div>
     </div>
-  </section>
-
-  <hr class="divider">
+    <div class="card card-amazon">
+      <div class="card-label">FBA Available Units</div>
+      <div class="card-value v-md">224</div>
+      <div class="card-sub">+40 inbound</div>
+    </div>
+  </div>
+  <div class="card-grid grid-3" style="margin-top:14px">
+    <div class="card card-amazon">
+      <div class="card-label">90-Day Page Views</div>
+      <div class="card-value v-md">9,447</div>
+    </div>
+    <div class="card card-amazon">
+      <div class="card-label">90-Day Sessions</div>
+      <div class="card-value v-md">7,044</div>
+    </div>
+    <div class="card card-amazon">
+      <div class="card-label">Order / Session Rate</div>
+      <div class="card-value v-md">1.68%</div>
+      <div class="card-sub">Avg $192.91 / order</div>
+    </div>
+  </div>
 
   <!-- TIKTOK -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">🎵</span>
-      <span class="section-title">TikTok Shop</span>
-      <span class="section-badge" style="background:var(--tiktok-light);color:var(--tiktok)">FBT</span>
+  <div class="section-header sec-tiktok">
+    <span class="icon">🎵</span>
+    <h2>TikTok Shop</h2>
+  </div>
+  <div class="card-grid grid-3">
+    <div class="card card-tiktok">
+      <div class="card-label">Pending + On Hold</div>
+      <div class="card-value v-md">$2,475</div>
+      <div class="card-sub">Next payout: $698.65</div>
     </div>
-    <div class="grid grid-3">
-      <div class="card card-tiktok">
-        <div class="card-label">Next Payout</div>
-        <div class="card-value v-md">$699</div>
-        <div class="card-sub">scheduled disbursement</div>
-      </div>
-      <div class="card card-tiktok">
-        <div class="card-label">On Hold</div>
-        <div class="card-value v-md">$1,776</div>
-        <div class="card-sub">pending release</div>
-      </div>
-      <div class="card card-tiktok">
-        <div class="card-label">Total Pending</div>
-        <div class="card-value v-md">$2,475</div>
-        <div class="card-sub">payout + hold</div>
-      </div>
+    <div class="card card-tiktok">
+      <div class="card-label">Hold Amount</div>
+      <div class="card-value v-md">$1,776</div>
     </div>
-    <div class="card card-tiktok" style="padding-bottom:8px">
-      <div class="card-label">FBT Inventory — Fulfillment Centers</div>
-      <table class="dt">
-        <thead><tr><th>Location</th><th class="r">Units</th><th class="r">Value @ $71.22</th></tr></thead>
-        <tbody>
-          <tr><td>FC01_ONT2 · Ontario CA</td><td class="r"><span class="num">40</span></td><td class="r val">$2,849</td></tr>
-          <tr><td>FC09_ATL2 · Atlanta GA</td><td class="r"><span class="num">35</span></td><td class="r val">$2,493</td></tr>
-          <tr><td>FC07_ONT3 · Ontario CA</td><td class="r"><span class="num">83</span></td><td class="r val">$5,911</td></tr>
-          <tr><td>FC06_HOU2 · Houston TX</td><td class="r"><span class="num">59</span></td><td class="r val">$4,202</td></tr>
-          <tr><td>FC14_EWR4 · Newark NJ</td><td class="r"><span class="num">68</span></td><td class="r val">$4,843</td></tr>
-          <tr><td>In Transit</td><td class="r"><span class="num">201</span></td><td class="r val">$14,315</td></tr>
-          <tr class="tr"><td>On Hand Total</td><td class="r"><span class="num">285</span></td><td class="r" style="font-size:14px;font-weight:700">$20,298</td></tr>
-        </tbody>
-      </table>
+    <div class="card card-tiktok">
+      <div class="card-label">FBT On-Hand Units</div>
+      <div class="card-value v-md">285</div>
+      <div class="card-sub">+ 201 in transit</div>
     </div>
-  </section>
+  </div>
+  <div class="card card-tiktok" style="margin-top:14px">
+    <div class="card-label">FBT Inventory by Fulfillment Center</div>
+    <table class="inv-table" style="margin-top:10px">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th style="text-align:right">Units</th>
+          <th style="text-align:right">Value @ $71.22</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FC01_ONT2 — Ontario, CA</td><td class="inv-val">40</td><td class="inv-val">$2,849</td></tr>
+        <tr><td>FC09_ATL2 — Atlanta, GA</td><td class="inv-val">35</td><td class="inv-val">$2,493</td></tr>
+        <tr><td>FC07_ONT3 — Ontario, CA</td><td class="inv-val">83</td><td class="inv-val">$5,911</td></tr>
+        <tr><td>FC06_HOU2 — Houston, TX</td><td class="inv-val">59</td><td class="inv-val">$4,202</td></tr>
+        <tr><td>FC14_EWR4 — Newark, NJ</td><td class="inv-val">68</td><td class="inv-val">$4,843</td></tr>
+        <tr><td>In Transit</td><td class="inv-val">201</td><td class="inv-val">$14,315</td></tr>
+        <tr class="inv-total"><td><strong>Total FBT</strong></td><td class="inv-val">486</td><td class="inv-val">$34,613</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <hr class="divider">
-
-  <!-- KLAVIYO -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">📧</span>
-      <span class="section-title">Email List</span>
-      <span class="section-badge" style="background:var(--klaviyo-light);color:var(--klaviyo)">Klaviyo</span>
+  <!-- EMAIL / KLAVIYO -->
+  <div class="section-header sec-klaviyo">
+    <span class="icon">📧</span>
+    <h2>Email — Klaviyo</h2>
+  </div>
+  <div class="card-grid grid-3">
+    <div class="card card-klaviyo">
+      <div class="card-label">Total Subscribers</div>
+      <div class="card-value v-md">1,451</div>
+      <div class="card-sub">Net active list</div>
     </div>
-    <div class="grid grid-2">
-      <div class="card card-klaviyo">
-        <div class="card-label">Total Subscribers</div>
-        <div class="card-value">1,451</div>
-        <div class="card-sub">net · Jan 2026 → today</div>
-      </div>
-      <div class="card card-klaviyo">
-        <div class="card-label">New This Month</div>
-        <div class="card-value">+45</div>
-        <div class="card-sub"><b>20</b> unsubscribed · May 2026</div>
-      </div>
+    <div class="card card-klaviyo">
+      <div class="card-label">New This Month</div>
+      <div class="card-value v-md">+45</div>
+      <div class="card-sub">May 2026</div>
     </div>
-    <div class="notice">
-      <span class="notice-icon">💡</span>
-      <span>Campaign in draft — <b>"How's the Digitizer treating you?"</b> — 15% off offer, ready to send to all customers.</span>
+    <div class="card card-klaviyo">
+      <div class="card-label">Active Flows</div>
+      <div class="card-value v-md">1</div>
+      <div class="card-sub">Welcome Series live</div>
     </div>
-  </section>
+  </div>
+  <div class="notice">
+    💡 <strong>Campaigns:</strong> No campaigns sent yet. First campaign in draft — ready to schedule when list reaches target threshold.
+  </div>
 
-</main>
-
-<footer class="footer">
-  Generated Sunday, May 24, 2026 &nbsp;·&nbsp; Amazon &nbsp;·&nbsp; Shopify &nbsp;·&nbsp; TikTok Shop &nbsp;·&nbsp; Klaviyo
-</footer>
+</div><!-- /wrapper -->
 
 <script>
-new Chart(document.getElementById('shopifyChart').getContext('2d'),{
-  type:'bar',
-  data:{
-    labels:['Feb 23','Mar 2','Mar 9','Mar 16','Mar 23','Mar 30','Apr 6','Apr 13','Apr 20','Apr 27','May 4','May 11','May 18'],
-    datasets:[{
-      label:'Sessions',
-      data:[1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1593],
-      backgroundColor:'rgba(74,122,40,0.15)',
-      borderColor:'#4A7A28',
-      borderWidth:2.5,
-      borderRadius:6,
-      borderSkipped:false
+const ctx = document.getElementById('shopifyChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18"],
+    datasets: [{
+      label: 'Sessions',
+      data: [1015,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1593],
+      backgroundColor: 'rgba(47,192,207,0.25)',
+      borderColor: '#2fc0cf',
+      borderWidth: 2,
+      borderRadius: 4
     }]
   },
-  options:{
-    responsive:true,
-    plugins:{
-      legend:{display:false},
-      tooltip:{bodyFont:{family:'Lexend',size:14},titleFont:{family:'Lexend',size:13}}
-    },
-    scales:{
-      y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{family:'Lexend',size:13},color:'#6B6258'}},
-      x:{grid:{display:false},ticks:{font:{family:'Lexend',size:12},color:'#6B6258',maxRotation:45}}
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: 'PT Mono', size: 11 }, color: '#7a4a3a' } },
+      y: { grid: { color: 'rgba(71,21,14,0.07)' }, ticks: { font: { family: 'PT Mono', size: 11 }, color: '#7a4a3a' } }
     }
   }
 });
 </script>
+
 </body>
 </html>
