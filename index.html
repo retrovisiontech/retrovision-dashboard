@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNUOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
 :root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
@@ -69,10 +69,10 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="title-block">
   <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
   <h1 class="display">Sales Dashboard</h1>
-  <div class="meta">Generated Sunday, May 24, 2026 · Amazon C� Shopify · TikTok Shop · YouTube</div>
+  <div class="meta">Generated Monday, May 25, 2026 · Amazon · Shopify · TikTok Shop · YouTube</div>
 </div>
 
-<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 6 fields fell back to last-known values: amazon.balance, amazon.lifetimeSales, amazon.pageViews90d, amazon.fbaInventory, tiktok.pendingPlusHold, tiktok.fbtInventory.</div>
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 6 fields fell back to last-known values: amazon, tiktok.fbtInventory, amazon.lifetimeSales, amazon.balance, amazon.pageViews90d, amazon.fbaInventory.</div>
 
 <section style="margin-top:14px">
   <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
@@ -103,12 +103,12 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 </section>
 
 <section>
-  <h2 class="section">Tebsite Visitors <span class="sub">// Shopify · Last 90 days · February 23, 2026 – May 24, 2026</span></h2>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 24, 2026 – May 24, 2026</span></h2>
   <div class="card visitor-card">
     <div class="visitor-headline">
-      <div><div class="num teal">23,150</div><div class="lbl">Total sessions</div></div>
-      <div><div class="num">20,958</div><div class="lbl">Unique visitors</div></div>
-      <div><div class="num" style="color:#1F7A35">▲ 46.53%</div><div class="lbl">vs prior 90 days (15,799)</div></div>
+      <div><div class="num teal">23,169</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">20,977</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num" style="color:#1F7A35">▲ 47%</div><div class="lbl">vs prior 90 days (15,799)</div></div>
     </div>
     <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
     <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
@@ -142,8 +142,8 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
   <div class="grid kpi">
     <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta">As of 2026-04-29</div></div>
-    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$3,152.31</div><div class="delta">$299.54 next · $2,852.77 hold</div></div>
-    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,411.14</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$2,565.94</div><div class="delta">$631.30 next · $1,934.64 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$4,824.77</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
     <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,386</div><div class="delta">890 units · $71.22 landed</div></div>
   </div>
   <div class="card" style="margin-top:14px">
@@ -169,7 +169,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <h2 class="section">YouTube <span class="sub">// RetroVision Tech · Windsor.ai · Channel analytics</span></h2>
   <div class="grid kpi">
     <div class="card kpi"><div class="label">Subscribers</div><div class="value teal">134</div><div class="delta">All-time</div></div>
-    <div class="card kpi"><div class="label">Total views</div><div class="value">101,258</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Total views</div><div class="value">101,286</div><div class="delta">All-time</div></div>
     <div class="card kpi"><div class="label">Videos published</div><div class="value teal">80</div><div class="delta">Public videos</div></div>
     <div class="card kpi"><div class="label">Views (30d)</div><div class="value">9,769</div><div class="delta">Last 30 days</div></div>
   </div>
@@ -192,7 +192,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <span class="badge">Source: scm-us.tiktok.com</span>
   <span class="badge">Source: supplier purchase log (xlsx)</span>
   <span class="badge">Source: Windsor.ai → YouTube</span>
-  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Sunday, May 24, 2026 · Currency USD</div>
+  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Monday, May 25, 2026 · Currency USD</div>
 </footer>
 
 </div>
@@ -201,7 +201,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   function tryDraw(){
     if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
     var labels = ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25"];
-    var data = [874,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1801,0];
+    var data = [874,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1801,19];
     new Chart(document.getElementById('visitorChart').getContext('2d'),{
       type:'bar',
       data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
