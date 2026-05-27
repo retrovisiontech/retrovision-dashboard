@@ -69,10 +69,10 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="title-block">
   <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
   <h1 class="display">Sales Dashboard</h1>
-  <div class="meta">Generated Tuesday, May 26, 2026 · Amazon · Shopify · TikTok Shop · YouTube</div>
+  <div class="meta">Generated Wednesday, May 27, 2026 · Amazon · Shopify · TikTok Shop · YouTube</div>
 </div>
 
-<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 6 fields fell back to last-known values: amazon.lifetimeSales, amazon.balance, amazon.pageViews90d, amazon.fbaInventory, tiktok.pendingPlusHold, tiktok.fbtInventory.</div>
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 5 fields fell back to last-known values: amazon.balance, amazon.pageViews90d, amazon.fbaInventory, tiktok.fbtInventory, amazon.lifetimeSales.</div>
 
 <section style="margin-top:14px">
   <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
@@ -103,11 +103,11 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 </section>
 
 <section>
-  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 23, 2026 – May 26, 2026</span></h2>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · February 26, 2026 – May 27, 2026</span></h2>
   <div class="card visitor-card">
     <div class="visitor-headline">
-      <div><div class="num teal">23,409</div><div class="lbl">Total sessions</div></div>
-      <div><div class="num">21,216</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num teal">23,426</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">21,231</div><div class="lbl">Unique visitors</div></div>
       <div><div class="num" style="color:#1F7A35">▲ 47%</div><div class="lbl">vs prior 90 days (15,920)</div></div>
     </div>
     <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
@@ -142,8 +142,8 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
   <div class="grid kpi">
     <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta">As of 2026-04-29</div></div>
-    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$3,152.31</div><div class="delta">$299.54 next · $2,852.77 hold</div></div>
-    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,411.14</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$1,873.18</div><div class="delta">$362.81 next · $1,510.37 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$4,132.01</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
     <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,386</div><div class="delta">890 units · $71.22 landed</div></div>
   </div>
   <div class="card" style="margin-top:14px">
@@ -192,7 +192,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   <span class="badge">Source: scm-us.tiktok.com</span>
   <span class="badge">Source: supplier purchase log (xlsx)</span>
   <span class="badge">Source: Windsor.ai → YouTube</span>
-  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Tuesday, May 26, 2026 · Currency USD</div>
+  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Wednesday, May 27, 2026 · Currency USD</div>
 </footer>
 
 </div>
@@ -201,7 +201,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
   function tryDraw(){
     if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
     var labels = ["Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25"];
-    var data = [557,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1801,576];
+    var data = [557,1134,966,1272,1144,1528,1974,2116,2276,2595,2986,2484,1801,593];
     new Chart(document.getElementById('visitorChart').getContext('2d'),{
       type:'bar',
       data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
