@@ -279,15 +279,15 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 (function(){
 function tryDraw(){
 if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
-var labels = ["Mar 2", "Mar 9", "Mar 16", "Mar 23", "Mar 30", "Apr 6", "Apr 13", "Apr 20", "Apr 27", "May 4", "May 11", "May 18", "May 25"];
-var data = [1134, 966, 1272, 1144, 1528, 1974, 2116, 2276, 2595, 2986, 2484, 1801, 1511];
+var labels = ["Mar 30", "Apr 6", "Apr 13", "Apr 20", "Apr 27", "May 4", "May 11", "May 18", "May 25", "Jun 1", "Jun 8", "Jun 15", "Jun 22"];
+var data = [1528, 1974, 2116, 2276, 2595, 2986, 2484, 1801, 1682, 1552, 1091, 1431, 2559];
 new Chart(document.getElementById('visitorChart').getContext('2d'),{
 type:'bar',
 data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
 options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
 });
-var amzLabels = ["Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25"];
-var amzData = [720,680,640,580,720,740,800,870,900,830,770,720,789];
+var amzLabels = ["Mar 30", "Apr 6", "Apr 13", "Apr 20", "Apr 27", "May 4", "May 11", "May 18", "May 25", "Jun 1", "Jun 8", "Jun 15", "Jun 22"];
+var amzData = [790, 830, 798, 1034, 1104, 858, 524, 183, 677, 489, 492, 393, 853];
 new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
 type:'bar',
 data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
