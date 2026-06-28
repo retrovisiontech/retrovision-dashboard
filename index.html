@@ -192,10 +192,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="card kpi"><div class="label">New subscribers (30d)</div><div class="value teal">+30</div><div class="delta">Last 30 days</div></div>
 <div class="card kpi"><div class="label">Watch minutes (30d)</div><div class="value">5,420</div><div class="delta">Last 30 days</div></div>
 </div>
-<div class="card visitor-card" style="margin-top:14px;border-color:#D6443B">
-<div class="visitor-chart-wrap"><canvas id="youtubeViewsChart"></canvas></div>
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Windsor.ai → YouTube connector (admin@retrovisiontech.com). Daily views — last 30 days.</div>
-</div>
+
 </section>
 
 <section style="margin-top:24px">
@@ -304,11 +301,7 @@ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:fals
 });
 var ytLabels = ["May 1","May 2","May 3","May 4","May 5","May 6","May 7","May 8","May 9","May 10","May 11","May 12","May 13","May 14","May 15","May 16","May 17","May 18","May 19","May 20","May 21","May 22","May 23","May 24","May 25","May 26","May 27","May 28","May 29","May 30"];
 var ytData = [91,96,84,84,649,1603,283,104,101,82,2082,1150,208,254,124,84,97,89,79,128,68,70,71,84,96,88,92,78,95,83];
-new Chart(document.getElementById('youtubeViewsChart').getContext('2d'),{
-type:'line',
-data:{labels:ytLabels,datasets:[{label:'Daily views',data:ytData,backgroundColor:'rgba(214,68,59,0.12)',borderColor:'#D6443B',borderWidth:1.5,pointRadius:2,pointHoverRadius:5,fill:true,tension:0.3}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322',maxTicksLimit:10,maxRotation:0}}}}
-});
+
 }
 tryDraw();
 })();
