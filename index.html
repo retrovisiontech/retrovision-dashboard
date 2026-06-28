@@ -142,6 +142,19 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="note stale" style="margin-top:14px"><strong>Live:</strong> Scraped from Seller Central (By Week view, 13 weekly buckets) · 90-day window Mar 29 – Jun 27, 2026 · ~96 order items · 1.38% order-item session rate · as of 2026-06-28.</div>
 </div>
 </section>
+<section style="margin-top:24px">
+<h2 class="section">Amazon daily sales <span class="sub">// Seller Central · last 30 days</span></h2>
+<div class="grid kpi">
+<div class="card kpi"><div class="label">30-day sales</div><div class="value teal">$3,948</div><div class="delta">Ordered product sales</div></div>
+<div class="card kpi"><div class="label">Units sold</div><div class="value">18</div><div class="delta">~0.6/day · sells in bursts</div></div>
+<div class="card kpi"><div class="label">Avg sale</div><div class="value">$219</div><div class="delta">Per unit</div></div>
+</div>
+<div class="card visitor-card" style="margin-top:14px;border-color:#D8A23A">
+<div style="position:relative;height:260px"><canvas id="amzDailyChart"></canvas></div>
+</div>
+<div class="note" style="margin-top:14px"><strong>Source:</strong> Seller Central → Business Reports (Sales and Traffic, By Day) · daily ordered product sales · as of 2026-06-28.</div>
+</section>
+
 
 <section>
 <h2 class="section">Shopify · Lifetime Performance <span class="sub">// All-time totals from Analytics overview</span></h2>
@@ -253,71 +266,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="note" style="margin-top:14px"><strong>Biggest untapped lever:</strong> Email has driven just $581 (2 orders, all in May) — ~0.4% of revenue vs the 25–35% typical for DTC. The 3,700+ list (27.7% open) is engaged but nearly unmonetized: no recent campaigns, and the three highest-ROI flows (checkout, post-purchase, winback) sit in draft.</div>
 </section>
 
-<section>
-<h2 class="section">Cashflow Outlook <span class="sub">// 30-day projection · as of Sunday, June 28, 2026</span></h2>
-<div class="note" style="margin-bottom:16px"><strong>Assumptions:</strong> LOC balance $85K drawn (of ~$100K), cash $10K, net margin 27.5%, OpEx $7,100/mo (rent $1,500 + Jerry $3,800 + subscriptions $600 + Amy $1,200), blended AOV ~$229, landed cost $82/unit.</div>
-<div class="cf-row">
-<div class="cf-item">
-<div class="cf-label">Cash on hand</div>
-<div class="cf-value teal">$10,000</div>
-<div class="cf-note">Bank balance today</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Payouts incoming</div>
-<div class="cf-value teal">$1,403.88</div>
-<div class="cf-note">Amazon + TikTok in flight</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Total near-term liquidity</div>
-<div class="cf-value teal">$11,403.88</div>
-<div class="cf-note">Cash + payouts (excl. Shopify next)</div>
-</div>
-</div>
-<div class="cf-row">
-<div class="cf-item">
-<div class="cf-label">LOC balance drawn</div>
-<div class="cf-value warn" style="color:#B8730A">$85,000</div>
-<div class="cf-note">of est. $100K limit</div>
-<div class="cf-bar"><div class="cf-bar-fill warn" style="width:85%"></div></div>
-<div style="font-size:10px;color:var(--brown-soft)">$15,000 headroom remaining</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Proj. 30-day revenue</div>
-<div class="cf-value">$11,470</div>
-<div class="cf-note">~50 orders · ~$229 AOV · Shopify $7,038 + Amazon $4,432 (trailing 30d)</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Proj. gross profit (27.5%)</div>
-<div class="cf-value">$3,154</div>
-<div class="cf-note">Before OpEx deduction</div>
-</div>
-</div>
-<div class="card" style="margin-top:4px;padding:20px">
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start">
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Monthly OpEx — Itemized</div>
-<table style="width:100%;font-size:12px;border-collapse:collapse">
-<tr><td>Rent</td><td style="text-align:right;font-family:var(--font-lcd)">$1,500</td></tr>
-<tr><td>Jerry (ops)</td><td style="text-align:right;font-family:var(--font-lcd)">$3,800</td></tr>
-<tr><td>Subscriptions</td><td style="text-align:right;font-family:var(--font-lcd)">$600</td></tr>
-<tr><td>Amy (consulting)</td><td style="text-align:right;font-family:var(--font-lcd)">$1,200</td></tr>
-<tr style="border-top:2px solid var(--brown);font-weight:bold"><td>Total</td><td style="text-align:right;font-family:var(--font-lcd);color:var(--red)">$7,100</td></tr>
-</table>
-</div>
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Net after OpEx (30d)</div>
-<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--red);margin-top:8px">-$3,946</div>
-<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">Proj. profit $3,154 − OpEx $7,100</div>
-</div>
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Inventory at cost</div>
-<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--brown);margin-top:8px">$57,482</div>
-<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">701 units · $82 landed</div>
-</div>
-</div>
-<div class="note stale" style="margin-top:16px">⚠ <strong>Watch:</strong> Projected gross profit ($3,154 = 27.5% of $11,470 revenue) minus OpEx ($7,100) = <strong>-$3,946/mo</strong> if current traffic holds. LOC headroom is $15,000. Biggest lever: ~14 months of inventory (~$57K) is tying up cash — drawing it down frees cash without new ad spend.</div>
-</div>
-</section>
+
 
 <footer>
 <span class="badge">Source: admin.shopify.com</span>
@@ -418,6 +367,28 @@ PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
 </div>
 <div class="note" style="margin-top:14px"><strong>Diagnosis:</strong> Your ads are working — 2.59% CTR and $0.57 clicks beat benchmark, and reach/frequency (96K people, 1.8x) are healthy. But only 0.9% of the 2,340 visitors Meta sent actually buy. The bottleneck is on-site conversion (1.4% add-to-cart, 69% checkout abandon), not Meta. Top creative by engagement: "ASMR Product Demo" at 4.76% CTR.</div>
 
+<h2 class="section" style="margin-top:18px">Meta placement breakdown <span class="sub">// spend share · last 30 days · Ads Manager</span></h2>
+<div class="grid kpi">
+<div class="card kpi"><div class="label">Facebook</div><div class="value teal">49.6%</div><div class="delta">$1,269 spend</div></div>
+<div class="card kpi"><div class="label">Instagram</div><div class="value teal">47.6%</div><div class="delta">$1,217 spend</div></div>
+<div class="card kpi"><div class="label">Audience Net + other</div><div class="value">2.8%</div><div class="delta">$71 spend</div></div>
+</div>
+<div class="card" style="margin-top:14px">
+<table class="data">
+<thead><tr><th>Placement</th><th>Spend</th><th>Share</th></tr></thead>
+<tbody>
+<tr><td>Facebook Feed</td><td>$862.69</td><td>33.7%</td></tr>
+<tr><td>Instagram Feed</td><td>$770.24</td><td>30.1%</td></tr>
+<tr><td>Facebook Reels</td><td>$303.99</td><td>11.9%</td></tr>
+<tr><td>Instagram Stories</td><td>$228.66</td><td>8.9%</td></tr>
+<tr><td>Instagram Reels</td><td>$218.29</td><td>8.5%</td></tr>
+<tr><td>Facebook Feed (desktop)</td><td>$80.21</td><td>3.1%</td></tr>
+<tr><td>All other placements</td><td>$92.55</td><td>3.6%</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note" style="margin-top:14px"><strong>Read:</strong> Spend is near 50/50 Facebook/Instagram and concentrated in Feed (64%) over Reels (20%) and Stories (9%). Worth testing more Reels budget (cheaper reach) — but the real bottleneck stays on-site conversion, not placement.</div>
+
 <h2 class="section" style="margin-top:18px">Ad spend <span class="sub">// last 30 days · Meta + TikTok via Windsor.ai · Amazon PPC live (Ads console)</span></h2>
 <div class="grid kpi">
 <div class="card kpi"><div class="label">Meta (→ Shopify)</div><div class="value">$2,556.41</div><div class="delta">21 purchases · 2.16x ROAS · $121.73 CPA</div></div>
@@ -442,5 +413,84 @@ PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
 <div class="note" style="margin-top:14px"><strong>Source:</strong> Meta Ads + TikTok Ads via Windsor.ai · Amazon PPC live (Ads console) · Supplier purchase orders. Generated 2026-06-28.</div>
 </section>
 
+<section>
+<h2 class="section">Cashflow Outlook <span class="sub">// 30-day projection · as of Sunday, June 28, 2026</span></h2>
+<div class="note" style="margin-bottom:16px"><strong>Assumptions:</strong> LOC balance $85K drawn (of ~$100K), cash $10K, net margin 27.5%, OpEx $7,100/mo (rent $1,500 + Jerry $3,800 + subscriptions $600 + Amy $1,200), blended AOV ~$229, landed cost $82/unit.</div>
+<div class="cf-row">
+<div class="cf-item">
+<div class="cf-label">Cash on hand</div>
+<div class="cf-value teal">$10,000</div>
+<div class="cf-note">Bank balance today</div>
+</div>
+<div class="cf-item">
+<div class="cf-label">Payouts incoming</div>
+<div class="cf-value teal">$1,403.88</div>
+<div class="cf-note">Amazon + TikTok in flight</div>
+</div>
+<div class="cf-item">
+<div class="cf-label">Total near-term liquidity</div>
+<div class="cf-value teal">$11,403.88</div>
+<div class="cf-note">Cash + payouts (excl. Shopify next)</div>
+</div>
+</div>
+<div class="cf-row">
+<div class="cf-item">
+<div class="cf-label">LOC balance drawn</div>
+<div class="cf-value warn" style="color:#B8730A">$85,000</div>
+<div class="cf-note">of est. $100K limit</div>
+<div class="cf-bar"><div class="cf-bar-fill warn" style="width:85%"></div></div>
+<div style="font-size:10px;color:var(--brown-soft)">$15,000 headroom remaining</div>
+</div>
+<div class="cf-item">
+<div class="cf-label">Proj. 30-day revenue</div>
+<div class="cf-value">$11,470</div>
+<div class="cf-note">~50 orders · ~$229 AOV · Shopify $7,038 + Amazon $4,432 (trailing 30d)</div>
+</div>
+<div class="cf-item">
+<div class="cf-label">Proj. gross profit (27.5%)</div>
+<div class="cf-value">$3,154</div>
+<div class="cf-note">Before OpEx deduction</div>
+</div>
+</div>
+<div class="card" style="margin-top:4px;padding:20px">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start">
+<div>
+<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Monthly OpEx — Itemized</div>
+<table style="width:100%;font-size:12px;border-collapse:collapse">
+<tr><td>Rent</td><td style="text-align:right;font-family:var(--font-lcd)">$1,500</td></tr>
+<tr><td>Jerry (ops)</td><td style="text-align:right;font-family:var(--font-lcd)">$3,800</td></tr>
+<tr><td>Subscriptions</td><td style="text-align:right;font-family:var(--font-lcd)">$600</td></tr>
+<tr><td>Amy (consulting)</td><td style="text-align:right;font-family:var(--font-lcd)">$1,200</td></tr>
+<tr style="border-top:2px solid var(--brown);font-weight:bold"><td>Total</td><td style="text-align:right;font-family:var(--font-lcd);color:var(--red)">$7,100</td></tr>
+</table>
+</div>
+<div>
+<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Net after OpEx (30d)</div>
+<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--red);margin-top:8px">-$3,946</div>
+<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">Proj. profit $3,154 − OpEx $7,100</div>
+</div>
+<div>
+<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Inventory at cost</div>
+<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--brown);margin-top:8px">$57,482</div>
+<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">701 units · $82 landed</div>
+</div>
+</div>
+<div class="note stale" style="margin-top:16px">⚠ <strong>Watch:</strong> Projected gross profit ($3,154 = 27.5% of $11,470 revenue) minus OpEx ($7,100) = <strong>-$3,946/mo</strong> if current traffic holds. LOC headroom is $15,000. Biggest lever: ~14 months of inventory (~$57K) is tying up cash — drawing it down frees cash without new ad spend.</div>
+</div>
+</section>
+<script>
+(function(){
+  function draw(){
+    if(!window.Chart){return setTimeout(draw,200);}
+    var el=document.getElementById('amzDailyChart');
+    if(!el){return;}
+    new Chart(el.getContext('2d'),{type:'bar',
+      data:{labels:['5/29','5/30','5/31','6/1','6/2','6/3','6/4','6/5','6/6','6/7','6/8','6/9','6/10','6/11','6/12','6/13','6/14','6/15','6/16','6/17','6/18','6/19','6/20','6/21','6/22','6/23','6/24','6/25','6/26'],
+      datasets:[{label:'Amazon sales',data:[214.99,0,0,0,224.99,229.99,232.99,232.99,232.99,232.99,232.99,0,0,0,248.99,0,0,0,0,0,232.99,232.99,0,0,465.98,232.99,0,232.99,465.98],backgroundColor:'rgba(216,162,58,0.55)',borderColor:'#D8A23A',borderWidth:1}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+  }
+  draw();
+})();
+</script>
 </body>
 </html>
