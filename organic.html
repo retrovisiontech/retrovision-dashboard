@@ -11,7 +11,7 @@ body { background:var(--cream); color:var(--brown); font-family:"Courier New", u
 header { background:var(--brown); color:var(--cream); padding:26px 6vw; }
 header h1 { font-size:30px; letter-spacing:2px; text-transform:uppercase; }
 header p { color:#d8c4a8; margin-top:6px; font-size:13px; }
-main { padding:0 6vw; max-width:1200px; margin:0 auto; }
+main { padding:0 6vw; max-width:1240px; margin:0 auto; }
 h2 { margin:34px 0 4px; font-size:19px; text-transform:uppercase; letter-spacing:1px; }
 h2 span { color:var(--brown-soft); font-size:13px; text-transform:none; letter-spacing:0; }
 .rule { border-bottom:2px dashed var(--line); margin-bottom:14px; }
@@ -27,9 +27,10 @@ th:hover { background:#54382a; }
 td { padding:7px 10px; border-top:1px solid var(--line); }
 tr.top3 td { background:#f3ddb2; }
 td.num, th.num { text-align:right; }
-.pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; color:#fff; }
+.pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; color:#fff; white-space:nowrap; }
 .pill.tt { background:#111; }
 .pill.yt { background:#b3261e; }
+.pill.mt { background:#1877f2; }
 a { color:var(--teal); }
 .btn { margin:10px 0; background:var(--brown); color:var(--cream); border:none; padding:8px 16px; font-family:inherit; font-size:13px; cursor:pointer; border-radius:6px; }
 .insight { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 18px; font-size:13px; line-height:1.7; }
@@ -39,22 +40,22 @@ footer { margin-top:40px; padding:0 6vw; font-size:11px; color:var(--brown-soft)
 <body>
 <header>
   <h1>Organic Content Tracker</h1>
-  <p>RetroVision Tech · TikTok Organic + YouTube · Last 30 days · Generated Monday, July 6, 2026 · goal: find winners worth putting paid spend behind</p>
+  <p>RetroVision Tech · Facebook + Instagram + TikTok + YouTube · Last 30 days · Generated Monday, July 6, 2026 · goal: find winners worth putting paid spend behind</p>
 </header>
 <main>
-<div class="note"><b>Live now:</b> TikTok Organic + YouTube (via Windsor.ai). <b>Not yet connected:</b> Instagram + Facebook organic — connect them in Windsor and they get added here. TikTok captions were unavailable this pull, so TikTok rows link straight to the video.</div>
+<div class="note"><b>All four platforms live:</b> TikTok Organic + YouTube via Windsor.ai · Facebook + Instagram via Meta Business Suite (28-day window). Saves on Meta = strongest buy-intent signal. TikTok captions unavailable this pull — those rows link to the video.</div>
 
 <h2>Platform pulse <span>// last 30 days</span></h2>
 <div class="rule"></div>
 <div class="cards" id="pulse"></div>
 
-<h2>Post leaderboard <span>// both platforms, ranked · click any column to re-sort</span></h2>
+<h2>Post leaderboard <span>// all platforms, ranked · click any column to re-sort</span></h2>
 <div class="rule"></div>
 <table id="board"><thead><tr>
 <th data-k="rank">#</th><th data-k="platform">Platform</th><th data-k="title">Post</th>
 <th class="num" data-k="views">Views</th><th class="num" data-k="likes">Likes</th>
 <th class="num" data-k="comments">Comments</th><th class="num" data-k="shares">Shares</th>
-<th class="num" data-k="er">Engagement</th><th class="num" data-k="followers">New fans</th>
+<th class="num" data-k="saves">Saves</th><th class="num" data-k="er">Engagement</th><th class="num" data-k="followers">New fans</th>
 </tr></thead><tbody></tbody></table>
 <button class="btn" id="toggle">Show all posts</button>
 
@@ -62,26 +63,34 @@ footer { margin-top:40px; padding:0 6vw; font-size:11px; color:var(--brown-soft)
 <div class="rule"></div>
 <div class="insight" id="insights"></div>
 </main>
-<footer>Sources: Windsor.ai → TikTok Organic (@retrovisiontechinc) + YouTube · Engagement = (likes + comments + shares) ÷ views · YouTube rows under 50 views omitted · Built Jul 6, 2026</footer>
+<footer>Sources: Meta Business Suite (FB page + @retrovisionvhs IG, 28d) · Windsor.ai → TikTok Organic (@retrovisiontechinc) + YouTube (30d) · Engagement = (likes + comments + shares + saves) ÷ views · Built Jul 6, 2026</footer>
 <script>
+var METARAW = "Remember when every birthday, holiday,|R|FB+IG|Jul 4·12:00pm|25573|143|5|19|107|11~Remember when every birthday, holiday,|R|FB+IG|Jul 4·12:00pm|17962|56|6|7|38|0~Every tape tells a story. Don't let yo|R|FB+IG|Jul 3·1:00pm|62128|253|14|23|165|1~Every tape tells a story. Don't let yo|R|FB+IG|Jul 3·12:00pm|55978|170|9|24|159|6~Your memories deserve better than a bo|R|FB+IG|Jul 3·12:00pm|58699|191|7|15|160|2~Your memories deserve better than a bo|R|FB+IG|Jul 2·1:04pm|5947|48|2|6|18|2~Your memories deserve better than a bo|R|FB+IG|Jul 2·1:03pm|7557|30|2|0|27|0~Your memories deserve better than a bo|R|FB+IG|Jul 2·1:03pm|22490|87|1|10|46|1~Preserve your family's memories before|R|FB+IG|Jul 1·4:19pm|52618|148|8|25|130|3~Preserve your family's memories before|R|FB+IG|Jul 1·4:18pm|7268|27|0|11|26|4~Preserve your family's memories before|R|FB+IG|Jul 1·4:18pm|4842|26|1|1|7|1~Don't let your old memories fade away.|R|FB+IG|Jun 30·4:55pm|6302|41|1|7|22|1~Don't let your old memories fade away.|R|FB+IG|Jun 30·4:55pm|5516|38|0|4|21|0~Don't let your old memories fade away.|R|FB+IG|Jun 30·4:55pm|7862|39|1|13|21|0~Every tape has a story worth saving. F|R|FB+IG|Jun 29·4:59pm|9363|40|1|0|28|0~Your old tapes are full of moments you|R|FB+IG|Jun 29·4:54pm|4427|18|0|1|10|0~One day, those old tapes won't play an|R|FB+IG|Jun 29·4:28pm|22635|129|8|10|70|1~Some memories deserve more than a dust|R|FB+IG|Jun 26·4:07pm|28429|122|4|9|65|1~Every tape has a story worth keeping. |R|FB+IG|Jun 25·3:41pm|56590|264|15|82|310|6~Some memories are too important to lea|R|FB+IG|Jun 25·3:05pm|58367|228|12|23|140|1~That box of old tapes isn't getting an|R|FB+IG|Jun 25·2:14pm|9500|81|2|22|38|4~Your old tapes are full of moments wor|R|FB+IG|Jun 24·3:59pm|8425|50|1|5|23|0~Most people have boxes full of tapes t|R|FB+IG|Jun 24·3:12pm|6378|76|3|7|27|4~WTF is a Digitizer? It turns old tapes|P|FB+IG|Jun 24·2:32pm|282|3|0|0|0|0~Most people have boxes full of tapes t|R|FB+IG|Jun 24·1:46pm|5501|45|1|8|31|0~Your memories deserve more than a dust|R|FB+IG|Jun 23·3:13pm|7801|68|3|2|21|6~Your old tapes don't belong in a box. |P|FB+IG|Jun 23·2:51pm|433|5|0|1|1|0~Your memories deserve more than a box |R|FB+IG|Jun 23·2:37pm|50162|175|5|44|113|10~Your memories deserve more than a box |R|FB+IG|Jun 23·1:19pm|7666|50|2|3|27|6~Your memories deserve more than a box |P|FB+IG|Jun 22·5:10pm|212|3|0|0|0|0~Your memories deserve more than a box |R|FB+IG|Jun 22·5:01pm|15930|100|4|16|41|12~Your memories deserve more than a box |R|FB+IG|Jun 22·4:01pm|4686|36|0|3|14|0~Your memories deserve more than a box |R|FB+IG|Jun 22·3:28pm|12087|83|3|12|51|3~Your memories deserve more than a box |R|FB+IG|Jun 19·4:01pm|6927|103|15|8|39|6~Most VHS tapes weren't made to last fo|P|FB+IG|Jun 19·2:37pm|245|0|0|0|0|0~Your memories deserve more than a box |R|FB+IG|Jun 19·2:20pm|904|13|0|0|1|0~Your memories deserve more than a box |R|FB+IG|Jun 19·2:02pm|56908|201|13|27|116|1~Your memories deserve more than a box |R|FB+IG|Jun 19·1:57pm|31618|210|8|30|85|14~This is the perfect Father's Day gift!|R|FB+IG|Jun 18·4:33pm|59573|235|11|37|225|0~You won't believe what was on these ta|R|FB+IG|Jun 18·2:34pm|2527|26|3|10|17|4~Your memories deserve more than a box |R|FB+IG|Jun 18·2:04pm|105777|944|42|85|688|0~Before you ship your only copies to a |P|FB|Jun 18·1:23pm|68|1|0|0|0|0~Before you ship your only copies to a |C|IG|Jun 18·1:19pm|70|0|0|0|0|0~Your memories deserve more than a box |R|FB+IG|Jun 17·3:47pm|67855|374|28|98|272|10~There's no complicated set up and no s|R|FB+IG|Jun 17·3:23pm|2130|30|0|12|17|5~Your memories deserve more than a box |R|FB+IG|Jun 16·2:22pm|83632|348|29|42|259|0~Creating retro content just got so muc|R|FB+IG|Jun 16·1:47pm|968|20|0|1|3|0~These memories have been in the family|R|FB+IG|Jun 16·1:39pm|680|9|0|0|2|0~Took my mom's VHS tapes out the attic |R|FB+IG|Jun 15·4:12pm|70563|223|14|26|197|2~Let me show you how easy it is to digi|R|FB+IG|Jun 15·4:00pm|561|7|1|0|0|0~Your memories deserve more than a box |R|FB+IG|Jun 15·3:55pm|27070|124|11|16|82|3~Found a box of old VHS tapes? Don't wa|R|IG|Jun 15·12:07pm|81|2|0|0|0|0~Found a box of old VHS tapes? Don't wa|R|FB|Jun 15·12:07pm|288|0|0|0|0|0~So relieved that I get to digitize my |P|FB+IG|Jun 15·11:53am|270|5|6|0|0|0~Pick your fighter. VHS. VHS-C. Hi8.|P|IG|Jun 13·1:01pm|90|7|0|0|0|0~Pick your fighter. VHS. VHS-C. Hi8.|P|FB|Jun 13·1:01pm|89|3|3|0|0|0~Summer 2004 called. Your memories are |P|IG|Jun 12·4:32pm|85|4|0|0|0|0~Summer 2004 called. Your memories are |P|FB|Jun 12·4:32pm|32|3|0|0|0|0~Create content that feels like it was |P|FB|Jun 12·11:49am|27|2|0|0|0|0~The best part isn't the technology - i|R|IG|Jun 11·11:06am|201|7|0|1|0|0~The best part isn't the technology - i|R|FB|Jun 11·11:06am|384|3|0|0|2|0~THANK YOU FOR FOLLOWING! You've suppor|P|IG|Jun 10·1:55pm|72|1|0|0|0|0~THANK YOU FOR FOLLOWING! You've suppor|P|FB|Jun 10·1:55pm|31|1|0|1|0|0~RetroVision Tech updated their profile|P|FB|Jun 8·1:49pm|28|1|0|0|0|0~RetroVision Tech updated their cover p|P|FB|Jun 8·1:31pm|0|2|4|0|0|0~Still have boxes of VHS tapes in stora|R|IG|Jun 8·12:04pm|262|5|0|1|0|0~Still have boxes of VHS tapes in stora|R|FB|Jun 8·12:03pm|330|5|0|2|2|0";
 var TT = [["7652467796810419470",6843,39,3,7],["7657671460558818574",5233,52,0,3],["7652820758296595725",4349,30,1,3],["7657310022522752270",2505,21,0,1],["7651704317472263438",2027,55,0,6],["7653182323986353421",1880,8,0,0],["7656932084526664974",1852,7,0,0],["7656939647662181645",1694,10,0,0],["7655056907685711118",1679,15,1,1],["7657309887885544717",1299,7,0,0],["7657991985470508302",1291,16,0,0],["7652066603709861133",1269,25,0,2],["7653214379168599309",1243,11,1,2],["7654676605909945614",1231,11,0,0],["7652075655605013774",1064,13,0,0],["7655426230656732430",1018,21,2,5],["7651705214080240910",962,16,1,5],["7652812974125534477",962,12,0,1],["7651709198492880142",917,12,1,0],["7657671523301346574",882,4,1,0],["7657992188655193358",876,3,0,0],["7652462304092507406",859,12,0,3],["7654318689533070606",856,9,0,0],["7657992368607464717",822,6,0,0],["7654685676876647693",806,10,1,2],["7652063503724858637",763,7,0,3],["7651669942496021774",758,21,0,1],["7657309950359768334",739,3,0,0],["7655034587101318414",737,5,0,0],["7656938824982990093",729,5,0,0],["7657671421824453901",715,6,0,0],["7654656612233170190",650,8,0,0],["7657992450157333774",643,3,0,0],["7655813344938544398",592,34,2,1],["7657995091335712014",589,7,0,2],["7655435776032869645",569,23,2,1],["7652851551475715342",543,3,0,0],["7657994938746932494",533,4,0,0],["7653186968011951374",472,3,0,0],["7657996416815746318",454,10,0,0],["7649071447142354190",413,18,0,1],["7657996562076814606",409,4,0,2],["7655413313110543630",380,13,2,1],["7653183787915824397",372,4,0,0],["7654326425138285838",346,15,0,0],["7654342832563539213",210,10,0,0],["7655069058139819278",130,7,0,0],["7650170909571026189",124,2,0,0]];
 var YT = [["F8q-eWnd1lw","Digitized my mom's tapes today",2227,36,1,2,4],["Zw6rSMo2fKE","Digitizing is easy. But even better when you're in control!",1670,39,0,0,2],["RnzcFbAkWgY","How To Transfer Old Camcorder Tapes to Your Computer or Phone",1311,7,0,1,2],["goJVcYDN6v4","I bet you're curious to know what your parents have stored in these tapes",1281,38,0,4,0],["07eyzmzFjJI","Retro con just got so much easier to do!",1272,37,0,0,1],["6H0jVwlzGaQ","Rvt Digitzer is the device for you",1263,35,0,3,1],["hUFiT6YPe3o","Stop mailing your tapes away and take control of what's yours",1210,21,0,0,2],["0UPmXPPFnvM","Your VHS Tapes Won't Last Forever #shorts",1132,16,1,1,1],["SjTQNJogflU","No complicated set up needed when digitizing with RVT",1114,21,0,1,1],["FSH7NXlegEM","These memories won't last forever",1113,8,0,0,0],["eqy30Aa5JJQ","Link in our bio for more!",1092,12,2,0,3],["P1mlkXLDfjQ","Cherish those memories forever, and save them with the digitizer",1056,30,2,7,4],["cqoyQ5vgLs4","The RVT digitizer is the best tool to use for digitizing your tapes!",1028,33,0,6,2],["VClb0tpcJYE","Use code YOURTAPES for 20% off",1026,12,0,0,1],["wPo720fPCXk","Your memories deserve more than a box in a closet",981,16,1,3,3],["IyZKQwLzcdk","Your Tapes Won't Last Forever #shorts",969,4,0,0,1],["v8Ju6B0u-qs","Your VHS Tapes Won't Last Forever #shorts",961,4,0,0,1],["DAbxOKY4S5c","Your Childhood Is Sitting In A Box #shorts",956,7,0,0,1],["BnsdNWDUB_s","You won't believe what I saw!!",934,16,0,1,1],["RTtHqdOuEsE","VHS, VHSC, mini DV, and CDs. You can digitize all those RVT",873,18,0,3,1],["Z5dT9YOqvpM","Digitize your VHS tapes with ease",843,17,2,1,1],["HxNliv1raJY","Digitize your own tapes with RVT Digitizer",842,34,0,1,1],["1-6aFarM3mY","Save your tapes forever and convert them using the RVT digitizer",738,14,1,0,1],["Oo8H6JRqD7c","Convert your VHS files into MP4 files",687,5,0,1,0],["ax2ElmzbOq8","Digitize your mini DV tapes with Retrovision",646,15,0,1,2],["XWx4NiiM60Y","Save your memories forever",634,17,0,0,0],["YWmXuV7iAxU","Look how my digitized tape came out",609,17,0,2,1],["bloWR7woXMA","Get those tapes out the basement and start digitizing them now",602,19,0,2,1],["Q3NmROK2HNs","What do you think about this?",531,11,0,0,1],["Yfz0tEwk-88","What do you think about VHS?",510,3,0,1,0],["TVeKPne5YnI","Convert your VHS files into MP4 files",426,5,0,0,0],["3mmaBfFA5sA","Convert your VHS tapes into MP4 files",377,8,1,0,0],["7u3SFCn_Y5I","Those memories won't last forever",376,5,0,0,0],["-ejDIAzjk9U","Get this for your dad on Father's Day",367,6,1,0,1],["m5wWQHIaVnk","Want to know how I digitize my VHS tapes",361,5,0,0,1],["cDpxndIJw8s","Turn Your Old VHS Tapes Into Digital Memories",295,3,0,0,0],["bw2oIqenVgc","How to clean your VCR head! #vcr #vhs #rvt",272,5,0,2,1],["UV4T25-KRiM","Don't Let Your VHS Memories Fade Away",262,9,0,0,0],["lkeupOgDjO4","Turn Old Tapes Into Digital Memories",256,6,0,0,1],["0q4_xHCKC04","Digitize Mini DV Tapes with Your Phone! | Handycam Tutorial",190,5,0,0,0],["De65xlR4MhM","Digitize your tapes at home",186,2,1,0,1],["D0TFQOyt_Z0","Convert Sony Handycam Tapes to Digital - 8mm and MiniDV Made Easy",155,1,0,0,0],["PHKiT-s2A7o","Your Tapes Won't Last Forever #shorts",137,2,0,0,0],["tVc9x2A0yMY","How To Transfer VHS Tapes to a Phone",128,3,0,0,0],["KqdFfEiFBAc","How to Digitize your DVD Home Movies at home!",55,3,1,1,0],["aBF-d-6kuIU","How to digitize VHS-C Tape Using VCR",51,1,0,0,0]];
 function tkDate(id) { var s = Number(BigInt(id) >> 32n); var d = new Date(s * 1000); return (d.getMonth()+1) + "/" + d.getDate(); }
+var typeName = {R:"Reel", P:"Photo", C:"Carousel"};
 var rows = [];
-TT.forEach(function(v) { rows.push({platform:"TikTok", title:"Posted " + tkDate(v[0]) + " — watch video", url:"https://www.tiktok.com/@retrovisiontechinc/video/" + v[0], views:v[1], likes:v[2], comments:v[3], shares:v[4], followers:0}); });
-YT.forEach(function(v) { rows.push({platform:"YouTube", title:v[1], url:"https://www.youtube.com/watch?v=" + v[0], views:v[2], likes:v[3], comments:v[4], shares:v[5], followers:v[6]}); });
-rows.forEach(function(r) { r.er = r.views ? (r.likes + r.comments + r.shares) / r.views * 100 : 0; });
+METARAW.split("~").forEach(function(line) {
+  var f = line.split("|");
+  rows.push({platform:f[2], title:f[0].trim() + "... · " + typeName[f[1]] + " · " + f[3], url:null, views:+f[4], likes:+f[5], comments:+f[6], shares:+f[7], saves:+f[8], followers:+f[9]});
+});
+TT.forEach(function(v) { rows.push({platform:"TikTok", title:"Posted " + tkDate(v[0]) + " — watch video", url:"https://www.tiktok.com/@retrovisiontechinc/video/" + v[0], views:v[1], likes:v[2], comments:v[3], shares:v[4], saves:0, followers:0}); });
+YT.forEach(function(v) { rows.push({platform:"YouTube", title:v[1], url:"https://www.youtube.com/watch?v=" + v[0], views:v[2], likes:v[3], comments:v[4], shares:v[5], saves:0, followers:v[6]}); });
+rows.forEach(function(r) { r.er = r.views ? (r.likes + r.comments + r.shares + r.saves) / r.views * 100 : 0; });
 rows.sort(function(a,b) { return b.views - a.views; });
 rows.forEach(function(r,i) { r.rank = i + 1; });
-var ttViews = 100307, ttEng = 949, ytv = 0, ytl = 0, ytc = 0, yts = 0, ytsubs = 0;
-YT.forEach(function(v) { ytv += v[2]; ytl += v[3]; ytc += v[4]; yts += v[5]; ytsubs += v[6]; });
+var mViews = 0, mEng = 0, mFol = 0, mPosts = 0;
+rows.forEach(function(r) { if (r.platform !== "TikTok" && r.platform !== "YouTube") { mViews += r.views; mEng += r.likes + r.comments + r.shares + r.saves; mFol += r.followers; mPosts++; } });
+var ttViews = 100307, ytv = 0, ytsubs = 0, ytEng = 0;
+YT.forEach(function(v) { ytv += v[2]; ytEng += v[3] + v[4] + v[5]; ytsubs += v[6]; });
 function card(label, big, sub) { return '<div class="card"><div class="label">' + label + '</div><div class="big">' + big + '</div><div class="sub">' + sub + '</div></div>'; }
 document.getElementById("pulse").innerHTML =
-  card("TikTok views (30d)", ttViews.toLocaleString(), "48 posts in window") +
-  card("TikTok engagements", ttEng.toLocaleString(), "+17 followers · 1,765 total") +
-  card("YouTube views (30d)", ytv.toLocaleString(), YT.length + " tracked videos") +
-  card("YouTube engagements", (ytl + ytc + yts).toLocaleString(), "+" + ytsubs + " subscribers") +
-  card("Combined views", (ttViews + ytv).toLocaleString(), "all organic · 30 days");
+  card("Meta views (28d)", mViews.toLocaleString(), mPosts + " FB + IG posts") +
+  card("TikTok views (30d)", ttViews.toLocaleString(), "48 posts · +17 followers") +
+  card("YouTube views (30d)", ytv.toLocaleString(), YT.length + " videos · +" + ytsubs + " subs") +
+  card("Combined views", (mViews + ttViews + ytv).toLocaleString(), "all organic") +
+  card("Meta engagements", mEng.toLocaleString(), "+" + mFol + " follows · saves incl.");
 var showAll = false, sortKey = "views", sortDesc = true;
 function render() {
   var list = rows.slice().sort(function(a,b) {
@@ -89,15 +98,17 @@ function render() {
     if (typeof x === "string") { return sortDesc ? y.localeCompare(x) : x.localeCompare(y); }
     return sortDesc ? y - x : x - y;
   });
-  if (!showAll) list = list.slice(0, 20);
+  if (!showAll) list = list.slice(0, 25);
   var h = "";
   list.forEach(function(r) {
+    var pillClass = r.platform === "TikTok" ? "tt" : (r.platform === "YouTube" ? "yt" : "mt");
+    var t = r.url ? '<a href="' + r.url + '" target="_blank" rel="noopener">' + r.title + '</a>' : r.title;
     h += '<tr' + (r.rank <= 3 ? ' class="top3"' : '') + '><td>' + r.rank + '</td>' +
-      '<td><span class="pill ' + (r.platform === "TikTok" ? "tt" : "yt") + '">' + r.platform + '</span></td>' +
-      '<td><a href="' + r.url + '" target="_blank" rel="noopener">' + r.title + '</a></td>' +
+      '<td><span class="pill ' + pillClass + '">' + r.platform + '</span></td><td>' + t + '</td>' +
       '<td class="num">' + r.views.toLocaleString() + '</td><td class="num">' + r.likes + '</td>' +
       '<td class="num">' + r.comments + '</td><td class="num">' + r.shares + '</td>' +
-      '<td class="num">' + r.er.toFixed(1) + '%</td><td class="num">' + (r.followers || "—") + '</td></tr>';
+      '<td class="num">' + (r.saves || "—") + '</td><td class="num">' + r.er.toFixed(1) + '%</td>' +
+      '<td class="num">' + (r.followers || "—") + '</td></tr>';
   });
   document.querySelector("#board tbody").innerHTML = h;
 }
@@ -110,15 +121,15 @@ document.querySelectorAll("#board th").forEach(function(th) {
 });
 document.getElementById("toggle").addEventListener("click", function() {
   showAll = !showAll;
-  this.textContent = showAll ? "Show top 20 only" : "Show all posts";
+  this.textContent = showAll ? "Show top 25 only" : "Show all posts";
   render();
 });
 render();
 document.getElementById("insights").innerHTML =
-  "<b>1. Nostalgia beats product specs — by ~100x.</b> Emotional hooks (\"Digitized my mom's tapes\" 2.2K, \"Your tapes won't last forever\" x4 versions ~1K each, \"Childhood sitting in a box\" 956) massively outperform feature/promo posts, which mostly sit under 10 views on YouTube.<br><br>" +
-  "<b>2. TikTok is the reach engine.</b> 100K views vs YouTube's ~35K in the same window, and the top TikTok (6.8K views) beats the top YouTube video 3x. YouTube converts attention better though: +" + ytsubs + " subs from tracked videos.<br><br>" +
-  "<b>3. How-to transfer content earns subscribers.</b> \"Transfer old camcorder tapes\" (1.3K views) and the tutorial series drive the most new fans per view — good middle-funnel material.<br><br>" +
-  "<b>4. Paid candidates this week:</b> sort the board by Engagement — \"Cherish those memories forever\" (3.7% eng, 7 shares), \"The RVT digitizer is the best tool\" (3.8% eng), and TikTok's top post (6.8K views) are the strongest boost candidates.";
+  "<b>1. Meta is your organic reach monster: 1.17M views in 28 days</b> — 9x TikTok, 34x YouTube. The top reel alone (Jun 18, 105K views) collected <b>688 saves</b> — saves are people bookmarking to buy later.<br><br>" +
+  "<b>2. One hook rules every platform: nostalgia + urgency.</b> The whole \"Your memories deserve more than a box\" family (105K, 83K, 68K, 57K, 50K...), \"mom's tapes\" (70K Meta + 2.2K YT), \"tapes won't last forever\". Product-spec posts flop everywhere.<br><br>" +
+  "<b>3. Crossposted reels only.</b> FB+IG reels average tens of thousands of views; photos and single-platform posts almost never break 500. Put zero paid dollars behind static photos.<br><br>" +
+  "<b>4. Boost list for the paid push:</b> Jun 18 \"memories deserve more than a box\" (105K views, 688 saves), Jun 25 \"Every tape has a story worth keeping\" (56K, 310 saves, 82 shares), Jun 18 \"Father's Day gift\" angle (59K, 225 saves — seasonal angles work), and TikTok's 6.8K-view top post. These already proved themselves organically — exactly what the Meta ads account needs, where current campaigns pay $134.68 per purchase.";
 </script>
 </body>
 </html>
