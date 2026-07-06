@@ -484,6 +484,34 @@ PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
   draw();
 })();
 </script>
+<section>
+<h2 class="section">Target model <span class="sub">// scenario · 10 orders/day @ $50 CPA · set Jul 6, 2026</span></h2>
+<div class="note" style="margin-bottom:16px"><strong>Scenario assumptions:</strong> 300 orders/mo × $244 AOV · $82 landed cost · ~$35/order fees+shipping · $50 blended CPA · OpEx $9,653/mo (rent waived). Inventory on hand (683 units) covers ~68 days at this pace.</div>
+<div class="cf-row">
+<div class="cf-item"><div class="cf-label">Revenue / month</div><div class="cf-value">$73,200</div><div class="cf-note">10/day · 300 orders · $244 AOV</div></div>
+<div class="cf-item"><div class="cf-label">Ad budget @ $50 CPA</div><div class="cf-value" style="color:#B8730A">$15,000</div><div class="cf-note">~$500/day · ramp in steps as payouts catch up</div></div>
+<div class="cf-item"><div class="cf-label">Net after OpEx</div><div class="cf-value green">+$13,447</div><div class="cf-note">vs −$5,890 today · $19.3K monthly swing</div></div>
+</div>
+<div class="card" style="margin-top:4px;padding:20px">
+<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Monthly waterfall — 10/day @ $50 CPA</div>
+<div style="position:relative;height:260px"><canvas id="targetModelChart"></canvas></div>
+<div class="note" style="margin-top:14px"><strong>CPA path:</strong> Blended $50 needs the mix shifted toward TikTok Shop ($6.93 CPA), email, and retargeting ($92) — not Meta broad ($163). Fixing the 70% checkout abandonment roughly halves every CPA. Cash timing: ads bill daily, payouts lag — ramp spend stepwise ($2.8K cash · $10K LOC headroom).</div>
+</div>
+</section>
+<script>
+(function(){
+function draw(){
+if(!window.Chart){return setTimeout(draw,200);}
+var el=document.getElementById('targetModelChart');
+if(!el){return;}
+new Chart(el.getContext('2d'),{type:'bar',
+data:{labels:['Revenue','- COGS $24.6K','- Fees $10.5K','- Ads $15K','= Margin $23.1K','- OpEx $9.7K','= Net +$13.4K'],
+datasets:[{data:[[0,73200],[48600,73200],[38100,48600],[23100,38100],[0,23100],[13447,23100],[0,13447]],backgroundColor:['#178A95','#D6443B','#D6443B','#D6443B','#FFAF41','#D6443B','#1F7A35'],borderRadius:3,maxBarThickness:52}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{color:'#7A3322',callback:function(v){return '$' + (v/1000) + 'K'}},grid:{color:'rgba(71,21,14,0.08)'}},x:{grid:{display:false},ticks:{color:'#7A3322',autoSkip:false,maxRotation:45,font:{size:10}}}}}});
+}
+draw();
+})();
+</script>
 <footer>
 <span class="badge">Source: admin.shopify.com</span>
 <span class="badge">Source: sellercentral.amazon.com</span>
