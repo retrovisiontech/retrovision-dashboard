@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooee × RetroVision — Ads Progress Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#12100e; --panel:#1d1a17; --panel2:#26221e; --border:#3a342d;
+    --text:#f2ece2; --muted:#a89e8f; --amber:#e8a33d; --green:#6fbf73; --red:#e06c5a; --teal:#5ab8b0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;line-height:1.5;padding:24px 16px 60px}
+  .wrap{max-width:1060px;margin:0 auto}
+  header{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;border-bottom:2px solid var(--amber);padding-bottom:14px;margin-bottom:22px}
+  h1{font-size:1.5rem;letter-spacing:.5px}
+  h1 .x{color:var(--amber)}
+  .meta{color:var(--muted);font-size:.85rem;margin-left:auto;text-align:right}
+  h2{font-size:1.05rem;color:var(--amber);text-transform:uppercase;letter-spacing:1.5px;margin:34px 0 14px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .card .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+  .card .val{font-size:1.55rem;font-weight:700;margin-top:4px}
+  .card .sub{font-size:.75rem;color:var(--muted);margin-top:2px}
+  .good{color:var(--green)} .warn{color:var(--amber)} .bad{color:var(--red)} .teal{color:var(--teal)}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px}
+  .chartbox{position:relative;height:320px}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th{color:var(--muted);text-transform:uppercase;font-size:.7rem;letter-spacing:1px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+  td{padding:9px 10px;border-bottom:1px solid var(--panel2)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.72rem;font-weight:700}
+  .pill.g{background:rgba(111,191,115,.15);color:var(--green)}
+  .pill.a{background:rgba(232,163,61,.15);color:var(--amber)}
+  .pill.r{background:rgba(224,108,90,.15);color:var(--red)}
+  .timeline{list-style:none}
+  .timeline li{position:relative;padding:0 0 20px 26px;border-left:2px solid var(--border);margin-left:8px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--amber);border:2px solid var(--bg)}
+  .timeline .when{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .timeline .what{font-weight:600;margin:2px 0 4px}
+  .timeline p{font-size:.85rem;color:var(--muted)}
+  .track{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .titem{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.86rem}
+  .titem .st{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .note{font-size:.78rem;color:var(--muted);margin-top:10px}
+  footer{margin-top:44px;border-top:1px solid var(--border);padding-top:14px;color:var(--muted);font-size:.75rem}
+  @media(max-width:600px){.card .val{font-size:1.25rem}.chartbox{height:260px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>COOEE <span class="x">×</span> RETROVISION — Ads Progress</h1>
+  <div class="meta">Period: Jun 1 – Jul 8, 2026<br>Generated: Jul 9, 2026 · refreshes Mondays</div>
+</header>
+
+<!-- ============ KPI CARDS ============ -->
+<h2>📊 Scoreboard — engagement to date</h2>
+<div class="cards">
+  <div class="card"><div class="lbl">Meta Ad Spend</div><div class="val">$3,527</div><div class="sub">Jun 1 – Jul 8</div></div>
+  <div class="card"><div class="lbl">Meta Ad Revenue</div><div class="val">$6,946</div><div class="sub">27 purchases</div></div>
+  <div class="card"><div class="lbl">Meta ROAS</div><div class="val warn">1.97×</div><div class="sub">Target: 3.0× · <span class="warn">below goal</span></div></div>
+  <div class="card"><div class="lbl">Cost / Purchase</div><div class="val">$131</div><div class="sub">AOV ≈ $257</div></div>
+  <div class="card"><div class="lbl">TikTok Shop GMV</div><div class="val teal">$2,336</div><div class="sub">9 orders · GMV Max</div></div>
+  <div class="card"><div class="lbl">Clicks / CPC</div><div class="val">6,558</div><div class="sub">CTR 3.15% · CPC $0.54</div></div>
+</div>
+<p class="note">🎯 <b>North star:</b> Cooee's stated goal is ROAS above 3×. Blended (Meta revenue + TikTok GMV vs Meta spend) sits at 2.63× — retargeting is already there at 3.19×.</p>
+
+<!-- ============ WEEKLY CHART ============ -->
+<h2>📈 Week by week</h2>
+<div class="panel">
+  <div class="chartbox"><canvas id="wk"></canvas></div>
+</div>
+
+<!-- ============ WEEKLY TABLE ============ -->
+<div class="panel" style="margin-top:12px;overflow-x:auto">
+<table>
+  <thead><tr><th>Week</th><th class="num">Meta Spend</th><th class="num">Meta Revenue</th><th class="num">ROAS</th><th class="num">Purchases</th><th class="num">Cost/Purchase</th><th class="num">TikTok GMV</th></tr></thead>
+  <tbody>
+    <tr><td>Jun 1–7</td><td class="num">$574.62</td><td class="num">$990.45</td><td class="num"><span class="pill a">1.72×</span></td><td class="num">4</td><td class="num">$143.66</td><td class="num">$300.99</td></tr>
+    <tr><td>Jun 8–14</td><td class="num">$342.35</td><td class="num">$1,332.72</td><td class="num"><span class="pill g">3.89×</span></td><td class="num">4</td><td class="num">$85.59</td><td class="num">—</td></tr>
+    <tr><td>Jun 15–21</td><td class="num">$544.92</td><td class="num">$732.45</td><td class="num"><span class="pill r">1.34×</span></td><td class="num">3</td><td class="num">$181.64</td><td class="num">$232.19</td></tr>
+    <tr><td>Jun 22–28</td><td class="num">$712.94</td><td class="num">$1,714.46</td><td class="num"><span class="pill a">2.40×</span></td><td class="num">7</td><td class="num">$101.85</td><td class="num">$753.64</td></tr>
+    <tr><td>Jun 29–Jul 5</td><td class="num">$1,121.80</td><td class="num">$1,661.94</td><td class="num"><span class="pill r">1.48×</span></td><td class="num">7</td><td class="num">$160.26</td><td class="num">$1,049.23</td></tr>
+    <tr><td>Jul 6–8 <span style="color:var(--muted)">(partial)</span></td><td class="num">$230.05</td><td class="num">$514.00</td><td class="num"><span class="pill a">2.23×</span></td><td class="num">2</td><td class="num">$115.02</td><td class="num">—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ============ CAMPAIGNS ============ -->
+<h2>🎯 Campaigns (Meta)</h2>
+<div class="panel" style="overflow-x:auto">
+<table>
+  <thead><tr><th>Campaign</th><th class="num">Spend</th><th class="num">Revenue</th><th class="num">ROAS</th><th class="num">Purchases</th><th class="num">Cost/Purchase</th></tr></thead>
+  <tbody>
+    <tr><td>Retargeting · Flash Sale (Advantage+)</td><td class="num">$571.45</td><td class="num">$1,821.55</td><td class="num"><span class="pill g">3.19×</span></td><td class="num">7</td><td class="num">$81.64</td></tr>
+    <tr><td>Sales · Broad US (lifetime $500)</td><td class="num">$1,663.40</td><td class="num">$2,698.80</td><td class="num"><span class="pill a">1.62×</span></td><td class="num">10</td><td class="num">$166.34</td></tr>
+    <tr><td>TM Digitizer Sales (CBO off)</td><td class="num">$686.66</td><td class="num">$1,652.80</td><td class="num"><span class="pill a">2.41×</span></td><td class="num">7</td><td class="num">$98.09</td></tr>
+    <tr><td>Carousel (legacy)</td><td class="num">$403.16</td><td class="num">$535.72</td><td class="num"><span class="pill r">1.33×</span></td><td class="num">2</td><td class="num">$201.58</td></tr>
+    <tr><td>Sales · Cold US LAA (lifetime $1,000)</td><td class="num">$202.01</td><td class="num">$237.15</td><td class="num"><span class="pill r">1.17×</span></td><td class="num">1</td><td class="num">$202.01</td></tr>
+  </tbody>
+</table>
+<p class="note">🟢 ≥3× on target · 🟡 1.5–3× building · 🔴 &lt;1.5× needs attention. Retargeting is the winner — its budget was raised 20% this week.</p>
+</div>
+
+<!-- ============ CHECK-IN LOG ============ -->
+<h2>💬 Weekly check-in log (from Slack)</h2>
+<div class="panel">
+<ul class="timeline">
+  <li>
+    <div class="when">Jul 6 · Week of Jun 29 – Jul 5</div>
+    <div class="what">Retargeting keeps improving · first Monthly Paid Report delivered</div>
+    <p>"Perfect Device" video + POV-style demos driving conversions. Urgency hooks ("20% Off Today") top performers. Actions: retargeting budget +20%, A/B test new creatives, push toward 3× ROAS.</p>
+  </li>
+  <li>
+    <div class="when">Jun 26</div>
+    <div class="what">Content shoot day — two shoots at RVT studio</div>
+    <p>Y2K-direction stills with Gen-Z models plus organic video. Footage into editing same day; b-roll delivered to Drive Jul 7.</p>
+  </li>
+  <li>
+    <div class="when">Jun 15 · Week of Jun 8–14</div>
+    <div class="what">20% offer headline lifting purchase intent</div>
+    <p>TikTok + LinkedIn campaigns prepped, pending access/pixel. Plan: gradually raise Meta budgets (underspent vs plan), launch TikTok, test new video set.</p>
+  </li>
+  <li>
+    <div class="when">Jun 12</div>
+    <div class="what">Tracking fixed · TikTok pivots to GMV Max</div>
+    <p>Found + fixed Shopify event-tracking gaps that were starving Meta retargeting. Running Carousel + Broad Sales on lifetime budgets. TikTok website-conversion campaigns paused in favor of GMV Max.</p>
+  </li>
+  <li>
+    <div class="when">Jun 8 · Week of Jun 1–7</div>
+    <div class="what">First weekly update — campaigns ramping</div>
+    <p>Early optimization phase; retargeting assets with discount code in production.</p>
+  </li>
+</ul>
+</div>
+
+<!-- ============ WORK TRACKER ============ -->
+<h2>🛠️ Work tracker</h2>
+<div class="track">
+  <div class="titem"><div class="st good">✅ Done</div>Shopify → Meta event tracking fixed &amp; audited</div>
+  <div class="titem"><div class="st good">✅ Done</div>June content shoot (stills + organic, Y2K direction)</div>
+  <div class="titem"><div class="st good">✅ Done</div>New creative uploaded to campaigns (Jul 7)</div>
+  <div class="titem"><div class="st good">✅ Done</div>First Monthly Paid Report + monthly WIP call locked in</div>
+  <div class="titem"><div class="st warn">🔄 In progress</div>Landing page A/B test — offer page live, 2nd variant due Fri Jul 10</div>
+  <div class="titem"><div class="st warn">🔄 In progress</div>Organic TikTok posts feeding GMV Max (trending sounds)</div>
+  <div class="titem"><div class="st bad">⏳ Waiting</div>Meta pixel on new landing pages — flagged by Naomi Jul 9</div>
+  <div class="titem"><div class="st bad">⏳ Waiting</div>Cooee copy for 2 more landing-page variants (40+ male / Gen-Z hobbyist)</div>
+</div>
+
+<footer>
+  Data: Meta Ads API + TikTok Shop orders (via Windsor.ai) · check-ins from #rvt-coee Slack · Built for RetroVision Tech + Cooee Collective. No secrets here — shared view by design.
+</footer>
+</div>
+
+<script>
+const weeks = ["Jun 1–7","Jun 8–14","Jun 15–21","Jun 22–28","Jun 29–Jul 5","Jul 6–8*"];
+const spend = [574.62,342.35,544.92,712.94,1121.80,230.05];
+const rev   = [990.45,1332.72,732.45,1714.46,1661.94,514.00];
+const gmv   = [300.99,0,232.19,753.64,1049.23,0];
+const roas  = spend.map((s,i)=> +(rev[i]/s).toFixed(2));
+new Chart(document.getElementById('wk'),{
+  data:{labels:weeks,datasets:[
+    {type:'bar',label:'Meta spend $',data:spend,backgroundColor:'rgba(232,163,61,.55)',borderRadius:4},
+    {type:'bar',label:'Meta revenue $',data:rev,backgroundColor:'rgba(111,191,115,.55)',borderRadius:4},
+    {type:'bar',label:'TikTok GMV $',data:gmv,backgroundColor:'rgba(90,184,176,.55)',borderRadius:4},
+    {type:'line',label:'ROAS',data:roas,yAxisID:'y1',borderColor:'#f2ece2',backgroundColor:'#f2ece2',tension:.3,pointRadius:4}
+  ]},
+  options:{
+    maintainAspectRatio:false,
+    scales:{
+      y:{ticks:{color:'#a89e8f',callback:v=>'$'+v},grid:{color:'#3a342d'}},
+      y1:{position:'right',min:0,max:5,ticks:{color:'#a89e8f',callback:v=>v+'×'},grid:{drawOnChartArea:false}},
+      x:{ticks:{color:'#a89e8f'},grid:{display:false}}
+    },
+    plugins:{
+      legend:{labels:{color:'#f2ece2'}},
+      annotation:undefined,
+      tooltip:{callbacks:{label:c=> c.dataset.label==='ROAS' ? ' ROAS '+c.parsed.y+'×' : ' '+c.dataset.label.replace(' $','')+': $'+c.parsed.y.toLocaleString()}}
+    }
+  }
+});
+</script>
+</body>
+</html>
