@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>First Commercial Bank Properties — Portfolio Dashboard</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --surface-1:#131c31; --page:#0b1220;
+    --ink-1:#f2f5fb; --ink-2:#aab4c8; --ink-3:#78849e;
+    --grid:#232e47; --axis:#33405e; --border:rgba(148,170,220,.14);
+    --series-1:#4d95ec; --deemph:#4a5570;
+    --good:#35c46b; --warn-bg:#20263c; --warn-ink:#a9bce0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page) radial-gradient(1100px 420px at 50% -80px, rgba(77,149,236,.14), transparent 70%) no-repeat;color:var(--ink-1);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+  .tile,.card{box-shadow:0 1px 0 rgba(148,170,220,.06) inset, 0 8px 22px rgba(0,0,0,.28)}
+  .viz-root{max-width:1060px;margin:0 auto;padding:28px 20px 48px}
+  header h1{font-size:24px;font-weight:650;letter-spacing:-.01em}
+  header .sub{color:var(--ink-2);font-size:13.5px;margin-top:4px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin-top:18px}
+  .tile{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+  .tile .lbl{font-size:12px;color:var(--ink-2)}
+  .tile .val{font-size:26px;font-weight:600;margin-top:4px}
+  .tile .sub{font-size:11.5px;color:var(--ink-3);margin-top:4px}
+  .tile .up{color:var(--good);font-weight:600}
+  .tile .down,.down{color:#ef7676;font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-top:12px}
+  .card h2{font-size:14px;font-weight:650;letter-spacing:.01em}
+  .card .h-sub{font-size:12px;color:var(--ink-3);margin-top:2px;margin-bottom:10px}
+  .prop{margin-top:26px;padding-top:10px;border-top:1px solid var(--grid)}
+  .prop h2.prop-title{font-size:18px;font-weight:650;margin-top:8px}
+  .prop .prop-sub{color:var(--ink-2);font-size:12.5px;margin-top:2px}
+  svg text{font-family:inherit}
+  .axis-t{font-size:11px;fill:var(--ink-3)}
+  .dlab{font-size:11px;fill:var(--ink-2);font-variant-numeric:tabular-nums}
+  .dlab.strong{fill:var(--ink-1);font-weight:600}
+  .loan{border-left:3px solid var(--series-1);padding:10px 14px;margin-top:10px}
+  .loan.closed{border-left-color:var(--deemph)}
+  .loan .t{font-size:13px;font-weight:650}
+  .loan .badge{font-size:10.5px;font-weight:600;border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:1px;white-space:nowrap}
+  .loan .badge.active{background:var(--series-1);color:#fff}
+  .loan .badge.closed{background:var(--deemph);color:var(--ink-1)}
+  .loan .badge.soon{background:transparent;border:1px solid var(--series-1);color:var(--series-1)}
+  .loan .rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 16px;margin-top:8px;font-size:12.5px}
+  .loan .rows .l{color:var(--ink-3);font-size:11px}
+  .loan .rows .v{font-weight:600;font-variant-numeric:tabular-nums}
+  .note{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 12px;font-size:12.5px;margin-top:10px;line-height:1.45}
+  .occ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:10px;margin-top:4px}
+  .occ-prop{border:1px solid var(--grid);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.015)}
+  .occ-t{font-size:12.5px;font-weight:650}
+  .occ-t .cnt{color:var(--ink-3);font-weight:500;font-size:11px}
+  .chip-u{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:7px;padding:6px 9px;margin-top:6px;font-size:12px;border:1px solid var(--grid)}
+  .chip-u .nm{font-weight:600}
+  .chip-u .rt{font-variant-numeric:tabular-nums;color:var(--ink-2)}
+  .chip-u.occ{border-left:3px solid var(--good)}
+  .chip-u.hold{border-left:3px solid #e0b34d}
+  .chip-u.vac{border-left:3px solid #ef7676}
+  .chip-u.vac .nm,.chip-u.vac .rt{color:var(--ink-3)}
+  .st{font-size:10px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+  .st.occ{color:var(--good)}
+  .st.hold{color:#e0b34d}
+  .st.vac{color:#ef7676}
+  .occ-legend{display:flex;gap:16px;font-size:11.5px;color:var(--ink-2);margin:8px 0 2px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+  th{text-align:left;color:var(--ink-3);font-weight:500;font-size:11.5px;padding:6px 8px;border-bottom:1px solid var(--grid)}
+  td{padding:6px 8px;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums}
+  td.r,th.r{text-align:right}
+  .foot{color:var(--ink-3);font-size:11.5px;margin-top:16px;line-height:1.55}
+  .tip{position:fixed;pointer-events:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.4);padding:8px 11px;font-size:12px;display:none;z-index:10}
+  .tip .tv{font-weight:650;font-size:13px}
+  .tip .tl{color:var(--ink-2);margin-top:1px}
+  .bar{cursor:default}
+  .bar:hover{filter:brightness(1.12)}
+</style>
+</head>
+<body>
+<div class="viz-root">
+  <header>
+    <h1>🏦 First Commercial Bank Properties</h1>
+    <div class="sub">Burwood Realty 2, LLC · San Antonio, TX · Properties tied to the FCB portfolio loan · As of July 12, 2026</div>
+  </header>
+
+  <div class="kpis">
+    <div class="tile">
+      <div class="lbl">Portfolio loan balance</div>
+      <div class="val">$371,458</div>
+      <div class="sub">8.25% · payoff $373,926.84 · matures Dec 2042</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Portfolio loan payment</div>
+      <div class="val">$3,466.51<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+      <div class="sub">Next due Jul 14, 2026 · $0 past due</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Occupancy</div>
+      <div class="val">7 <span style="font-size:15px;color:var(--ink-3)">of 10 units</span></div>
+      <div class="sub">70% · 3 vacant · 2 expired leases + 1 no lease on file</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Rent in place (all properties)</div>
+      <div class="val">$6,975<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+      <div class="sub">Eldorado $1,450 + Nancy $2,525 + Bustillos $3,000</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Rent − all loan payments</div>
+      <div class="val up">+$31<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+      <div class="sub">$6,975 − $6,944.29 (portfolio + 3 property loans) · break-even</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:rgba(224,179,77,.35)">
+    <h2>📥 Needed for this dashboard <span style="color:var(--ink-3);font-weight:500;font-size:12px">· updated weekly in chat · last updated Jul 12, 2026</span></h2>
+    <div class="h-sub">Documents still missing from the Drive — drop them in the property folders and tell Claude to refresh</div>
+    <table>
+      <thead><tr><th style="width:30px"></th><th>Item</th><th>Where it goes</th></tr></thead>
+      <tbody>
+        <tr><td>☐</td><td><b>Utility bills</b> — all properties</td><td>F.6 Utilities folders</td></tr>
+        <tr><td>☐</td><td><b>111 Nancy B lease</b> — unit is rented at $600/mo but no lease is on file</td><td>111 Nancy Unit B (back) folder</td></tr>
+        <tr><td>☐</td><td style="color:var(--ink-2)">Renewed leases for 111 Nancy A (expired 3/2024) and 335 Bustillos #2 (expired 5/2023)</td><td style="color:var(--ink-2)">unit folders</td></tr>
+        <tr><td>☐</td><td style="color:var(--ink-2)">Bustillos appraisal — $585K value has no document behind it yet</td><td style="color:var(--ink-2)">F.5 Bustillo - Appraisals</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🔮 Outlook — with the vacant units filled</h2>
+    <div class="h-sub">Projection at your target rents: 327 #2 and 335 #1 at $1,250 each, 109 Nancy B at $799 — the last 3 vacant units</div>
+    <div class="kpis" style="margin-top:10px">
+      <div class="tile" style="border-color:rgba(53,196,107,.35)">
+        <div class="lbl">Projected rent</div>
+        <div class="val">$10,274<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">$6,975 today + $3,299 from the 3 vacant units</div>
+      </div>
+      <div class="tile" style="border-color:rgba(53,196,107,.35)">
+        <div class="lbl">Projected cash flow</div>
+        <div class="val up">+$3,330<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">Up from +$31 today · ≈$39,957/yr before taxes &amp; insurance</div>
+      </div>
+      <div class="tile" style="border-color:rgba(53,196,107,.35)">
+        <div class="lbl">Projected occupancy</div>
+        <div class="val">10 <span style="font-size:15px;color:var(--ink-3)">of 10 units</span></div>
+        <div class="sub">100% — every rentable unit producing</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Unit to fill</th><th>Target rent</th><th class="r">Adds</th></tr></thead>
+      <tbody>
+        <tr><td><b>327 Bustillos #2</b></td><td>market-ready after repairs</td><td class="r">$1,250/mo</td></tr>
+        <tr><td><b>335 Bustillos #1</b></td><td>market-ready after repairs</td><td class="r">$1,250/mo</td></tr>
+        <tr><td><b>109 Nancy B</b> (back)</td><td>after clean-out &amp; prep</td><td class="r">$799/mo</td></tr>
+        <tr><td colspan="2"><b>Added rent</b></td><td class="r"><b>$3,299/mo</b></td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:20px">🔧 Make-ready spend to get there</h2>
+    <div class="h-sub">Estimated repair &amp; prep cost per property, July 2026</div>
+    <table>
+      <thead><tr><th>Property</th><th>Scope of work</th><th class="r">Estimate</th></tr></thead>
+      <tbody>
+        <tr><td><b>1035 Eldorado</b></td><td>Nothing needed right now</td><td class="r" style="color:var(--good)"><b>$0</b></td></tr>
+        <tr><td><b>109 &amp; 111 Nancy</b></td><td>Repair roof and water-heater cover (tree fell on it) · finish clean-out and property cleanup of 109 B to prep it for rent</td><td class="r"><b>$3,000</b></td></tr>
+        <tr><td><b>327–335 Bustillos</b></td><td>Fix the two vacant units (327 #2, 335 #1) to make them rentable</td><td class="r"><b>$30,000</b></td></tr>
+        <tr><td colspan="2"><b>Total make-ready spend</b></td><td class="r"><b>$33,000</b></td></tr>
+      </tbody>
+    </table>
+    <div class="note">💡 The $33,000 pays for itself in about <b>10 months</b> of the added rent ($3,299/mo) — and it takes the portfolio from break-even (+$31/mo) to +$3,330/mo at 100% occupancy.</div>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ Property layout — occupied vs vacant</h2>
+    <div class="h-sub">10 rentable units across 4 properties · 7 occupied (2 expired leases, 1 no lease on file) · 3 vacant · 70% occupancy</div>
+    <div class="occ-legend">
+      <span><span class="st occ">✓ OCCUPIED</span></span>
+      <span><span class="st hold">⚠ HOLDOVER / NO LEASE</span> <span style="color:var(--ink-3)">— paying, no current lease on file</span></span>
+      <span><span class="st vac">○ VACANT</span></span>
+    </div>
+    <div class="occ-grid">
+      <div class="occ-prop">
+        <div class="occ-t">🏠 1035 Eldorado <span class="cnt">· 2 houses · 2 occupied</span></div>
+        <div class="chip-u occ"><span class="nm">1035 main house</span><span class="rt">$1,450 (both)</span><span class="st occ">✓ OCCUPIED</span></div>
+        <div class="chip-u occ"><span class="nm">1033 back house</span><span class="rt">in same lease</span><span class="st occ">✓ OCCUPIED</span></div>
+      </div>
+      <div class="occ-prop">
+        <div class="occ-t">🏠 109 Nancy Pl <span class="cnt">· 2 houses · 1 occupied</span></div>
+        <div class="chip-u occ"><span class="nm">A (front)</span><span class="rt">$925</span><span class="st occ">✓ OCCUPIED</span></div>
+        <div class="chip-u vac"><span class="nm">B (back)</span><span class="rt">→ $799 target</span><span class="st vac">○ VACANT</span></div>
+      </div>
+      <div class="occ-prop">
+        <div class="occ-t">🏠 111 Nancy Pl <span class="cnt">· 2 houses · 2 occupied</span></div>
+        <div class="chip-u hold"><span class="nm">A (front)</span><span class="rt">$1,000</span><span class="st hold">⚠ HOLDOVER</span></div>
+        <div class="chip-u hold"><span class="nm">B (back)</span><span class="rt">$600</span><span class="st hold">⚠ NO LEASE</span></div>
+      </div>
+      <div class="occ-prop">
+        <div class="occ-t">🏠 327–335 Bustillos <span class="cnt">· 4 units · 2 occupied · +331 (land)</span></div>
+        <div class="chip-u occ"><span class="nm">327 #1</span><span class="rt">$1,500</span><span class="st occ">✓ OCCUPIED</span></div>
+        <div class="chip-u vac"><span class="nm">327 #2</span><span class="rt">→ $1,250 target</span><span class="st vac">○ VACANT</span></div>
+        <div class="chip-u vac"><span class="nm">335 #1</span><span class="rt">→ $1,250 target</span><span class="st vac">○ VACANT</span></div>
+        <div class="chip-u hold"><span class="nm">335 #2</span><span class="rt">$1,500</span><span class="st hold">⚠ HOLDOVER</span></div>
+        <div class="chip-u" style="border-left:3px solid var(--deemph)"><span class="nm" style="color:var(--ink-3)">331 — field</span><span class="rt" style="color:var(--ink-3)">not zoned to rent</span></div>
+      </div>
+    </div>
+    <div class="foot" style="margin-top:8px">Target rents on the vacant chips are your estimates (Jul 2026) — $3,299/mo of unrealized rent across the 3 rent-ready-after-repairs units. 331 Bustillos is an open field without rental zoning — excluded from the unit count (a zoning-change request is on file).</div>
+  </div>
+
+  <div class="card">
+    <h2>📊 How the portfolio loan is split</h2>
+    <div class="h-sub">Your internal allocation of the $371,458.19 balance — the bank holds all properties as collateral for the full note</div>
+    <svg id="splitChart" width="100%" height="190" viewBox="0 0 1000 190" preserveAspectRatio="none" aria-label="Loan split by property"></svg>
+    <table>
+      <thead><tr><th>Property</th><th class="r">Share</th><th class="r">Balance share</th><th class="r">Payment share</th></tr></thead>
+      <tbody>
+        <tr><td>327–335 Bustillos <span style="color:var(--ink-3)">(5 units, 3 lots)</span></td><td class="r">50%</td><td class="r">$185,729.10</td><td class="r">$1,733.26/mo</td></tr>
+        <tr><td>1035 Eldorado St</td><td class="r">30%</td><td class="r">$111,437.46</td><td class="r">$1,039.95/mo</td></tr>
+        <tr><td>109 Nancy Pl</td><td class="r">10%</td><td class="r">$37,145.82</td><td class="r">$346.65/mo</td></tr>
+        <tr><td>111 Nancy Pl</td><td class="r">10%</td><td class="r">$37,145.82</td><td class="r">$346.65/mo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= 1035 ELDORADO ================= -->
+  <div class="prop">
+    <h2 class="prop-title">🏠 1035 Eldorado St <span style="color:var(--ink-3);font-weight:500;font-size:13px">· 78225 · PID 154333 · main house + back 1-bed (1033), rented together</span></h2>
+    <div class="kpis">
+      <div class="tile">
+        <div class="lbl">Tax value (BCAD 2026)</div>
+        <div class="val">$220,000</div>
+        <div class="sub">Redfin market estimate $158,877 ($151K–$183K)</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Rent</div>
+        <div class="val">$1,450<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">One lease, both houses · thru 10/31/26 then M2M</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Debt (own loan + 30% share)</div>
+        <div class="val">≈$192,085</div>
+        <div class="sub">$80,647 own (8.50%, $841.53/mo) + $111,437 share</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Cash flow</div>
+        <div class="val down">−$431<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">$1,450 − $1,881.48 payments · equity ≈$27,915 at tax value</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>📈 BCAD value history & where debt sits</h2>
+      <div class="grid2">
+        <svg id="valChart" width="100%" height="210" viewBox="0 0 500 210" aria-label="Eldorado appraised value by year"></svg>
+        <svg id="cmpChart" width="100%" height="210" viewBox="0 0 500 210" aria-label="Eldorado value vs debt"></svg>
+      </div>
+      <div class="foot">Left: final BCAD value by year (2022 protested $222,690 → $175,000; 2025 settled $225,000 → $220,000). Right: Redfin estimate vs tax value vs this property's total debt (red line).</div>
+    </div>
+  </div>
+
+  <!-- ================= 109 NANCY ================= -->
+  <div class="prop">
+    <h2 class="prop-title">🏠 109 Nancy Pl <span style="color:var(--ink-3);font-weight:500;font-size:13px">· 78204 · NCB 6235 Blk 5 Lot 33 · two houses (A front, B back)</span></h2>
+    <div class="kpis">
+      <div class="tile">
+        <div class="lbl">Value (owner estimate)</div>
+        <div class="val">$90,000</div>
+        <div class="sub">Nov 2022 appraisal was $115,000 as-is</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Rent</div>
+        <div class="val">$925<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">Unit A only · Unit B has no lease on file</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Debt (10% share)</div>
+        <div class="val">$37,146</div>
+        <div class="sub">$346.65/mo share · no separate active loan on file</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Cash flow</div>
+        <div class="val up">+$578<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">$925 − $346.65 · equity ≈$52,854 at stated value</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>🚪 Units</h2>
+      <table>
+        <thead><tr><th>Unit</th><th>Status</th><th class="r">Rent</th></tr></thead>
+        <tbody>
+          <tr><td><b>109 A</b> (front)</td><td>Leased — tenant, 9/19/24 → 9/30/25, now month-to-month</td><td class="r"><b>$925/mo</b></td></tr>
+          <tr><td><b>109 B</b> (back)</td><td><span class="st vac">○ VACANT</span> — since eviction, Feb 2024</td><td class="r">$0</td></tr>
+        </tbody>
+      </table>
+      <div class="note">📜 Loan history: FCB $76,000 note (Oct 2020, 4.95%, $502.47/mo) was secured by this lot — retired in the Dec 2022 portfolio refi.</div>
+    </div>
+  </div>
+
+  <!-- ================= 111 NANCY ================= -->
+  <div class="prop">
+    <h2 class="prop-title">🏠 111 Nancy Pl <span style="color:var(--ink-3);font-weight:500;font-size:13px">· 78204 · NCB 6235 Blk 5 Lot 34 · two houses (A front, B back)</span></h2>
+    <div class="kpis">
+      <div class="tile">
+        <div class="lbl">Value (owner estimate)</div>
+        <div class="val">$90,000</div>
+        <div class="sub">Apr 2024 appraisal was $75,000 as-is / $85,000 income</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Rent</div>
+        <div class="val">$1,600<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">A $1,000 (expired lease) + B $600 (no lease on file)</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Debt (own loan + 10% share)</div>
+        <div class="val">≈$137,146</div>
+        <div class="sub">$100,000 interest-only (August REI) + $37,146 share</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Cash flow</div>
+        <div class="val up">+$420<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">$1,600 − $1,179.98 payments · <span class="down" style="font-size:11px">≈ −$47,146 equity at stated value</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>🚪 Units</h2>
+      <table>
+        <thead><tr><th>Unit</th><th>Status</th><th class="r">Rent</th></tr></thead>
+        <tbody>
+          <tr><td><b>111 A</b> (front)</td><td>Tenant — lease 8/1/23 → 3/31/24, expired; no newer lease on file</td><td class="r"><b>$1,000/mo</b></td></tr>
+          <tr><td><b>111 B</b> (back)</td><td><span class="st hold">⚠ OCCUPIED — NO LEASE ON FILE</span> — rented per owner, Jul 2026</td><td class="r"><b>$600/mo</b></td></tr>
+        </tbody>
+      </table>
+      <div class="loan">
+        <span class="t">Property loan — August REI, LLC</span><span class="badge active">ACTIVE · INTEREST-ONLY</span>
+        <div class="rows">
+          <div><div class="l">Balance</div><div class="v">$100,000.00</div></div>
+          <div><div class="l">Rate</div><div class="v">10.00%</div></div>
+          <div><div class="l">Payment (interest)</div><div class="v">≈$833.33/mo</div></div>
+          <div><div class="l">Closed</div><div class="v">Sep 15, 2022</div></div>
+        </div>
+        <div class="rows" style="margin-top:6px">
+          <div><div class="l">Structure</div><div class="v" style="font-weight:500">Interest-only — the $100,000 principal doesn’t shrink until refinanced or paid off</div></div>
+        </div>
+      </div>
+      <div class="note">⚠️ Neither unit has current paper: 111 A's lease ended 3/31/2024 and 111 B has no lease in the Drive at all — get both signed and filed. With B's $600 the property now covers its payments (+$420/mo), but the $100K interest-only note still never amortizes.</div>
+    </div>
+  </div>
+
+  <!-- ================= BUSTILLOS ================= -->
+  <div class="prop">
+    <h2 class="prop-title">🏠 327–335 Bustillos <span style="color:var(--ink-3);font-weight:500;font-size:13px">· 78214 · Salinas Subdivision, NCB 7674 Blk C Lots 17–19 · 4 units on 3 lots (331 = unzoned field)</span></h2>
+    <div class="kpis">
+      <div class="tile">
+        <div class="lbl">Value (owner estimate)</div>
+        <div class="val">$585,000</div>
+        <div class="sub">No appraisal on file · equity ≈$223,206 at stated value</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Rent</div>
+        <div class="val">$3,000<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">2 of 4 units paying · one lease expired, treated as holdover</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Debt (own loan + 50% share)</div>
+        <div class="val">≈$361,794</div>
+        <div class="sub">$176,065 own (8.50%, $1,802.92/mo) + $185,729 share</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">Cash flow</div>
+        <div class="val down">−$536<span style="font-size:14px;color:var(--ink-3)">/mo</span></div>
+        <div class="sub">$3,000 − $3,536.18 payments · before taxes &amp; insurance</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>🚪 Units</h2>
+      <table>
+        <thead><tr><th>Unit</th><th>Status</th><th class="r">Rent</th></tr></thead>
+        <tbody>
+          <tr><td><b>327 #1</b></td><td>Leased — tenant, from 5/1/2024</td><td class="r"><b>$1,500/mo</b></td></tr>
+          <tr><td><b>327 #2</b></td><td><span class="st vac">○ VACANT</span> — no lease on file</td><td class="r">$0</td></tr>
+          <tr><td><b>335 #1</b></td><td><span class="st vac">○ VACANT</span> — no lease on file</td><td class="r">$0</td></tr>
+          <tr><td><b>331</b> <span style="color:var(--ink-3)">(land)</span></td><td style="color:var(--ink-3)">Open field — not zoned for rental; zoning-change request on file</td><td class="r" style="color:var(--ink-3)">n/a</td></tr>
+          <tr><td><b>335 #2</b></td><td>Lease expired 5/31/2023 at $1,500 — treated as holdover</td><td class="r"><b>$1,500/mo</b></td></tr>
+        </tbody>
+      </table>
+      <div class="loan">
+        <span class="t">Property loan — servicing stmt, Jul 2026</span><span class="badge active">ACTIVE</span>
+        <div class="rows">
+          <div><div class="l">Balance</div><div class="v">$176,065.34</div></div>
+          <div><div class="l">Rate</div><div class="v">8.50%</div></div>
+          <div><div class="l">Payment due</div><div class="v">$1,802.92</div></div>
+          <div><div class="l">Payoff</div><div class="v">$176,855.19</div></div>
+        </div>
+        <div class="rows" style="margin-top:6px">
+          <div><div class="l">Original amount</div><div class="v">$217,800.00</div></div>
+          <div><div class="l">Matures</div><div class="v">Jul 24, 2040</div></div>
+          <div><div class="l">Next payment</div><div class="v">Jul 24, 2026</div></div>
+          <div><div class="l">Account</div><div class="v">•••••</div></div>
+        </div>
+        <div class="rows" style="margin-top:6px">
+          <div><div class="l">Interest paid</div><div class="v" style="font-weight:500">$7,647.06 this year · $11,906.63 last year</div></div>
+          <div><div class="l">Past due / escrow</div><div class="v">$0.00 / $0.00</div></div>
+        </div>
+      </div>
+      <div class="note">⚠️ Two of four units show no income and the 335 #2 lease expired over three years ago — confirm who's actually in place and get current leases signed. Filling the two empty units at ~$1,500 would add ≈$3,000/mo and flip this property into the green. Loan history on file: FCB $25,000 2nd lien (Sep 2020).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Portfolio summary</h2>
+    <table>
+      <thead><tr><th>Property</th><th class="r">Value</th><th class="r">Rent/mo</th><th class="r">Debt (incl. share)</th><th class="r">Payments/mo</th><th class="r">Cash flow/mo</th></tr></thead>
+      <tbody>
+        <tr><td>1035 Eldorado</td><td class="r">$220,000 <span style="color:var(--ink-3)">(BCAD)</span></td><td class="r">$1,450</td><td class="r">$192,085</td><td class="r">$1,881.48</td><td class="r down">−$431.48</td></tr>
+        <tr><td>109 Nancy Pl</td><td class="r">$90,000 <span style="color:var(--ink-3)">(owner est.)</span></td><td class="r">$925</td><td class="r">$37,146</td><td class="r">$346.65</td><td class="r" style="color:var(--good)">+$578.35</td></tr>
+        <tr><td>111 Nancy Pl</td><td class="r">$90,000 <span style="color:var(--ink-3)">(owner est.)</span></td><td class="r">$1,600</td><td class="r">$137,146</td><td class="r">$1,179.98</td><td class="r" style="color:var(--good)">+$420.02</td></tr>
+        <tr><td>327–335 Bustillos</td><td class="r">$585,000 <span style="color:var(--ink-3)">(owner est.)</span></td><td class="r">$3,000</td><td class="r">$361,794</td><td class="r">$3,536.18</td><td class="r down">−$536.18</td></tr>
+        <tr><td><b>Total</b></td><td class="r"><b>$985,000</b></td><td class="r"><b>$6,975</b></td><td class="r"><b>$728,171</b></td><td class="r"><b>$6,944.29</b></td><td class="r" style="color:var(--good)"><b>+$30.71</b></td></tr>
+      </tbody>
+    </table>
+    <div class="note">⚖️ Portfolio-wide, rent covers the loan payments almost exactly (+$31/mo before taxes &amp; insurance) — break-even. At the stated values, total equity ≈ $257K ($985K value − $728K debt), resting heavily on the $585K Bustillos estimate with no appraisal behind it. The path forward: $33,000 of make-ready work fills the last 3 vacant units for +$3,299/mo (see Outlook above). The paper problem: three paying tenants have no current lease on file (111 Nancy A &amp; B, 335 Bustillos #2). And the $100K interest-only note never amortizes at $833/mo.</div>
+  </div>
+
+  <div class="foot">
+    Sources: FCB servicing statements Jul 2026 (three FCB accounts, numbers withheld) · August REI $100K interest-only loan (NETCO closing 9/15/2022, confirmed active by owner) · Nov 2025 Eldorado lease · 109 Nancy Unit A lease (9/2024) · 111 Nancy Unit A lease (8/2023) · 111 Nancy B rent per owner, no lease on file (7/2026) · 327 Bustillos #1 lease (5/2024) · 335 Bustillos #2 lease (exp. 5/31/23) · 109 Nancy appraisal 11/21/2022 · 111 Nancy appraisal 4/5/2024 · BCAD notices &amp; ARB orders · Redfin (Jul 2026) · CD Settlement 10/2020 · NETCO closing statement 9/2022.<br>
+    The 30/50/10/10 split is your internal allocation — the bank holds all collateral for the full note. Nancy and Bustillos values are owner estimates (Jul 2026); prior appraisals shown for reference; Eldorado uses the BCAD value. Shared copy — loan account numbers and tenant names removed. Not financial advice.
+  </div>
+</div>
+
+<div class="tip" id="tip"><div class="tv" id="tipV"></div><div class="tl" id="tipL"></div></div>
+
+<script>
+(function(){
+  var tip=document.getElementById('tip'),tipV=document.getElementById('tipV'),tipL=document.getElementById('tipL');
+  function fmt(n){return '$'+n.toLocaleString('en-US')}
+  function showTip(e,v,l){tipV.textContent=v;tipL.textContent=l;tip.style.display='block';
+    var x=e.clientX+14,y=e.clientY+12;
+    if(x+tip.offsetWidth>window.innerWidth-8)x=e.clientX-tip.offsetWidth-10;
+    tip.style.left=x+'px';tip.style.top=y+'px';}
+  function hideTip(){tip.style.display='none'}
+  var css=getComputedStyle(document.querySelector('.viz-root'));
+  var C1=css.getPropertyValue('--series-1').trim(),CD=css.getPropertyValue('--deemph').trim(),
+      AX=css.getPropertyValue('--axis').trim(),GR=css.getPropertyValue('--grid').trim();
+  var ns='http://www.w3.org/2000/svg';
+  function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function hbar(svg,x,y,w,h,color,val,label){
+    var r=el('path',{d:'M'+x+' '+y+' H'+(x+w-4)+' Q'+(x+w)+' '+y+' '+(x+w)+' '+(y+4)+' V'+(y+h-4)+' Q'+(x+w)+' '+(y+h)+' '+(x+w-4)+' '+(y+h)+' H'+x+' Z',fill:color,'class':'bar'});
+    r.addEventListener('pointermove',function(e){showTip(e,val,label)});
+    r.addEventListener('pointerleave',hideTip);
+    svg.appendChild(r);
+    return r;
+  }
+
+  /* ---- split chart: horizontal bars per property ---- */
+  var sc=document.getElementById('splitChart');
+  var split=[{l:'327–335 Bustillos (50%)',v:185729.10,pay:'$1,733.26/mo'},
+             {l:'1035 Eldorado (30%)',v:111437.46,pay:'$1,039.95/mo'},
+             {l:'109 Nancy (10%)',v:37145.82,pay:'$346.65/mo'},
+             {l:'111 Nancy (10%)',v:37145.82,pay:'$346.65/mo'}];
+  var W=1000,H=190,pL=170,pR=90,pT=8,pB=8,mx=200000;
+  var pw=W-pL-pR,ph=H-pT-pB,rh=24,rowH=ph/split.length;
+  split.forEach(function(d,i){
+    var y=pT+rowH*i+(rowH-rh)/2,w=(d.v/mx)*pw;
+    var lb=el('text',{x:pL-10,y:y+rh/2+4,'text-anchor':'end','class':'axis-t'});lb.textContent=d.l;sc.appendChild(lb);
+    hbar(sc,pL,y,w,rh,C1,fmt(Math.round(d.v)),d.l+' · '+d.pay);
+    var vl=el('text',{x:pL+w+8,y:y+rh/2+4,'class':'dlab strong'});vl.textContent=fmt(Math.round(d.v));sc.appendChild(vl);
+  });
+
+  /* ---- Eldorado value history ---- */
+  var vc=document.getElementById('valChart');
+  var years=[{y:'2021',v:99500},{y:'2022',v:175000},{y:'2025',v:220000},{y:'2026',v:220000}];
+  var W2=500,H2=210,p2L=8,p2R=8,p2T=24,p2B=22,mx2=250000;
+  var pw2=W2-p2L-p2R,ph2=H2-p2T-p2B,band=pw2/years.length,bw=24;
+  [0,100000,200000].forEach(function(g){
+    var y=p2T+ph2-(g/mx2)*ph2;
+    vc.appendChild(el('line',{x1:p2L,x2:W2-p2R,y1:y,y2:y,stroke:g===0?AX:GR,'stroke-width':1}));
+    if(g>0){var t=el('text',{x:p2L+2,y:y-4,'class':'axis-t'});t.textContent=(g/1000)+'K';vc.appendChild(t);}
+  });
+  years.forEach(function(d,i){
+    var cx=p2L+band*i+band/2,h=(d.v/mx2)*ph2,x=cx-bw/2,y=p2T+ph2-h;
+    var r=el('path',{d:'M'+x+' '+(p2T+ph2)+' V'+(y+4)+' Q'+x+' '+y+' '+(x+4)+' '+y+' H'+(x+bw-4)+' Q'+(x+bw)+' '+y+' '+(x+bw)+' '+(y+4)+' V'+(p2T+ph2)+' Z',fill:C1,'class':'bar'});
+    r.addEventListener('pointermove',function(e){showTip(e,fmt(d.v),'BCAD final value '+d.y)});
+    r.addEventListener('pointerleave',hideTip);
+    vc.appendChild(r);
+    var lb=el('text',{x:cx,y:y-6,'text-anchor':'middle','class':'dlab strong'});lb.textContent=(d.v/1000)+'K';vc.appendChild(lb);
+    var xt=el('text',{x:cx,y:H2-6,'text-anchor':'middle','class':'axis-t'});xt.textContent=d.y;vc.appendChild(xt);
+  });
+
+  /* ---- Eldorado market vs tax vs debt ---- */
+  var cc=document.getElementById('cmpChart');
+  var cmp=[{l:'Redfin est.',v:158877,c:CD},{l:'BCAD value',v:220000,c:C1}];
+  var W3=500,H3=210,p3L=90,p3R=76,p3T=30,p3B=16,mx3=240000;
+  var pw3=W3-p3L-p3R,ph3=H3-p3T-p3B,rh3=26,rowH3=ph3/cmp.length;
+  cmp.forEach(function(d,i){
+    var y=p3T+rowH3*i+(rowH3-rh3)/2,w=(d.v/mx3)*pw3;
+    var lb=el('text',{x:p3L-8,y:y+rh3/2+4,'text-anchor':'end','class':'axis-t'});lb.textContent=d.l;cc.appendChild(lb);
+    hbar(cc,p3L,y,w,rh3,d.c,fmt(d.v),d.l+' — 1035 Eldorado');
+    var vl=el('text',{x:p3L+w+8,y:y+rh3/2+4,'class':'dlab strong'});vl.textContent=fmt(d.v);cc.appendChild(vl);
+  });
+  var dx=p3L+(192085/mx3)*pw3;
+  cc.appendChild(el('line',{x1:dx,x2:dx,y1:p3T-14,y2:p3T+ph3+6,stroke:'#ef7676','stroke-width':2,'stroke-dasharray':'5 4'}));
+  var dl=el('text',{x:dx,y:p3T-18,'text-anchor':'middle','class':'dlab'});dl.setAttribute('fill','#ef7676');dl.textContent='Debt $192,085';cc.appendChild(dl);
+})();
+</script>
+</body>
+</html>
