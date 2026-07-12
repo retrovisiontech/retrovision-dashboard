@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
-:root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Poppins","Arial Black",Impact,sans-serif;--font-body:"PT Mono",ui-monospace,SFMono-Regular,"Courier New",monospace;--font-lcd:"PT Mono",ui-monospace,"Courier New",monospace}
+:root{color-scheme:light;--cream:#FBF2E1;--cream-2:#F4E7CF;--paper:#FFF8EA;--wood-1:#5A2E14;--wood-2:#3A1B0A;--brown:#47150E;--brown-soft:#7A3322;--teal:#2FC0CF;--teal-deep:#178A95;--red:#D6443B;--gold:#FFAF41;--lcd-green:#4FE07A;--lcd-bg:#0A1A0E;--line:rgba(71,21,14,0.18);--shadow:0 12px 30px rgba(71,21,14,0.18),0 2px 4px rgba(71,21,14,0.10);--font-display:"Helvetica Neue","Arial Black",Impact,sans-serif;--font-body:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;--font-lcd:ui-monospace,SFMono-Regular,"Courier New",monospace}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
 body{font-family:var(--font-body);color:var(--brown);background:radial-gradient(1200px 600px at 10% -10%,rgba(255,175,65,0.12),transparent 60%),radial-gradient(900px 500px at 100% 0%,rgba(47,192,207,0.08),transparent 60%),var(--cream);line-height:1.45}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px}
@@ -55,561 +52,178 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 .visitor-headline .num.teal{color:var(--teal-deep)}
 .visitor-headline .lbl{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-top:4px}
 .visitor-chart-wrap{height:240px;position:relative}
-.cf-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px}
-.cf-item{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.cf-item .cf-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:6px}
-.cf-item .cf-value{font-family:var(--font-lcd);font-size:26px;font-weight:bold;color:var(--brown)}
-.cf-item .cf-value.green{color:#1F7A35}
-.cf-item .cf-value.red{color:var(--red)}
-.cf-item .cf-value.teal{color:var(--teal-deep)}
-.cf-item .cf-note{font-size:11px;color:var(--brown-soft);margin-top:4px}
-.cf-bar{background:var(--cream-2);border-radius:8px;overflow:hidden;height:12px;margin:8px 0 4px}
-.cf-bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
-.cf-bar-fill.warn{background:linear-gradient(90deg,var(--gold),#E88B00)}
-.cf-bar-fill.danger{background:linear-gradient(90deg,var(--red),#A0322B)}
 </style>
 </head>
 <body>
 <div class="stripe"></div>
 <header class="deck">
-<div class="deck-inner">
-<div style="text-align:left"><div class="lcd"><small>SALES</small> 03</div></div>
-<div class="brand-plate"><div class="brand">RetroVision<span class="tech">TECH</span></div></div>
-<div style="text-align:right"><div class="lcd"><small>STORES</small> 03</div></div>
-</div>
+  <div class="deck-inner">
+    <div style="text-align:left"><div class="lcd"><small>SALES</small> 03</div></div>
+    <div class="brand-plate"><div class="brand">RetroVision<span class="tech">TECH</span></div></div>
+    <div style="text-align:right"><div class="lcd"><small>STORES</small> 03</div></div>
+  </div>
 </header>
 <div class="stripe"></div>
 <div class="wrap">
 
 <div class="title-block">
-<div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
-<h1 class="display">Sales Dashboard</h1>
-<div class="meta">Generated Sunday, July 12, 2026 · Amazon · Shopify · TikTok Shop · YouTube · <a href="organic.html" style="color:#2fc0cf;text-decoration:underline;">Organic content tracker →</a></div>
+  <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
+  <h1 class="display">Sales Dashboard</h1>
+  <div class="meta">Generated Sunday, July 12, 2026 · Amazon · Shopify · TikTok Shop · YouTube</div>
 </div>
 
-<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Refreshed for Jul 12 — live: Shopify (KPIs, funnel, retention, lifetime, visitors), Meta Ads (Windsor) and Amazon Ads console (30-day). Held at last good pull (login walls this run): Shopify payout balance, Amazon Seller Central (balance, 90-day traffic, 30-day sales, FBA inventory) and TikTok Shop (payments + inventory) at Jul 11; Amazon daily-sales chart at Jul 7; TikTok GMV Max spend at Jul 10. Organic tracker refreshed — TikTok + YouTube live, Meta rows held at Jul 11.</div>
-
-<!-- CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-     COOEE PAID ADS  AGENCY PROGRESS (updated weekly by cooee task)
-     Engagement window: Jun 1 2026 onward. Data: Meta (Windsor.ai),
-     TikTok Shop orders (Windsor.ai), check-ins from #rvt-coee Slack
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC -->
-<section style="margin-top:24px;background:#EDF7F6;border:3px solid #178A95;border-radius:12px;padding:16px 18px;position:relative">
-<div style="position:absolute;top:-12px;left:16px;background:#178A95;color:#fdf6e9;font-size:11px;letter-spacing:2px;padding:2px 12px;border-radius:10px;text-transform:uppercase">Agency · Cooee</div>
-<h2 class="section" style="border-bottom-color:rgba(23,138,149,0.35)">Cooee paid ads <span class="sub">// Meta + TikTok · engagement Jun 1 – Jul 8, 2026 · ROAS goal 3.0× · refreshed Mondays</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Meta ad spend</div><div class="value">$3,527</div><div class="delta">Jun 1 – Jul 8</div></div>
-<div class="card kpi"><div class="label">Meta ad revenue</div><div class="value teal">$6,946</div><div class="delta">27 purchases · $131/purchase</div></div>
-<div class="card kpi"><div class="label">Meta ROAS</div><div class="value" style="color:#B8730A">1.97×</div><div class="delta">Target 3.0× — below goal</div></div>
-<div class="card kpi"><div class="label">TikTok Shop GMV</div><div class="value teal">$2,336</div><div class="delta">9 orders · GMV Max</div></div>
-</div>
-<div class="grid kpi" style="margin-top:12px">
-<div class="card kpi"><div class="label">Blended ROAS</div><div class="value" style="color:#B8730A">1.92×</div><div class="delta">(Meta rev + GMV) ÷ (Meta + TikTok GMV Max spend)</div></div>
-<div class="card kpi"><div class="label">Clicks</div><div class="value">6,558</div><div class="delta">CTR 3.15% · CPC $0.54</div></div>
-<div class="card kpi"><div class="label">Impressions</div><div class="value">207,896</div><div class="delta">Meta · 38 days</div></div>
-<div class="card kpi"><div class="label">Avg order value</div><div class="value">$257</div><div class="delta">Meta $257 · TikTok $260</div></div>
-</div>
-<div class="card" style="margin-top:14px">
-<div style="position:relative;height:240px"><canvas id="cooeeWkChart"></canvas></div>
-</div>
-<div class="card" style="margin-top:14px;overflow-x:auto">
-<table class="data">
-<thead><tr><th>Week</th><th>Meta spend</th><th>Meta revenue</th><th>ROAS</th><th>Purch.</th><th>Cost/Purch.</th><th>TikTok GMV</th></tr></thead>
-<tbody>
-<tr><td>Jun 1–7</td><td>$574.62</td><td>$990.45</td><td style="color:#B8730A;font-weight:bold">1.72×</td><td>4</td><td>$143.66</td><td>$300.99</td></tr>
-<tr><td>Jun 8–14</td><td>$342.35</td><td>$1,332.72</td><td style="color:#1F7A35;font-weight:bold">3.89×</td><td>4</td><td>$85.59</td><td>—</td></tr>
-<tr><td>Jun 15–21</td><td>$544.92</td><td>$732.45</td><td style="color:#D6443B;font-weight:bold">1.34×</td><td>3</td><td>$181.64</td><td>$232.19</td></tr>
-<tr><td>Jun 22–28</td><td>$712.94</td><td>$1,714.46</td><td style="color:#B8730A;font-weight:bold">2.40×</td><td>7</td><td>$101.85</td><td>$753.64</td></tr>
-<tr><td>Jun 29–Jul 5</td><td>$1,121.80</td><td>$1,661.94</td><td style="color:#D6443B;font-weight:bold">1.48×</td><td>7</td><td>$160.26</td><td>$1,049.23</td></tr>
-<tr><td>Jul 6–8 (partial)</td><td>$230.05</td><td>$514.00</td><td style="color:#B8730A;font-weight:bold">2.23×</td><td>2</td><td>$115.02</td><td>—</td></tr>
-</tbody>
-<tfoot><tr><td>Total</td><td>$3,526.68</td><td>$6,946.02</td><td style="color:#B8730A">1.97×</td><td>27</td><td>$130.62</td><td>$2,336.05</td></tr></tfoot>
-</table>
-</div>
-<div class="card" style="margin-top:14px;overflow-x:auto">
-<table class="data">
-<thead><tr><th>Meta campaign</th><th>Spend</th><th>Revenue</th><th>ROAS</th><th>Purch.</th><th>Cost/Purch.</th></tr></thead>
-<tbody>
-<tr><td>Retargeting · Flash Sale (Advantage+)</td><td>$571.45</td><td>$1,821.55</td><td style="color:#1F7A35;font-weight:bold">3.19×</td><td>7</td><td>$81.64</td></tr>
-<tr><td>Sales · Broad US (lifetime $500)</td><td>$1,663.40</td><td>$2,698.80</td><td style="color:#B8730A;font-weight:bold">1.62×</td><td>10</td><td>$166.34</td></tr>
-<tr><td>TM Digitizer Sales (CBO off)</td><td>$686.66</td><td>$1,652.80</td><td style="color:#B8730A;font-weight:bold">2.41×</td><td>7</td><td>$98.09</td></tr>
-<tr><td>Carousel (legacy)</td><td>$403.16</td><td>$535.72</td><td style="color:#D6443B;font-weight:bold">1.33×</td><td>2</td><td>$201.58</td></tr>
-<tr><td>Sales · Cold US LAA (lifetime $1,000)</td><td>$202.01</td><td>$237.15</td><td style="color:#D6443B;font-weight:bold">1.17×</td><td>1</td><td>$202.01</td></tr>
-</tbody>
-</table>
-<div class="note" style="margin-top:12px"><strong>Winner:</strong> Retargeting beats the 3× goal — Cooee raised its budget 20% this week. Carousel + Cold LAA are the drag. 🟢 ≥3× · 🟡 1.5–3× · 🔴 &lt;1.5×</div>
-</div>
-<div class="grid split-2" style="margin-top:14px">
-<div class="card">
-<div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Check-in log // from #rvt-coee Slack</div>
-<table class="data">
-<tbody>
-<tr><td style="white-space:nowrap;font-weight:bold">Jul 6</td><td style="text-align:left">Retargeting improving · first Monthly Paid Report. "Perfect Device" + POV demos converting; urgency hooks top. Actions: retargeting +20%, A/B new creatives, push to 3×.</td></tr>
-<tr><td style="white-space:nowrap;font-weight:bold">Jun 26</td><td style="text-align:left">Content shoot day — two shoots at RVT studio. Y2K stills + organic video; b-roll delivered Jul 7.</td></tr>
-<tr><td style="white-space:nowrap;font-weight:bold">Jun 15</td><td style="text-align:left">20% offer headline lifting intent. TikTok/LinkedIn prepped pending access + pixel; raise Meta budgets, test new videos.</td></tr>
-<tr><td style="white-space:nowrap;font-weight:bold">Jun 12</td><td style="text-align:left">Tracking fixed · TikTok → GMV Max. Shopify event gaps fixed (was starving retargeting).</td></tr>
-<tr><td style="white-space:nowrap;font-weight:bold">Jun 8</td><td style="text-align:left">First weekly update — ramping. Retargeting assets w/ discount code in production.</td></tr>
-</tbody>
-</table>
-</div>
-<div class="card">
-<div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Work tracker // deliverables</div>
-<table class="data">
-<tbody>
-<tr><td style="white-space:nowrap;color:#1F7A35;font-weight:bold">✅ Done</td><td style="text-align:left">Shopify → Meta event tracking fixed &amp; audited</td></tr>
-<tr><td style="white-space:nowrap;color:#1F7A35;font-weight:bold">✅ Done</td><td style="text-align:left">June content shoot (stills + organic, Y2K)</td></tr>
-<tr><td style="white-space:nowrap;color:#1F7A35;font-weight:bold">✅ Done</td><td style="text-align:left">New creative uploaded to campaigns (Jul 7)</td></tr>
-<tr><td style="white-space:nowrap;color:#1F7A35;font-weight:bold">✅ Done</td><td style="text-align:left">First Monthly Paid Report + WIP call locked</td></tr>
-<tr><td style="white-space:nowrap;color:#B8730A;font-weight:bold">🔄 WIP</td><td style="text-align:left">Landing page A/B — offer page live, variant 2 due Fri Jul 10</td></tr>
-<tr><td style="white-space:nowrap;color:#B8730A;font-weight:bold">🔄 WIP</td><td style="text-align:left">Organic TikTok posts feeding GMV Max</td></tr>
-<tr><td style="white-space:nowrap;color:#D6443B;font-weight:bold">⏳ Wait</td><td style="text-align:left">Meta pixel on new landing pages (Naomi, Jul 9)</td></tr>
-<tr><td style="white-space:nowrap;color:#D6443B;font-weight:bold">⏳ Wait</td><td style="text-align:left">Cooee copy for 2 more landing variants</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<script>
-(function(){
-function drawCooee(){
-if(!window.Chart){return setTimeout(drawCooee,150);}
-var el=document.getElementById('cooeeWkChart');
-if(!el)return;
-var wk=["Jun 1-7","Jun 8-14","Jun 15-21","Jun 22-28","Jun 29-Jul 5","Jul 6-8*"];
-var sp=[574.62,342.35,544.92,712.94,1121.80,230.05];
-var rv=[990.45,1332.72,732.45,1714.46,1661.94,514.00];
-var gm=[300.99,0,232.19,753.64,1049.23,0];
-var ro=sp.map(function(s,i){return +(rv[i]/s).toFixed(2)});
-new Chart(el.getContext('2d'),{data:{labels:wk,datasets:[
-{type:'bar',label:'Meta spend',data:sp,backgroundColor:'rgba(214,68,59,0.75)',borderRadius:3},
-{type:'bar',label:'Meta revenue',data:rv,backgroundColor:'rgba(23,138,149,0.8)',borderRadius:3},
-{type:'bar',label:'TikTok GMV',data:gm,backgroundColor:'rgba(255,175,65,0.85)',borderRadius:3},
-{type:'line',label:'ROAS',data:ro,yAxisID:'y1',borderColor:'#47150E',backgroundColor:'#47150E',tension:0.3,pointRadius:3,borderWidth:2}
-]},options:{maintainAspectRatio:false,scales:{
-y:{ticks:{color:'#7A3322',callback:function(v){return '$'+v}},grid:{color:'rgba(71,21,14,0.10)'}},
-y1:{position:'right',min:0,max:5,ticks:{color:'#7A3322',callback:function(v){return v+'\u00d7'}},grid:{drawOnChartArea:false}},
-x:{ticks:{color:'#47150E'},grid:{display:false}}},
-plugins:{legend:{labels:{color:'#47150E',boxWidth:14}}}}});
-}
-drawCooee();
-})();
-</script>
-
-<section style="margin-top:24px">
-<h2 class="section">Profit per unit <span class="sub">// channel breakdown · 30-day ASPs · Meta via Ads Manager · Jul 2026</span></h2>
-<div class="grid kpi">
-<div class="card"><div class="label">📦 Amazon</div><div class="value teal">$59.35</div><div class="delta">Net profit / unit · 27.6% margin ▼</div>
-<table class="data"><tbody>
-<tr><td>Avg selling price</td><td>$214.99</td></tr>
-<tr><td>COGS (supplier)</td><td>$78.82</td></tr>
-<tr><td>Inbound freight</td><td>$3.16</td></tr>
-<tr><td>FBA fulfillment fee</td><td>$6.03</td></tr>
-<tr><td>Referral fee (11.3%)</td><td>$24.20</td></tr>
-<tr><td>Storage</td><td>$0.12</td></tr>
-<tr><td>Selling plan</td><td>$0.41</td></tr>
-<tr><td>Inbound placement</td><td>$0.27</td></tr>
-<tr><td>Amazon PPC</td><td>$42.63</td></tr>
-<tr><td><strong>Total costs</strong></td><td><strong>$155.64</strong></td></tr>
-</tbody></table></div>
-<div class="card"><div class="label">🛒 Shopify</div><div class="value teal">$5.59</div><div class="delta">Net profit / unit · 2.2% margin ▼</div>
-<table class="data"><tbody>
-<tr><td>Avg selling price (30d)</td><td>$255.48</td></tr>
-<tr><td>COGS (supplier)</td><td>$78.82</td></tr>
-<tr><td>Inbound freight</td><td>$3.16</td></tr>
-<tr><td>Ship to customer (3PL)</td><td>$6.50</td></tr>
-<tr><td>Storage</td><td>$0.35</td></tr>
-<tr><td>Shopify payments</td><td>$7.71</td></tr>
-<tr><td>Returns allowance</td><td>$0.75</td></tr>
-<tr><td>Meta Ads (CAC)</td><td>$152.90</td></tr>
-<tr><td><strong>Total costs</strong></td><td><strong>$249.89</strong></td></tr>
-</tbody></table></div>
-<div class="card"><div class="label">🎵 TikTok Shop</div><div class="value" style="color:#B8730A">−$107.85</div><div class="delta">Net loss / unit · −50.8% margin ▼ (was shown +$73.59 — CAC was understated)</div>
-<table class="data"><tbody>
-<tr><td>Avg selling price (30d)</td><td>$212.47</td></tr>
-<tr><td>COGS (supplier)</td><td>$78.82</td></tr>
-<tr><td>Inbound freight</td><td>$3.16</td></tr>
-<tr><td>Ship to customer</td><td>$5.00</td></tr>
-<tr><td>Storage</td><td>$0.35</td></tr>
-<tr><td>TT commission (6%)</td><td>$12.75</td></tr>
-<tr><td>Creator/affiliate (15%)</td><td>$31.87</td></tr>
-<tr><td>TikTok GMV Max ads (CAC)</td><td>$188.37</td></tr>
-<tr><td><strong>Total costs</strong></td><td><strong>$320.32</strong></td></tr>
-</tbody></table></div>
-</div>
-<div class="note" style="margin-top:14px"><strong>Shopify margin alert:</strong> Meta CAC is $131.48/order ($2,893 ÷ 22 purchases), holding Shopify net at 10.6%. Meta ROAS 1.96x (Windsor.ai, last 30 days). TikTok CAC now live from Seller Center GMV Max: $188.37/order ($1,318.59 ÷ 7 attributed orders, Jun 1–Jul 10) — currently the most expensive channel per sale. Amazon PPC live — ROAS 2.26x.</div>
-
-<h2 class="section" style="margin-top:18px">Meta delivery &amp; diagnostics <span class="sub">// Meta Ads · last 30 days · Windsor.ai</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Reach</div><div class="value">107,407</div><div class="delta">People · 1.5x frequency</div></div>
-<div class="card kpi"><div class="label">CPM</div><div class="value">$17.49</div><div class="delta">Per 1,000 impressions</div></div>
-<div class="card kpi"><div class="label">Post-click conversion</div><div class="value">0.3%</div><div class="delta">19 buy of 5,935 ▼</div></div>
-</div>
-<div class="note" style="margin-top:14px"><strong>Diagnosis:</strong> Your ads are working — 3.6% CTR and $0.49 clicks beat benchmark, and reach/frequency (107K people, 1.5x) are healthy. But only ~0.3% of the 5,935 clicks Meta sent actually buy. The bottleneck is on-site conversion (1.4% add-to-cart, 72% checkout abandon), not Meta.</div>
-
-<h2 class="section" style="margin-top:18px">Meta placement breakdown <span class="sub">// spend share · last 30 days · Windsor.ai</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Facebook</div><div class="value teal">53.4%</div><div class="delta">$1,550 spend · 4,950 clicks</div></div>
-<div class="card kpi"><div class="label">Instagram</div><div class="value teal">46.3%</div><div class="delta">$1,344 spend · 951 clicks</div></div>
-<div class="card kpi"><div class="label">Audience Net + other</div><div class="value">0.4%</div><div class="delta">$11 spend</div></div>
-</div>
-<div class="card" style="margin-top:14px">
-<table class="data">
-<thead><tr><th>Placement</th><th>Spend</th><th>Share</th></tr></thead>
-<tbody>
-<tr><td>Facebook</td><td>$1,550.14</td><td>53.4%</td></tr>
-<tr><td>Instagram</td><td>$1,344.21</td><td>46.3%</td></tr>
-<tr><td>Audience Network + Threads + other</td><td>$10.74</td><td>0.4%</td></tr>
-</tbody>
-</table>
-</div>
-<div class="note" style="margin-top:14px"><strong>Read:</strong> Spend is ~54/46 Facebook/Instagram, but Facebook drove <strong>4,942 clicks vs Instagram's 951</strong> for nearly the same budget — that's ~$0.31 vs ~$1.40 per click. Facebook is ~4x more click-efficient; worth shifting budget toward it. Audience Network is negligible. Real bottleneck still on-site conversion.</div>
-
-<h2 class="section" style="margin-top:18px">Ad spend <span class="sub">// last 30 days · Meta via Windsor.ai · Amazon PPC live · TikTok GMV Max via Seller Center</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Meta (→ Shopify)</div><div class="value">$2,905.09</div><div class="delta">19 purchases · 1.59x ROAS · $152.90 CPA</div></div>
-<div class="card kpi"><div class="label">Amazon PPC (Sponsored)</div><div class="value">$799.83</div><div class="delta">Live · 2.79x ROAS · $0.90 CPC · $2,235 sales</div></div>
-<div class="card kpi"><div class="label">TikTok Ads (→ TT Shop)</div><div class="value">$1,352.53</div><div class="delta">GMV Max $1,318.59 (held at Jul 10) · 7 orders · $188.37 CPA · 1.37 ROI (+ $33.94 legacy auction)</div></div>
-</div>
-
-
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Meta via Ads Manager (RVT act 1247070696411670) · TikTok GMV Max via Seller Center ads dashboard, Jun 1–Jul 10 (Windsor/Ads Manager can't see GMV Max spend) · Amazon PPC live (Ads console, Jun 11–Jul 11) · Supplier purchase orders. Generated 2026-07-12.</div>
-</section>
-
-
-
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> 12 fields fell back to last-known values: amazon.lifetimeSales, amazon.balance, amazon.pageViews90d, amazon.fbaInventory, youtube.subscriberCount, youtube.viewCount, youtube.videoCount, youtube.views30d, youtube.likes30d, youtube.shares30d, youtube.subscribersGained30d, youtube.watchMinutes30d.</div>
 
 <section style="margin-top:14px">
-<div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
-<div style="font-size:12px;text-transform:uppercase;letter-spacing:5px;color:var(--brown-soft)">Total combined sales — All time</div>
-<div style="font-family:var(--font-lcd);font-size:72px;font-weight:bold;color:var(--brown);line-height:1;margin-top:10px;-webkit-text-stroke:1px var(--teal);text-shadow:2px 2px 0 rgba(47,192,207,0.15)">$245,609.14</div>
-<div style="font-size:13px;color:var(--brown-soft);margin-top:12px">Lifetime across Amazon Seller Central + Shopify (TikTok counted via Shopify channel)</div>
-<div style="display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap">
-<span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$95,531.61</strong> Amazon (Aug '25 → today)</span>
-<span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$150,295.98</strong> Shopify (since launch)</span>
-</div>
-</div>
+  <div class="card" style="background:linear-gradient(135deg,#FFF8EA 0%,#F4E7CF 60%,#FBF2E1 100%);border:3px solid var(--brown);padding:32px;margin-bottom:16px;text-align:center">
+    <div style="font-size:12px;text-transform:uppercase;letter-spacing:5px;color:var(--brown-soft)">Total combined sales — All time</div>
+    <div style="font-family:var(--font-lcd);font-size:72px;font-weight:bold;color:var(--brown);line-height:1;margin-top:10px;-webkit-text-stroke:1px var(--teal);text-shadow:2px 2px 0 rgba(47,192,207,0.15)">$233,950.14</div>
+    <div style="font-size:13px;color:var(--brown-soft);margin-top:12px">Lifetime across Amazon Seller Central + Shopify (TikTok counted via Shopify channel)</div>
+    <div style="display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$83,654.16</strong> Amazon (Apr ’24 → today)</span>
+      <span style="font-size:12px;color:var(--brown)"><strong style="font-family:var(--font-lcd);font-size:18px">$150,295.98</strong> Shopify (since launch)</span>
+    </div>
+  </div>
 </section>
 
 <section>
-<h2 class="section">Last 7 Days <span class="sub">// July 6 – July 12, 2026 · all channels (Shopify + TikTok + Amazon)</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Revenue · all channels</div><div class="value">$3,255</div><div class="delta">Shopify+TikTok $2,185 · Amazon $1,070 (held)</div></div>
-<div class="card kpi"><div class="label">Orders · all channels</div><div class="value teal">12</div><div class="delta">~1.7/day · 9 Shopify+TikTok · 3 Amazon (held)</div></div>
-<div class="card kpi"><div class="label">Sessions · Shopify</div><div class="value">2,255</div><div class="delta">Web traffic · 7-day</div></div>
-<div class="card kpi"><div class="label">Conversion · Shopify</div><div class="value teal">0.40%</div><div class="delta">Orders ÷ sessions</div></div>
-</div>
-<div class="delta" style="margin-top:8px;font-size:12px;opacity:.75">Amazon slice held at the Jul 5–10 weekly pull ($1,070 / 3 orders). Shopify + TikTok figures are exact.</div>
-<div class="grid kpi" style="margin-top:14px">
-<div class="card kpi"><div class="label">Shopify payout balance</div><div class="value">$1,127.42</div><div class="delta">Pending · Jul 11</div></div>
-<div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">24</div><div class="delta">Shopify queue</div></div>
-<div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">California</div><div class="delta">By order count</div></div>
-<div class="card kpi"><div class="label">Returning customer rate</div><div class="value">4.9%</div><div class="delta">Last 30 days</div></div>
-</div>
+  <h2 class="section">Yesterday <span class="sub">// July 11, 2026 · live from Shopify admin</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Shopify revenue</div><div class="value">$275</div><div class="delta down">▼ 48% vs prior day</div></div>
+    <div class="card kpi"><div class="label">Shopify orders</div><div class="value teal">1</div><div class="delta down">▼ 50% vs prior day</div></div>
+    <div class="card kpi"><div class="label">Shopify sessions</div><div class="value">309</div><div class="delta down">▼ 20% vs prior day</div></div>
+    <div class="card kpi"><div class="label">Conversion rate</div><div class="value teal">0.00%</div><div class="delta down">▼ 100% vs prior day</div></div>
+  </div>
+  <div class="grid kpi" style="margin-top:14px">
+    <div class="card kpi"><div class="label">Next Shopify payout</div><div class="value">—</div><div class="delta">Pending</div></div>
+    <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">23</div><div class="delta">Shopify queue</div></div>
+    <div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">California, US</div><div class="delta">By order count</div></div>
+    <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">4.87%</div><div class="delta">Last 30 days</div></div>
+  </div>
 </section>
 
 <section>
-<h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · April 13, 2026 – July 12, 2026</span></h2>
-<div class="card visitor-card">
-<div class="visitor-headline">
-<div><div class="num teal">27,911</div><div class="lbl">Total sessions</div></div>
-<div><div class="num">25,337</div><div class="lbl">Unique visitors</div></div>
-<div><div class="num" style="color:#1F7A35">▲ 28.5%</div><div class="lbl">vs prior 90 days (21,715)</div></div>
-</div>
-<div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
-</div>
+  <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · April 13, 2026 – July 12, 2026</span></h2>
+  <div class="card visitor-card">
+    <div class="visitor-headline">
+      <div><div class="num teal">27,933</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num">23,932</div><div class="lbl">Unique visitors</div></div>
+      <div><div class="num" style="color:#1F7A35">▲ 29%</div><div class="lbl">vs prior 90 days (21,715)</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
+  </div>
 </section>
 
 <section>
-<h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · scraped from Seller Central</span></h2>
-<div class="card visitor-card" style="border-color:#D85A30">
-<div class="visitor-headline">
-<div><div class="num" style="color:#D85A30">8,405</div><div class="lbl">Total page views</div></div>
-<div><div class="num">6,618</div><div class="lbl">Total sessions</div></div>
-<div><div class="num" style="color:#1F7A35">1.24%</div><div class="lbl">Order item session rate</div></div>
-</div>
-<div class="visitor-chart-wrap"><canvas id="amazonPageViewsChart"></canvas></div>
-<div class="note stale" style="margin-top:14px"><strong>Live:</strong> Scraped from Seller Central (By Week view, 13 weekly buckets) · 90-day window Apr 12 – Jul 10, 2026 · 79 order items · 1.24% order-item session rate · as of 2026-07-11.</div>
-</div>
+  <h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · scraped from Seller Central</span></h2>
+  <div class="card visitor-card" style="border-color:#D85A30">
+    <div class="visitor-headline">
+      <div><div class="num" style="color:#D85A30">9,759</div><div class="lbl">Total page views</div></div>
+      <div><div class="num">7,698</div><div class="lbl">Total sessions</div></div>
+      <div><div class="num" style="color:#1F7A35">2.11%</div><div class="lbl">Order item session rate</div></div>
+    </div>
+    <div class="visitor-chart-wrap"><canvas id="amazonPageViewsChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Amazon Seller Central → Business Reports → Sales and Traffic. 90-day total: $28,514 product sales · 148 units sold · $149.18 avg sale per order item.</div>
+  </div>
 </section>
-<section style="margin-top:24px">
-<h2 class="section">Amazon daily sales <span class="sub">// Seller Central · last 30 days</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">30-day sales</div><div class="value teal">$4,348</div><div class="delta">Ordered product sales · Jun 11 – Jul 10</div></div>
-<div class="card kpi"><div class="label">Units sold</div><div class="value">20</div><div class="delta">~0.7/day · sells in bursts</div></div>
-<div class="card kpi"><div class="label">Avg sale</div><div class="value">$217</div><div class="delta">Per unit</div></div>
-</div>
-<div class="card visitor-card" style="margin-top:14px;border-color:#D8A23A">
-<div style="position:relative;height:260px"><canvas id="amzDailyChart"></canvas></div>
-</div>
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Seller Central → Business Reports (Sales and Traffic, By Day) · daily chart held at the Jul 7 pull · 30-day totals live as of 2026-07-11.</div>
+
+<section>
+  <h2 class="section">Shopify · Lifetime Performance <span class="sub">// All-time totals from Analytics overview</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Gross sales</div><div class="value">$160,221</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Net sales</div><div class="value teal">$145,145</div><div class="delta">After discounts + returns</div></div>
+    <div class="card kpi"><div class="label">Total orders</div><div class="value">766</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Total sales</div><div class="value">$150,296</div><div class="delta">Net + shipping + tax</div></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Amazon balance</div><div class="value">$2,258.83</div><div class="delta">As of 2026-04-29</div></div>
+    <div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$1,395.23</div><div class="delta">$190.60 next · $1,204.63 hold</div></div>
+    <div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$3,654.06</div><div class="delta">Amazon + TikTok + Shopify next</div></div>
+    <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$57,688</div><div class="delta">810 units · $71.22 landed</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <table class="data">
+      <thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
+      <tbody>
+        
+        <tr><td>Amazon FBA — Available</td><td>74</td><td>$71.22</td><td>$5,270.28</td><td>9.1%</td></tr>
+        <tr><td>Amazon FBA — Reserved</td><td>3</td><td>$71.22</td><td>$213.66</td><td>0.4%</td></tr>
+        <tr><td>Amazon FBA — Unfulfillable</td><td>1</td><td>$71.22</td><td>$71.22</td><td>0.1%</td></tr>
+        <tr><td>Amazon FBA — Inbound</td><td>260</td><td>$71.22</td><td>$18,517.20</td><td>32.1%</td></tr>
+        <tr><td>TikTok FBT — On-hand (7 FCs)</td><td>432</td><td>$71.22</td><td>$30,767.04</td><td>53.3%</td></tr>
+        <tr><td>TikTok FBT — In transit</td><td>40</td><td>$71.22</td><td>$2,848.80</td><td>4.9%</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total inventory at cost</td><td>810</td><td>$71.22</td><td>$57,688.20</td><td>100.0%</td></tr></tfoot>
+    </table>
+    <div class="note" style="margin-top:14px"><strong>Cost basis:</strong> Weighted average from 20 supplier purchase orders (Jan – Mar 2025), 1,760 units total. Goods $122,047 + freight $3,300 = $71.22 landed cost per unit.</div>
+  </div>
 </section>
 
 
 <section>
-<h2 class="section">Shopify · Lifetime Performance <span class="sub">// All-time totals from Analytics overview</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Gross sales</div><div class="value">$160,221</div><div class="delta">All-time</div></div>
-<div class="card kpi"><div class="label">Net sales</div><div class="value teal">$145,145.06</div><div class="delta">After discounts + returns</div></div>
-<div class="card kpi"><div class="label">Total orders</div><div class="value">766</div><div class="delta">All-time</div></div>
-<div class="card kpi"><div class="label">Total sales</div><div class="value">$150,295.98</div><div class="delta">Net + shipping + tax</div></div>
-</div>
+  <h2 class="section">YouTube <span class="sub">// RetroVision Tech · Windsor.ai · Channel analytics</span></h2>
+  <div class="grid kpi">
+    <div class="card kpi"><div class="label">Subscribers</div><div class="value teal">134</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Total views</div><div class="value">101,258</div><div class="delta">All-time</div></div>
+    <div class="card kpi"><div class="label">Videos published</div><div class="value teal">80</div><div class="delta">Public videos</div></div>
+    <div class="card kpi"><div class="label">Views (30d)</div><div class="value">11,083</div><div class="delta">Last 30 days</div></div>
+  </div>
+  <div class="grid kpi" style="margin-top:14px">
+    <div class="card kpi"><div class="label">Likes (30d)</div><div class="value teal">175</div><div class="delta">Last 30 days</div></div>
+    <div class="card kpi"><div class="label">Shares (30d)</div><div class="value">26</div><div class="delta">Last 30 days</div></div>
+    <div class="card kpi"><div class="label">New subscribers (30d)</div><div class="value teal">+22</div><div class="delta">Last 30 days</div></div>
+    <div class="card kpi"><div class="label">Watch minutes (30d)</div><div class="value">1,963</div><div class="delta">Last 30 days</div></div>
+  </div>
+  <div class="card visitor-card" style="margin-top:14px;border-color:#D6443B">
+    <div class="visitor-chart-wrap"><canvas id="youtubeViewsChart"></canvas></div>
+    <div class="note" style="margin-top:14px"><strong>Source:</strong> Windsor.ai → YouTube connector (admin@retrovisiontech.com). Daily views — last 30 days.</div>
+  </div>
 </section>
 
-<section>
-<h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Amazon balance</div><div class="value">$1,272.60</div><div class="delta">Deferred (DD+7) · $0 available · $1,441.11 payout in transit</div></div>
-<div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$1,438.34</div><div class="delta">$0 processing · $1,438.34 hold</div></div>
-<div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$5,279.47</div><div class="delta">Amazon (transit + deferred) + TikTok + Shopify next</div></div>
-<div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$63,878</div><div class="delta">779 units · $82.00 landed</div></div>
-</div>
-<div class="card" style="margin-top:14px">
-<table class="data">
-<thead><tr><th>Location</th><th>Units</th><th>Unit cost</th><th>Cost value</th><th>% of total</th></tr></thead>
-<tbody>
-<tr><td>Amazon FBA — Available</td><td>302</td><td>$82.00</td><td>$24,764.00</td><td>38.8%</td></tr>
-<tr><td>Amazon FBA — Reserved</td><td>4</td><td>$82.00</td><td>$328.00</td><td>0.5%</td></tr>
-<tr><td>Amazon FBA — Unfulfillable</td><td>0</td><td>$82.00</td><td>$0.00</td><td>0.0%</td></tr>
-<tr><td>Amazon FBA — Inbound</td><td>0</td><td>$82.00</td><td>$0.00</td><td>0.0%</td></tr>
-<tr><td>TikTok FBT — On-hand (7 FCs)</td><td>433</td><td>$82.00</td><td>$35,506.00</td><td>55.6%</td></tr>
-<tr><td>TikTok FBT — In transit</td><td>40</td><td>$82.00</td><td>$3,280.00</td><td>5.1%</td></tr>
-</tbody>
-<tfoot><tr><td>Total inventory at cost</td><td>779</td><td>$82.00</td><td>$63,878.00</td><td>100.0%</td></tr></tfoot>
-</table>
-<div class="note" style="margin-top:14px"><strong>Cost basis:</strong> $82.00 landed cost per unit (CF assumptions). TikTok FBT counts live as of 2026-07-11 · Amazon FBA live as of 2026-07-11.</div>
-</div>
-</section>
-
-<section style="margin-top:24px;background:#fdf0d7;border:3px solid #D85A30;border-radius:12px;padding:14px 18px 14px;position:relative"><div style="position:absolute;top:-12px;left:16px;background:#D85A30;color:#fdf6e9;font-size:11px;letter-spacing:2px;padding:2px 12px;border-radius:10px;text-transform:uppercase">New</div><h2 style="margin-top:2px">Organic content <span style="font-weight:normal;font-size:13px;color:var(--brown-soft)">// FB + IG + TikTok + YouTube · last 30 days · live · <a href="organic.html" style="color:#178A95">full tracker →</a></span></h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0 12px"><div style="background:#fdf6e9;border:1px solid #d9a23a;border-radius:8px;padding:8px 10px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft)">Meta views (28d)</div><div style="font-size:21px;font-weight:bold;margin-top:2px">1,335,530</div><div style="font-size:11px;color:var(--brown-soft)">61 FB + IG posts</div></div><div style="background:#fdf6e9;border:1px solid #d9a23a;border-radius:8px;padding:8px 10px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft)">TikTok views (30d)</div><div style="font-size:21px;font-weight:bold;margin-top:2px">73,420</div><div style="font-size:11px;color:var(--brown-soft)">60 posts · +15 followers</div></div><div style="background:#fdf6e9;border:1px solid #d9a23a;border-radius:8px;padding:8px 10px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft)">YouTube views (30d)</div><div style="font-size:21px;font-weight:bold;margin-top:2px">33,421</div><div style="font-size:11px;color:var(--brown-soft)">+45 subscribers</div></div><div style="background:#fdf6e9;border:1px solid #d9a23a;border-radius:8px;padding:8px 10px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft)">Combined organic</div><div style="font-size:21px;font-weight:bold;margin-top:2px">1,442,371</div><div style="font-size:11px;color:var(--brown-soft)">views · all platforms</div></div><div style="background:#fdf6e9;border:1px solid #d9a23a;border-radius:8px;padding:8px 10px"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--brown-soft)">Top post saves</div><div style="font-size:21px;font-weight:bold;margin-top:2px">689</div><div style="font-size:11px;color:var(--brown-soft)">buy-intent · Jun 18 reel</div></div></div><table style="width:100%;border-collapse:collapse;font-size:12px;border:1px solid #d9a23a;background:#fdf6e9"><thead><tr style="text-align:left;background:#3a2417;color:#f4ead7"><th style="padding:4px 10px">#</th><th style="padding:4px 10px">Top organic posts (30d)</th><th style="padding:4px 10px;text-align:right">Views</th><th style="padding:4px 10px;text-align:right">Saves</th></tr></thead><tbody><tr><td style="padding:3px 10px">1</td><td style="padding:3px 10px">FB+IG reel · "Your memories deserve more than a box…" · Jun 18</td><td style="padding:3px 10px;text-align:right">105,804</td><td style="padding:3px 10px;text-align:right">689</td></tr><tr><td style="padding:3px 10px">2</td><td style="padding:3px 10px">FB+IG reel · same creative, Jun 16 posting</td><td style="padding:3px 10px;text-align:right">83,650</td><td style="padding:3px 10px;text-align:right">260</td></tr><tr><td style="padding:3px 10px">3</td><td style="padding:3px 10px">FB+IG reel · "Took my mom’s VHS tapes out the attic" · Jun 15</td><td style="padding:3px 10px;text-align:right">71,175</td><td style="padding:3px 10px;text-align:right">199</td></tr><tr><td style="padding:3px 10px">4</td><td style="padding:3px 10px">FB+IG reel · "Your memories deserve more than a box…" · Jun 17</td><td style="padding:3px 10px;text-align:right">67,871</td><td style="padding:3px 10px;text-align:right">272</td></tr><tr><td style="padding:3px 10px">5</td><td style="padding:3px 10px">FB+IG reel · "Every tape tells a story" · Jul 3</td><td style="padding:3px 10px;text-align:right">62,313</td><td style="padding:3px 10px;text-align:right">167</td></tr><tr><td style="padding:3px 10px">6</td><td style="padding:3px 10px">FB+IG reel · "This is the perfect Father’s Day gift!" · Jun 18</td><td style="padding:3px 10px;text-align:right">60,362</td><td style="padding:3px 10px;text-align:right">225</td></tr><tr><td style="padding:3px 10px">7</td><td style="padding:3px 10px">FB+IG reel · "Your memories deserve better than a box…" · Jul 3</td><td style="padding:3px 10px;text-align:right">59,031</td><td style="padding:3px 10px;text-align:right">164</td></tr><tr><td style="padding:3px 10px">8</td><td style="padding:3px 10px">FB+IG reel · "Some memories are too important to leave…" · Jun 25</td><td style="padding:3px 10px;text-align:right">58,394</td><td style="padding:3px 10px;text-align:right">140</td></tr></tbody></table><p style="font-size:12px;color:var(--brown-soft);margin-top:8px">Read: all top posts are Meta nostalgia reels — <b>1.33M organic views this month vs ~$5,047 total ad spend</b>. Every one is a boost candidate (saves = strongest buy-intent signal).</p></section>
-<section>
-<h2 class="section">YouTube <span class="sub">// RetroVision Tech · Windsor.ai · Channel analytics</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Subscribers</div><div class="value teal">136</div><div class="delta">All-time</div></div>
-<div class="card kpi"><div class="label">Total views</div><div class="value">101,508</div><div class="delta">All-time</div></div>
-<div class="card kpi"><div class="label">Videos published</div><div class="value teal">80</div><div class="delta">Public videos</div></div>
-<div class="card kpi"><div class="label">Views (30d)</div><div class="value">33,421</div><div class="delta">Last 30 days</div></div>
-</div>
-<div class="grid kpi" style="margin-top:14px">
-<div class="card kpi"><div class="label">Likes (30d)</div><div class="value teal">639</div><div class="delta">Last 30 days</div></div>
-<div class="card kpi"><div class="label">Shares (30d)</div><div class="value">47</div><div class="delta">Last 30 days</div></div>
-<div class="card kpi"><div class="label">New subscribers (30d)</div><div class="value teal">+45</div><div class="delta">Last 30 days</div></div>
-<div class="card kpi"><div class="label">Watch minutes (30d)</div><div class="value">5,420</div><div class="delta">Last 30 days</div></div>
-</div>
-
-</section>
-
-<section style="margin-top:24px">
-<h2 class="section">Efficiency &amp; health <span class="sub">// blended · trailing 30 days</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Blended MER</div><div class="value teal">2.8x</div><div class="delta">Revenue $14,412 ÷ total ad spend $5,057 (incl. GMV Max)</div></div>
-<div class="card kpi"><div class="label">Blended AOV</div><div class="value">$236</div><div class="delta">~61 orders · trailing 30 days</div></div>
-<div class="card kpi"><div class="label">Inventory cover</div><div class="value">~13 mo</div><div class="delta">779 units ÷ ~60 sold/mo · ~$64K cash tied up</div></div>
-</div>
-</section>
-
-<section style="margin-top:24px">
-<h2 class="section">Conversion funnel <span class="sub">// Shopify · last 30 days</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Sessions</div><div class="value">9,665</div><div class="delta">Store visits</div></div>
-<div class="card kpi"><div class="label">Added to cart</div><div class="value">137</div><div class="delta">1.4% of sessions ▼ (5–10% healthy)</div></div>
-<div class="card kpi"><div class="label">Reached checkout</div><div class="value">97</div><div class="delta">1.0% of sessions</div></div>
-<div class="card kpi"><div class="label">Purchased</div><div class="value teal">27</div><div class="delta">0.28% conversion rate</div></div>
-</div>
-<div class="grid kpi" style="margin-top:14px">
-<div class="card kpi"><div class="label">Cart abandonment</div><div class="value">80%</div><div class="delta">Added to cart, didn't buy</div></div>
-<div class="card kpi"><div class="label">Checkout abandonment</div><div class="value">72%</div><div class="delta">Reached checkout, didn't buy</div></div>
-</div>
-<div class="note" style="margin-top:14px"><strong>Leak:</strong> Only 1.4% of visitors add to cart (5–10% is healthy) and 72% who reach checkout don't finish. Recovering checkout is the fastest revenue lever — and your Klaviyo "Abandoned Checkout" flow is currently in draft.</div>
-</section>
-
-<section style="margin-top:24px">
-<h2 class="section">Customer &amp; retention <span class="sub">// Shopify · all-time + trailing 90d</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Customer LTV</div><div class="value teal">$202</div><div class="delta">Revenue ÷ 745 customers</div></div>
-<div class="card kpi"><div class="label">Blended CAC</div><div class="value">~$126</div><div class="delta">Ad spend (incl. GMV Max) ÷ ~40 new cust/mo</div></div>
-<div class="card kpi"><div class="label">LTV : CAC</div><div class="value">1.2x</div><div class="delta">Gross-profit basis · target ≥ 3x ▼</div></div>
-<div class="card kpi"><div class="label">Repeat rate</div><div class="value">~2%</div><div class="delta">5 of 213 customers (90d)</div></div>
-</div>
-<div class="note" style="margin-top:14px"><strong>Retention gap:</strong> ~98% of customers buy once (1.03 orders each), so there's almost no LTV beyond the first order. That pins LTV:CAC at ~1.3x vs the 3:1 benchmark. Activating post-purchase + winback flows is the highest-leverage growth move.</div>
-</section>
-
-<section style="margin-top:24px">
-<h2 class="section">Email &amp; SMS <span class="sub">// Klaviyo · all-time + last 30 days</span></h2>
-<div class="grid kpi">
-<div class="card kpi"><div class="label">Email revenue (all-time)</div><div class="value">$581</div><div class="delta">2 orders · ~0.4% of revenue ▼</div></div>
-<div class="card kpi"><div class="label">Welcome series</div><div class="value">3,694</div><div class="delta">sent · 27.7% open · $0 converted</div></div>
-<div class="card kpi"><div class="label">Last 30 days</div><div class="value">$0</div><div class="delta">0 email orders</div></div>
-<div class="card kpi"><div class="label">Revenue flows live</div><div class="value">2 / 5</div><div class="delta">3 key flows in draft</div></div>
-</div>
-<div class="card" style="margin-top:14px">
-<table class="data">
-<thead><tr><th>Flow</th><th>Status</th><th>Drives</th></tr></thead>
-<tbody>
-<tr><td>Welcome Series</td><td>Live</td><td>New subscribers</td></tr>
-<tr><td>Abandoned Cart</td><td>Live</td><td>Cart recovery</td></tr>
-<tr><td>Abandoned Checkout</td><td>Draft ▼</td><td>Recovers the 70% checkout leak</td></tr>
-<tr><td>Post-purchase Thank-you</td><td>Draft ▼</td><td>Repeat purchases</td></tr>
-<tr><td>Winback</td><td>Draft ▼</td><td>Re-engage churned</td></tr>
-</tbody>
-</table>
-</div>
-<div class="note" style="margin-top:14px"><strong>Biggest untapped lever:</strong> Email has driven just $581 (2 orders, all in May) — ~0.4% of revenue vs the 25–35% typical for DTC. The 3,700+ list (27.7% open) is engaged but nearly unmonetized: no recent campaigns, and the three highest-ROI flows (checkout, post-purchase, winback) sit in draft.</div>
-</section>
-
-
-
-
-
-</div>
-<script>
-(function(){
-function tryDraw(){
-if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
-var labels = ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 11", "May 18", "May 25", "Jun 1", "Jun 8", "Jun 15", "Jun 22", "Jun 29", "Jul 6"];
-var data = [2116, 2276, 2595, 2986, 2484, 1801, 1682, 1552, 1091, 1431, 2670, 2983, 2244];
-new Chart(document.getElementById('visitorChart').getContext('2d'),{
-type:'bar',
-data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
-});
-var amzLabels = ["Apr 12", "Apr 19", "Apr 26", "May 3", "May 10", "May 17", "May 24", "May 31", "Jun 7", "Jun 14", "Jun 21", "Jun 28", "Jul 5"];
-var amzData = [792, 1038, 1035, 831, 499, 159, 639, 499, 498, 364, 936, 601, 514];
-new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
-type:'bar',
-data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
-});
-var ytLabels = ["May 1","May 2","May 3","May 4","May 5","May 6","May 7","May 8","May 9","May 10","May 11","May 12","May 13","May 14","May 15","May 16","May 17","May 18","May 19","May 20","May 21","May 22","May 23","May 24","May 25","May 26","May 27","May 28","May 29","May 30"];
-var ytData = [91,96,84,84,649,1603,283,104,101,82,2082,1150,208,254,124,84,97,89,79,128,68,70,71,84,96,88,92,78,95,83];
-
-}
-tryDraw();
-})();
-</script>
-<!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-     PROFIT PER UNIT  CHANNEL BREAKDOWN
-     Data sourced: Shopify MCP, Amazon Ads (Windsor.ai), TikTok Shop (Windsor.ai),
-     Amazon FBA Fee Simulator, Amazon SP inventory, supplier order file
-     Last updated: May 31, 2026
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
-<section>
-<h2 class="section">Cashflow Outlook <span class="sub">// 30-day projection · as of Sunday, July 12, 2026</span></h2>
-<div class="note" style="margin-bottom:16px"><strong>Assumptions:</strong> LOC balance $90K drawn (of ~$100K), cash $2.8K, net margin 27.5%, OpEx $9,653/mo from Apr–Jun bank statements (Cooee Creative $4,500 + Jerry $3,150 + subscriptions $903 + Amy $600 amortized + CPA $500 — rent waived). Loan autopay $789/mo is financing, outside OpEx, blended AOV ~$243, landed cost $82/unit.</div>
-<div class="cf-row">
-<div class="cf-item">
-<div class="cf-label">Cash on hand</div>
-<div class="cf-value teal">$2,800</div>
-<div class="cf-note">Bank balance today</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Payouts incoming</div>
-<div class="cf-value teal">$4,152.05</div>
-<div class="cf-note">Amazon (transit + deferred) + TikTok in flight</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Total near-term liquidity</div>
-<div class="cf-value teal">$6,952.05</div>
-<div class="cf-note">Cash + payouts (excl. Shopify next)</div>
-</div>
-</div>
-<div class="cf-row">
-<div class="cf-item">
-<div class="cf-label">LOC balance drawn</div>
-<div class="cf-value warn" style="color:#B8730A">$90,000</div>
-<div class="cf-note">of est. $100K limit</div>
-<div class="cf-bar"><div class="cf-bar-fill warn" style="width:85%"></div></div>
-<div style="font-size:10px;color:var(--brown-soft)">$10,000 headroom remaining</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Proj. 30-day revenue</div>
-<div class="cf-value">$15,247</div>
-<div class="cf-note">~60 orders · ~$254 AOV · Shopify $10,899 + Amazon $4,348 (trailing 30d)</div>
-</div>
-<div class="cf-item">
-<div class="cf-label">Proj. gross profit (27.5%)</div>
-<div class="cf-value">$4,193</div>
-<div class="cf-note">Before OpEx deduction</div>
-</div>
-</div>
-<div class="card" style="margin-top:4px;padding:20px">
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start">
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Monthly OpEx — Itemized</div>
-<table style="width:100%;font-size:12px;border-collapse:collapse">
-<tr><td>Cooee Creative (agency)</td><td style="text-align:right;font-family:var(--font-lcd)">$4,500</td></tr>
-<tr><td>Jerry (ops · Venmo 3-mo avg)</td><td style="text-align:right;font-family:var(--font-lcd)">$3,150</td></tr>
-<tr><td>Subscriptions (9 SaaS)</td><td style="text-align:right;font-family:var(--font-lcd)">$903</td></tr>
-<tr><td>Amy (consulting · $1,200 every other mo)</td><td style="text-align:right;font-family:var(--font-lcd)">$600</td></tr>
-<tr><td>CPA</td><td style="text-align:right;font-family:var(--font-lcd)">$500</td></tr>
-<tr><td style="color:var(--brown-soft)">Rent — waived for now</td><td style="text-align:right;font-family:var(--font-lcd);color:var(--brown-soft)">$0</td></tr>
-<tr style="border-top:2px solid var(--brown);font-weight:bold"><td>Total</td><td style="text-align:right;font-family:var(--font-lcd);color:var(--red)">$9,653</td></tr>
-</table>
-</div>
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Net after OpEx (30d)</div>
-<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--red);margin-top:8px">-$5,460</div>
-<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">Proj. profit $4,193 − OpEx $9,653</div>
-</div>
-<div>
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft)">Inventory at cost</div>
-<div style="font-family:var(--font-lcd);font-size:24px;font-weight:bold;color:var(--brown);margin-top:8px">$63,878</div>
-<div style="font-size:11px;color:var(--brown-soft);margin-top:4px">779 units · $82 landed</div>
-</div>
-</div>
-<div class="note stale" style="margin-top:16px">⚠ <strong>Watch:</strong> Projected gross profit ($4,193 = 27.5% of $15,247 revenue) minus OpEx ($9,653) = <strong>-$5,460/mo</strong> if current traffic holds. LOC headroom is $10,000. Biggest lever: ~13 months of inventory (~$64K) is tying up cash — drawing it down frees cash without new ad spend.</div>
-</div>
-</section>
-<script>
-(function(){
-  function draw(){
-    if(!window.Chart){return setTimeout(draw,200);}
-    var el=document.getElementById('amzDailyChart');
-    if(!el){return;}
-    new Chart(el.getContext('2d'),{type:'bar',
-      data:{labels:['6/7','6/8','6/9','6/10','6/11','6/12','6/13','6/14','6/15','6/16','6/17','6/18','6/19','6/20','6/21','6/22','6/23','6/24','6/25','6/26','6/27','6/28','6/29','6/30','7/1','7/2','7/3','7/4','7/5','7/6'],
-      datasets:[{label:'Amazon sales',data:[232.99,232.99,0,0,0,248.99,0,0,0,0,0,232.99,232.99,0,0,465.98,232.99,0,232.99,465.98,465.98,232.99,0,0,232.99,232.99,0,0,0,0],backgroundColor:'rgba(216,162,58,0.55)',borderColor:'#D8A23A',borderWidth:1}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
-  }
-  draw();
-})();
-</script>
-<section>
-<h2 class="section">Target model <span class="sub">// scenario · 10 orders/day @ $50 CPA · set Jul 6, 2026</span></h2>
-<div class="note" style="margin-bottom:16px"><strong>Scenario assumptions:</strong> 300 orders/mo × $244 AOV · $82 landed cost · ~$35/order fees+shipping · $50 blended CPA · OpEx $9,653/mo (rent waived). Inventory on hand (779 units) covers ~78 days at this pace.</div>
-<div class="cf-row">
-<div class="cf-item"><div class="cf-label">Revenue / month</div><div class="cf-value">$73,200</div><div class="cf-note">10/day · 300 orders · $244 AOV</div></div>
-<div class="cf-item"><div class="cf-label">Ad budget @ $50 CPA</div><div class="cf-value" style="color:#B8730A">$15,000</div><div class="cf-note">~$500/day · ramp in steps as payouts catch up</div></div>
-<div class="cf-item"><div class="cf-label">Net after OpEx</div><div class="cf-value green">+$13,447</div><div class="cf-note">vs −$5,890 today · $19.3K monthly swing</div></div>
-</div>
-<div class="card" style="margin-top:4px;padding:20px">
-<div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--brown-soft);margin-bottom:8px">Monthly waterfall — 10/day @ $50 CPA</div>
-<div style="position:relative;height:260px"><canvas id="targetModelChart"></canvas></div>
-<div class="note" style="margin-top:14px"><strong>CPA path:</strong> Blended $50 needs email, retargeting ($92), and organic-assisted TikTok Shop — not Meta broad ($163). Note: paid TikTok GMV Max is running $188/order right now (corrected Jul 10), so it can't carry the blend until CPA recovers. Fixing the 70% checkout abandonment roughly halves every CPA. Cash timing: ads bill daily, payouts lag — ramp spend stepwise ($2.8K cash · $10K LOC headroom).</div>
-</div>
-</section>
-<script>
-(function(){
-function draw(){
-if(!window.Chart){return setTimeout(draw,200);}
-var el=document.getElementById('targetModelChart');
-if(!el){return;}
-new Chart(el.getContext('2d'),{type:'bar',
-data:{labels:['Revenue','- COGS $24.6K','- Fees $10.5K','- Ads $15K','= Margin $23.1K','- OpEx $9.7K','= Net +$13.4K'],
-datasets:[{data:[[0,73200],[48600,73200],[38100,48600],[23100,38100],[0,23100],[13447,23100],[0,13447]],backgroundColor:['#178A95','#D6443B','#D6443B','#D6443B','#FFAF41','#D6443B','#1F7A35'],borderRadius:3,maxBarThickness:52}]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{color:'#7A3322',callback:function(v){return '$' + (v/1000) + 'K'}},grid:{color:'rgba(71,21,14,0.08)'}},x:{grid:{display:false},ticks:{color:'#7A3322',autoSkip:false,maxRotation:45,font:{size:10}}}}}});
-}
-draw();
-})();
-</script>
 <footer>
-<span class="badge">Source: admin.shopify.com</span>
-<span class="badge">Source: sellercentral.amazon.com</span>
-<span class="badge">Source: seller-us.tiktok.com</span>
-<span class="badge">Source: scm-us.tiktok.com</span>
-<span class="badge">Source: supplier purchase log (xlsx)</span>
-<span class="badge">Source: Windsor.ai → YouTube</span>
-<div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Sunday, July 12, 2026 · Currency USD</div>
+  <span class="badge">Source: admin.shopify.com</span>
+  <span class="badge">Source: sellercentral.amazon.com</span>
+  <span class="badge">Source: seller-us.tiktok.com</span>
+  <span class="badge">Source: scm-us.tiktok.com</span>
+  <span class="badge">Source: supplier purchase log (xlsx)</span>
+  <span class="badge">Source: Windsor.ai → YouTube</span>
+  <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Sunday, July 12, 2026 · Currency USD</div>
 </footer>
+
+</div>
+<script>
+(function(){
+  function tryDraw(){
+    if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
+    var labels = ["Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25","Jun 1","Jun 8","Jun 15","Jun 22","Jun 29","Jul 6"];
+    var data = [2116,2276,2595,2986,2484,1801,1682,1552,1091,1431,2670,2983,2266];
+    new Chart(document.getElementById('visitorChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' sessions'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
+    var amzLabels = ["Feb 3","Feb 10","Feb 17","Feb 24","Mar 3","Mar 10","Mar 17","Mar 24","Mar 31","Apr 7","Apr 14","Apr 21","Apr 28"];
+    var amzData = [720,680,640,580,720,740,800,870,900,830,770,720,789];
+    new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
+      type:'bar',
+      data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' page views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
+    });
+    var ytLabels = ["Apr 24","Apr 25","Apr 26","Apr 27","Apr 28","Apr 29","Apr 30","May 1","May 2","May 3","May 4","May 5","May 6","May 7","May 8","May 9","May 10","May 11","May 12","May 13","May 14","May 15","May 16","May 17","May 18","May 19","May 20","May 21","May 22"];
+    var ytData = [1314,213,122,82,99,1414,229,91,96,84,84,649,1603,283,104,101,82,2082,1150,208,254,124,84,97,89,79,128,68,70];
+    new Chart(document.getElementById('youtubeViewsChart').getContext('2d'),{
+      type:'line',
+      data:{labels:ytLabels,datasets:[{label:'Daily views',data:ytData,backgroundColor:'rgba(214,68,59,0.12)',borderColor:'#D6443B',borderWidth:1.5,pointRadius:2,pointHoverRadius:5,fill:true,tension:0.3}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' views'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v.toLocaleString()}}},x:{grid:{display:false},ticks:{color:'#7A3322',maxTicksLimit:10,maxRotation:0}}}}
+    });
+  }
+  tryDraw();
+})();
+</script>
 </body>
 </html>
