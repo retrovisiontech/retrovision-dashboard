@@ -87,7 +87,7 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="meta">Generated Sunday, July 12, 2026 · Amazon · Shopify · TikTok Shop · YouTube · <a href="organic.html" style="color:#2fc0cf;text-decoration:underline;">Organic content tracker →</a></div>
 </div>
 
-<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Refreshed Jul 12 (scheduled run) — live: Shopify (KPIs, lifetime, visitors, payout balance), Amazon Seller Central (balance, 7-day + 30-day sales, FBA inventory), plus Meta Ads (Windsor) and Amazon Ads console (30-day) from the earlier Jul 12 pass. Held at last good pull: Amazon 90-day page-view chart + headline at Jul 11 (report grid wouldn't render weekly cells; totals cross-checked live), Amazon daily-sales chart at Jul 7, TikTok Shop payments + inventory at Jul 11 (login wall), TikTok GMV Max spend at Jul 10. Cooee paid-ads panel refreshed Jul 12 evening — Meta live Jun 1–Jul 12 (Windsor); TikTok GMV Max GMV/orders held at Jul 10 (captcha wall). Organic tracker refreshed — TikTok + YouTube live, Meta rows held at Jul 11.</div>
+<div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Refreshed Jul 12 (evening scheduled run) — live: Shopify KPIs (7-day sales, sessions, conversion), lifetime totals, 90-day visitors, top region, returning-customer rate, fulfillment queue. Held at last good pull: Shopify payout balance at the Jul 12 afternoon pass ($659.85 — payouts page wouldn't render text this run), Amazon Seller Central at the Jul 12 afternoon pass (login expired this run: balance, 7/30-day sales, FBA inventory), Amazon 90-day page-view chart at Jul 11, Amazon daily-sales chart at Jul 7, TikTok Shop payments + inventory at Jul 11 (login wall), TikTok GMV Max spend at Jul 10. Cooee paid-ads panel refreshed Jul 12 (weekly task) — Meta live Jun 1–Jul 12; TikTok GMV held Jul 10. Organic tracker: TikTok + YouTube live Jul 12, Meta rows held Jul 11. Cashflow Outlook as of Jul 12.</div>
 
 <!-- CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
      COOEE PAID ADS  AGENCY PROGRESS (updated weekly by cooee task)
@@ -296,7 +296,7 @@ drawCooee();
 <div class="grid kpi">
 <div class="card kpi"><div class="label">Revenue · all channels</div><div class="value">$4,881</div><div class="delta">Shopify+TikTok $2,879 · Amazon $2,002</div></div>
 <div class="card kpi"><div class="label">Orders · all channels</div><div class="value teal">19</div><div class="delta">~2.7/day · 12 Shopify+TikTok · 7 Amazon</div></div>
-<div class="card kpi"><div class="label">Sessions · Shopify</div><div class="value">3,209</div><div class="delta">Web traffic · 7-day</div></div>
+<div class="card kpi"><div class="label">Sessions · Shopify</div><div class="value">3,256</div><div class="delta">Web traffic · 7-day</div></div>
 <div class="card kpi"><div class="label">Conversion · Shopify</div><div class="value teal">0.37%</div><div class="delta">Orders ÷ sessions</div></div>
 </div>
 <div class="delta" style="margin-top:8px;font-size:12px;opacity:.75">Amazon slice live from Seller Central (Jul 6–12: $2,002 / 7 order items). Shopify + TikTok figures are exact.</div>
@@ -312,9 +312,9 @@ drawCooee();
 <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · April 13, 2026 – July 12, 2026</span></h2>
 <div class="card visitor-card">
 <div class="visitor-headline">
-<div><div class="num teal">27,976</div><div class="lbl">Total sessions</div></div>
-<div><div class="num">25,396</div><div class="lbl">Unique visitors</div></div>
-<div><div class="num" style="color:#1F7A35">▲ 28.8%</div><div class="lbl">vs prior 90 days (21,715)</div></div>
+<div><div class="num teal">28,023</div><div class="lbl">Total sessions</div></div>
+<div><div class="num">25,438</div><div class="lbl">Unique visitors</div></div>
+<div><div class="num" style="color:#1F7A35">▲ 29.0%</div><div class="lbl">vs prior 90 days (21,715)</div></div>
 </div>
 <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
 <div class="note" style="margin-top:14px"><strong>Source:</strong> Shopify Analytics → Sessions over time. Buckets are weekly aggregates.</div>
@@ -468,7 +468,7 @@ drawCooee();
 function tryDraw(){
 if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
 var labels = ["Apr 13", "Apr 20", "Apr 27", "May 4", "May 11", "May 18", "May 25", "Jun 1", "Jun 8", "Jun 15", "Jun 22", "Jun 29", "Jul 6"];
-var data = [2116, 2276, 2595, 2986, 2484, 1801, 1682, 1552, 1091, 1431, 2670, 2983, 2309];
+var data = [2116, 2276, 2595, 2986, 2484, 1801, 1682, 1552, 1091, 1431, 2670, 2983, 2356];
 new Chart(document.getElementById('visitorChart').getContext('2d'),{
 type:'bar',
 data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
