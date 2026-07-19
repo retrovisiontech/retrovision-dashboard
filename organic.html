@@ -83,7 +83,7 @@ rows.forEach(function(r,i) { r.rank = i + 1; });
 var mViews = 0, mEng = 0, mFol = 0, mPosts = 0;
 rows.forEach(function(r) { if (r.platform !== "TikTok" && r.platform !== "YouTube") { mViews += r.views; mEng += r.likes + r.comments + r.shares + r.saves; mFol += r.followers; mPosts++; } });
 mViews = 1605659; mEng = 10500;
-var ttViews = 78851;
+var ttViews = 78851, ytv = 0, ytsubs = 0, ytEng = 0;
 YT.forEach(function(v) { ytv += v[2]; ytEng += v[3] + v[4] + v[5]; ytsubs += v[6]; });
 function card(label, big, sub) { return '<div class="card"><div class="label">' + label + '</div><div class="big">' + big + '</div><div class="sub">' + sub + '</div></div>'; }
 document.getElementById("pulse").innerHTML =
