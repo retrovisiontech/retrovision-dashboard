@@ -83,13 +83,12 @@ rows.sort(function(a,b) { return b.views - a.views; });
 rows.forEach(function(r,i) { r.rank = i + 1; });
 var mViews = 0, mEng = 0, mFol = 0, mPosts = 0;
 rows.forEach(function(r) { if (r.platform !== "TikTok" && r.platform !== "YouTube") { mViews += r.views; mEng += r.likes + r.comments + r.shares + r.saves; mFol += r.followers; mPosts++; } });
-mViews = 808255; mEng = 7122;
-var ttViews = 84572, ytv = 0, ytsubs = 0, ytEng = 0;
+var ttViews = 83238, ytv = 0, ytsubs = 0, ytEng = 0;
 YT.forEach(function(v) { ytv += v[2]; ytEng += v[3] + v[4] + v[5]; ytsubs += v[6]; });
 function card(label, big, sub) { return '<div class="card"><div class="label">' + label + '</div><div class="big">' + big + '</div><div class="sub">' + sub + '</div></div>'; }
 document.getElementById("pulse").innerHTML =
-card("Meta views (28d)", mViews.toLocaleString(), "43 feed posts summed · FB total ~1.2M (live Jul 24)") +
-card("TikTok views (30d)", ttViews.toLocaleString(), "49 posts · 1,773 followers (+19 · live Jul 24)") +
+card("Meta views (28d)", mViews.toLocaleString(), "45 feed posts summed · FB total ~1.2M (held Jul 24)") +
+card("TikTok views (30d)", ttViews.toLocaleString(), "49 posts · 1,773 followers (+19 · live Jul 25)") +
   card("YouTube views (30d)", ytv.toLocaleString(), YT.length + " videos · +" + ytsubs + " subs") +
   card("Combined views", (mViews + ttViews + ytv).toLocaleString(), "all organic") +
   card("Meta engagements", mEng.toLocaleString(), "FB + IG · saves incl.");
