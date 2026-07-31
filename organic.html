@@ -83,7 +83,7 @@ rows.sort(function(a,b) { return b.views - a.views; });
 rows.forEach(function(r,i) { r.rank = i + 1; });
 var mViews = 0, mEng = 0, mFol = 0, mPosts = 0;
 rows.forEach(function(r) { if (r.platform !== "TikTok" && r.platform !== "YouTube") { mViews += r.views; mEng += r.likes + r.comments + r.shares + r.saves; mFol += r.followers; mPosts++; } });
-var ttViews = 84880, ytv = 0, ytsubs = 0, ytEng = 0;
+var ttViews = 84622, ytv = 0, ytsubs = 0, ytEng = 0;
 YT.forEach(function(v) { ytv += v[2]; ytEng += v[3] + v[4] + v[5]; ytsubs += v[6]; });
 function card(label, big, sub) { return '<div class="card"><div class="label">' + label + '</div><div class="big">' + big + '</div><div class="sub">' + sub + '</div></div>'; }
 document.getElementById("pulse").innerHTML =
@@ -126,7 +126,7 @@ document.getElementById("toggle").addEventListener("click", function() {
   render();
 });
 render();
-document.document.getElementById("insights").innerHTML =
+document.getElementById("insights").innerHTML =
 "<b>1. Meta organic is still ~86% of your total reach — and it costs nothing.</b> 665,410 views across 45 feed posts (Jul 3–30), vs 84,622 on TikTok and 20,753 on YouTube. Average Meta post: ~14,800 views. Nothing else is close.<br><br>"
 + "<b>2. Saves are the buy-intent signal — and they just got more valuable.</b> 2,566 saves and 59 new follows in 28 days. Meta paid CPA on the sales dashboard drifted up to $123.39/order (was $117.23), so every organic save is worth more this week, not less. The four most-saved Reels (Jul 4 \u00d72, Jul 9 \u00d72) alone drove 1,184 saves at $0 media cost. Boost the creative that already earns saves before testing net-new.<br><br>"
 + "<b>3. The winning format is one creative cut two or three ways.</b> The Jul 4 &quot;Remember when every birthday…&quot; drop took 70,474 + 56,082 views on two cuts; Jul 3 &quot;Every tape tells a story&quot; took 62,957 + 57,251 with its sibling &quot;Your memories deserve better…&quot; at 60,259; Jul 9 &quot;RVT Digitizer 3.0&quot; took 58,544 + 57,163. The extra cuts are not cannibalising the first — ship every hero idea as 2–3 edits.<br><br>"
