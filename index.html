@@ -84,10 +84,10 @@ footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown
 <div class="title-block">
 <div class="eyebrow">RetroVision Tech · Multi-channel Performance</div>
 <h1 class="display">Sales Dashboard</h1>
-<div class="meta">Generated Thursday, August 6, 2026 (6:15 AM ET) · Amazon · Shopify · TikTok Shop · YouTube · <a href="organic.html" style="color:#2fc0cf;text-decoration:underline;">Organic content tracker →</a></div>
+<div class="meta">Generated Thursday, August 6, 2026 (9:05 AM ET) · Amazon · Shopify · TikTok Shop · YouTube · <a href="organic.html" style="color:#2fc0cf;text-decoration:underline;">Organic content tracker →</a></div>
 </div>
 
-    <div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Generated Thursday, August 6, 2026, 6:15 AM ET by the &ldquo;retrovision-dashboard-daily-refresh&rdquo; task &mdash; the second run of the day, five hours after the 1:19 AM run. <strong>Live this run:</strong> Shopify yesterday / 7-day / 30-day / 90-day, region, retention, payout balance $1,814.51 and fulfillment queue 28; Amazon balance $1,199.80, the 13-bucket Sales &amp; Traffic grid and FBA inventory; TikTok Shop $247.66 due + $586.05 on hold and FBT inventory (428 units, 7 FCs). <strong>Shopify lifetime totals are live again</strong> &mdash; the all-time ShopifyQL query was rate-limited on every attempt at 1:19 AM but returned on the second try here, so those four cards moved off the Aug 5 carry-over: gross $171,529 &rarr; <strong>$172,556.97</strong>, net $155,527.86 &rarr; <strong>$156,414.51</strong>, total $160,830.36 &rarr; <strong>$161,733.94</strong>, orders 811 &rarr; <strong>815</strong>. <strong>Held:</strong> Amazon <strong>page-views</strong> chart and its 6,838 total &mdash; the Page Views column is not offered in the Sales &amp; Traffic report (it lives in the by-ASIN Detail Page report), so only sessions refreshed there and they came back identical at 5,316. The <strong>Amazon daily-sales chart</strong> was not re-pulled this run; it is held from the 1:10 AM By Day pull earlier today. Ad spend (Meta $3,203.62 &middot; Amazon PPC $912.71 &middot; TikTok GMV Max $937.53) was not re-pulled either; GMV Max is <strong>last good Jul 19, now 18 days stale</strong>. Cooee block untouched &mdash; the weekly cooee task owns it. <strong>Cashflow &mdash; recomputed by hand again, not by script.</strong> <code>cashflow-patch.mjs</code> is <strong>still unreachable</strong>: it lives in a Cowork outputs folder belonging to an earlier session, and that folder is not visible from this one. Every figure below was recomputed from the arithmetic spelled out in the Cashflow section itself, so it stays checkable line by line &mdash; but <strong>the durable fix remains undone: commit the script to this repo as <code>tools/cashflow-patch.mjs</code></strong> and point the scheduled task at the clone, or this breaks on every session cleanup. This is the third consecutive run that has had to work around it. <strong>Cash on hand ($10,000) and LOC drawn ($85,000) are manual, last set Jul 18 &mdash; 19 days stale, no bank feed.</strong> The runway figure rests on both; reconfirm against the bank before acting on it. <strong>Scheduling conflict &mdash; day six, still unresolved.</strong> Three enabled tasks write this one file: <code>daily-dashboard-refresh</code> and <code>refresh-retrovision-dashboard</code> share an identical cron (<code>0 8 * * *</code>), and this task runs <code>0 */5 * * *</code>. Two tasks on the same cron will eventually interleave mid-edit on a 69&nbsp;KB file. Disable two, keep one. <strong>Worth a look:</strong> the &ldquo;RVT Video to Digital Converter&rdquo; listing (B0H7K3N9Z8) still shows <strong>500 units inbound</strong> to FBA &mdash; not counted in the inventory table or the cashflow figures; when it lands it adds roughly $41K at cost and reverses most of the cash recently released.</div>
+    <div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Generated Thursday, August 6, 2026, 9:05 AM ET by the &ldquo;daily-dashboard-refresh&rdquo; task &mdash; the third run of the day (after 1:19 AM and 6:15 AM). <strong>Live this run:</strong> Shopify yesterday / 7-day / 30-day / 90-day, funnel, region, retention, lifetime, payout balance $1,814.51 and fulfillment queue 28; Amazon balance $1,199.80, the 13-bucket Sales &amp; Traffic grid, the 30-day daily series and FBA inventory; TikTok Shop $247.66 due + $586.05 on hold and FBT inventory (428 units, 7 FCs); and <strong>all three ad channels</strong> &mdash; Meta $3,234.98 via Windsor.ai, Amazon PPC $918.13, TikTok GMV Max $1,489.00. <strong>TikTok GMV Max is live again after 18 days held</strong> &mdash; it was never in Windsor and the Ads Manager dashboard kept failing, but Seller Center &rarr; Ads dashboard rendered cleanly this run. The number is materially worse than the carried figure: <strong>$1,489.00 spend / 9 SKU orders / $165.44 CPA / 1.47 ROI</strong> versus the held $937.53 / 7 orders / $133.93 CPA. That moves TikTok per-unit economics from &minus;$53.41 to <strong>&minus;$84.92 (&minus;40.0% margin)</strong> and lifts total trailing-30d ad spend from $5,054 to <strong>$5,642</strong>, so blended MER falls 3.7x &rarr; 3.5x, blended CAC rises ~$62 &rarr; ~$69 and LTV:CAC slips 2.4x &rarr; 2.2x. Nothing about the business changed &mdash; the measurement did. <strong>Two corrections to earlier runs.</strong> (1) The 6:15 AM run said &ldquo;Aug 4 recorded no orders&rdquo;; that was an artifact of the <code>SINCE -2d</code> query returning zeros. A day-by-day series shows Aug 4 closed at $976.60 / 4 orders on 218 sessions, so yesterday is a genuine &minus;7.5% revenue day, not a recovery from zero. (2) Earlier runs held the Amazon page-views chart on the belief that Page Views is absent from the Sales &amp; Traffic report; it is column 17 and it works, so that chart and the 6,980 total are now live rather than held from Aug 4. <strong>Cashflow was not recomputed this run and did not need to be</strong> &mdash; every balance it consumes (Amazon $1,199.80, TikTok $586.05 hold, Shopify $1,814.51, 578 units at $82.00) is byte-identical to the 6:15 AM run. <code>cashflow-patch.mjs</code> is <strong>still unreachable</strong> &mdash; it lives in an earlier session&rsquo;s Cowork outputs folder. <strong>The durable fix remains undone: commit it to this repo as <code>tools/cashflow-patch.mjs</code></strong> and point the task at the clone. Fourth consecutive run working around it. Note that the OpEx/net-margin assumptions in the Cashflow section predate today&rsquo;s ad-spend correction, so the 27.5% net margin there is now optimistic. <strong>Cash on hand ($10,000) and LOC drawn ($85,000) are manual, last set Jul 18 &mdash; 19 days stale, no bank feed.</strong> Reconfirm against the bank before acting on the runway figure. <strong>Scheduling conflict &mdash; day seven, still unresolved.</strong> Three enabled tasks write this one file: <code>daily-dashboard-refresh</code> and <code>refresh-retrovision-dashboard</code> share an identical cron (<code>0 8 * * *</code>), and a third runs <code>0 */5 * * *</code>. Two tasks on the same cron will eventually interleave mid-edit on a 71&nbsp;KB file. Disable two, keep one. <strong>Also this run:</strong> a second Chrome (&ldquo;Work laptop&rdquo;) connected mid-session and forced a browser re-selection; the run continued on the browser holding the existing tabs, but an unattended task cannot answer that prompt &mdash; if it happens while no tabs exist yet, the run will stall. <strong>Worth a look:</strong> the &ldquo;RVT Video to Digital Converter&rdquo; listing (B0H7K3N9Z8) still shows <strong>500 units inbound</strong> to FBA &mdash; not counted in the inventory table or the cashflow figures; when it lands it adds roughly $41K at cost and reverses most of the cash recently released.</div>
 
 
 
@@ -229,7 +229,7 @@ drawCooee();
 <tr><td>Amazon PPC</td><td>$42.63</td></tr>
 <tr><td><strong>Total costs</strong></td><td><strong>$155.64</strong></td></tr>
 </tbody></table></div>
-<div class="card"><div class="label">🛒 Shopify</div><div class="value" style="color:#1F7A35">+$58.89</div><div class="delta">Net profit / unit · +23.0% margin (Meta CAC 30d)</div>
+<div class="card"><div class="label">🛒 Shopify</div><div class="value" style="color:#1F7A35">+$60.16</div><div class="delta">Net profit / unit · +23.5% margin (Meta CAC 30d)</div>
 <table class="data"><tbody>
 <tr><td>Avg selling price (30d)</td><td>$255.48</td></tr>
 <tr><td>COGS (supplier)</td><td>$78.82</td></tr>
@@ -238,10 +238,10 @@ drawCooee();
 <tr><td>Storage</td><td>$0.35</td></tr>
 <tr><td>Shopify payments</td><td>$7.71</td></tr>
 <tr><td>Returns allowance</td><td>$0.75</td></tr>
-<tr><td>Meta Ads (CAC · 30d)</td><td>$99.30</td></tr>
-<tr><td><strong>Total costs</strong></td><td><strong>$196.59</strong></td></tr>
+<tr><td>Meta Ads (CAC · 30d)</td><td>$98.03</td></tr>
+<tr><td><strong>Total costs</strong></td><td><strong>$195.32</strong></td></tr>
 </tbody></table></div>
-<div class="card"><div class="label">🎵 TikTok Shop</div><div class="value" style="color:#B8730A">−$53.41</div><div class="delta">Net loss / unit · −25.1% margin ▼ (GMV Max CAC now live from Seller Center)</div>
+<div class="card"><div class="label">🎵 TikTok Shop</div><div class="value" style="color:#B8730A">−$84.92</div><div class="delta">Net loss / unit · −40.0% margin ▼ (GMV Max CAC live Aug 6, 30d)</div>
 <table class="data"><tbody>
 <tr><td>Avg selling price (30d)</td><td>$212.47</td></tr>
 <tr><td>COGS (supplier)</td><td>$78.82</td></tr>
@@ -250,47 +250,47 @@ drawCooee();
 <tr><td>Storage</td><td>$0.35</td></tr>
 <tr><td>TT commission (6%)</td><td>$12.75</td></tr>
 <tr><td>Creator/affiliate (15%)</td><td>$31.87</td></tr>
-<tr><td>TikTok GMV Max ads (CAC)</td><td>$133.93</td></tr>
-<tr><td><strong>Total costs</strong></td><td><strong>$265.88</strong></td></tr>
+<tr><td>TikTok GMV Max ads (CAC)</td><td>$165.44</td></tr>
+<tr><td><strong>Total costs</strong></td><td><strong>$297.39</strong></td></tr>
 </tbody></table></div>
 </div>
-<div class="note" style="margin-top:14px"><strong>Shopify margin alert:</strong> Meta CAC fell again to $99.30/order ($3,178 ÷ 32 purchases, trailing 30d Jul 5 – Aug 3), lifting Shopify per-unit net to +$58.89 — ~23.0% margin. Meta ROAS 2.40x (Windsor.ai, 30d). TikTok CAC still held from Seller Center GMV Max: $133.93/order ($937.53 ÷ 7 orders, MTD Jul 1–19) — ROI 1.90. Amazon PPC live Aug 3 — ROAS 4.20x (Ads console, 30d).</div>
+<div class="note" style="margin-top:14px"><strong>Shopify margin alert:</strong> Meta CAC improved again to $98.03/order ($3,234.98 &divide; 33 purchases, trailing 30d Jul 7 &ndash; Aug 5), lifting Shopify per-unit net to +$60.16 &mdash; ~23.5% margin. Meta ROAS 2.44x (Windsor.ai, 30d). <strong>TikTok CAC is live again after 18 days held:</strong> Seller Center GMV Max reads $165.44/order ($1,489.00 &divide; 9 SKU orders, trailing 30d) at ROI 1.47 &mdash; materially worse than the $133.93 that was carried, which pushes TikTok per-unit to &minus;$84.92 (&minus;40.0% margin) on the held $212.47 ASP. Amazon PPC live Aug 6 &mdash; ROAS 4.21x (Ads console, 30d).</div>
 
-<h2 class="section" style="margin-top:18px">Meta delivery &amp; diagnostics <span class="sub">// Meta Ads · trailing 30d Jul 6 – Aug 4 · Windsor.ai</span></h2>
+<h2 class="section" style="margin-top:18px">Meta delivery &amp; diagnostics <span class="sub">// Meta Ads · trailing 30d Jul 7 – Aug 5 · Windsor.ai</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Reach</div><div class="value">90,348</div><div class="delta">People · 1.6x frequency · 142,082 impressions</div></div>
-<div class="card kpi"><div class="label">CPM</div><div class="value">$22.55</div><div class="delta">Per 1,000 impressions</div></div>
-<div class="card kpi"><div class="label">Post-click conversion</div><div class="value">0.56%</div><div class="delta">32 buy of 5,668 ▼</div></div>
-</div>
+<div class="card kpi"><div class="label">Reach</div><div class="value">88,126</div><div class="delta">People · 1.6x frequency · 141,090 impressions</div></div>
+<div class="card kpi"><div class="label">CPM</div><div class="value">$22.93</div><div class="delta">Per 1,000 impressions</div></div>
+<div class="card kpi"><div class="label">Post-click conversion</div><div class="value">0.59%</div><div class="delta">33 buy of 5,629 ▲</div></div>
+<div class="note" style="margin-top:14px"><strong>Diagnosis:</strong> Your ads are still working &mdash; 4.0% CTR and $0.57 clicks beat benchmark, and reach/frequency (88K people, 1.6x) are healthy. Only ~0.6% of the 5,629 clicks Meta sent actually buy, though CPA improved again to $98.03. The bottleneck is still on-site conversion (1.7% add-to-cart, 55% checkout abandon), not Meta.</div>
 <div class="note" style="margin-top:14px"><strong>Diagnosis:</strong> Your ads are still working — 4.0% CTR and $0.57 clicks beat benchmark, and reach/frequency (90K people, 1.6x) are healthy. Only ~0.6% of the 5,668 clicks Meta sent actually buy, and CPA improved again to $100.11. The bottleneck is still on-site conversion (1.7% add-to-cart, 54% checkout abandon), not Meta.</div>
 
-<h2 class="section" style="margin-top:18px">Meta placement breakdown <span class="sub">// spend share · trailing 30d Jul 6 – Aug 4 · Windsor.ai</span></h2>
+<h2 class="section" style="margin-top:18px">Meta placement breakdown <span class="sub">// spend share · trailing 30d Jul 7 – Aug 5 · Windsor.ai</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Facebook</div><div class="value teal">62.2%</div><div class="delta">$1,994 spend · 4,773 clicks</div></div>
-<div class="card kpi"><div class="label">Instagram</div><div class="value teal">37.2%</div><div class="delta">$1,191 spend · 854 clicks</div></div>
-<div class="card kpi"><div class="label">Audience Net + other</div><div class="value">0.6%</div><div class="delta">$19 spend · 41 clicks</div></div>
+<div class="card kpi"><div class="label">Facebook</div><div class="value teal">62.6%</div><div class="delta">$2,024 spend · 4,726 clicks</div></div>
+<div class="card kpi"><div class="label">Instagram</div><div class="value teal">36.9%</div><div class="delta">$1,192 spend · 866 clicks</div></div>
+<div class="card kpi"><div class="label">Audience Net + other</div><div class="value">0.6%</div><div class="delta">$18 spend · 37 clicks</div></div>
 </div>
 <div class="card" style="margin-top:14px">
 <table class="data">
 <thead><tr><th>Placement</th><th>Spend</th><th>Share</th></tr></thead>
 <tbody>
-<tr><td>Facebook</td><td>$1,993.58</td><td>62.2%</td></tr>
-<tr><td>Instagram</td><td>$1,191.49</td><td>37.2%</td></tr>
-<tr><td>Audience Network + Threads + other</td><td>$18.58</td><td>0.6%</td></tr>
+<tr><td>Facebook</td><td>$2,024.34</td><td>62.6%</td></tr>
+<tr><td>Instagram</td><td>$1,192.19</td><td>36.9%</td></tr>
+<tr><td>Audience Network + Threads + other</td><td>$18.45</td><td>0.6%</td></tr>
 </tbody>
 </table>
 </div>
-<div class="note" style="margin-top:14px"><strong>Read:</strong> Spend is ~62/38 Facebook/Instagram, and Facebook drove 4,744 clicks vs Instagram's 849 on a $1,968/$1,191 split — that's ~$0.41 vs ~$1.40 per click. Facebook is ~3.4x more click-efficient; the budget has already shifted its way. Audience Network + Threads stay negligible. Real bottleneck still on-site conversion.</div>
+<div class="note" style="margin-top:14px"><strong>Read:</strong> Spend is ~63/37 Facebook/Instagram, and Facebook drove 4,726 clicks vs Instagram&rsquo;s 866 on a $2,024/$1,192 split &mdash; that&rsquo;s ~$0.43 vs ~$1.38 per click. Facebook is ~3.2x more click-efficient; the budget has already shifted its way. Audience Network + Threads stay negligible. Real bottleneck still on-site conversion.</div>
 
-<h2 class="section" style="margin-top:18px">Ad spend <span class="sub">// trailing 30 days · Meta via Windsor.ai · Amazon PPC live (30d) · TikTok GMV Max still held from Jul 19</span></h2>
+<h2 class="section" style="margin-top:18px">Ad spend <span class="sub">// trailing 30 days · Meta via Windsor.ai · Amazon PPC live (30d) · TikTok GMV Max live (30d)</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Meta (→ Shopify)</div><div class="value">$3,203.62</div><div class="delta">32 purchases · 2.39x ROAS · $100.11 CPA · 30d Jul 6 – Aug 4 (live Aug 5)</div></div>
-<div class="card kpi"><div class="label">Amazon PPC (Sponsored)</div><div class="value">$912.71</div><div class="delta">Live Aug 5 · Ads console trailing 30d (Jul 6 – Aug 5) · $3,866 ad sales · 4.24x ROAS · 15 purchases · 1,140 clicks</div></div>
-<div class="card kpi"><div class="label">TikTok Ads (→ TT Shop)</div><div class="value">$937.53</div><div class="delta">GMV Max · 7 orders · $133.93 CPA · 1.90 ROI · MTD Jul 1–19 · <strong>still held from Jul 19 (17 days)</strong> · Ads Manager loaded Aug 5 but the Performance card did not render</div></div>
+<div class="card kpi"><div class="label">Meta (→ Shopify)</div><div class="value">$3,234.98</div><div class="delta">33 purchases · 2.44x ROAS · $98.03 CPA · 30d Jul 7 – Aug 5 (live Aug 6)</div></div>
+<div class="card kpi"><div class="label">Amazon PPC (Sponsored)</div><div class="value">$918.13</div><div class="delta">Live Aug 6 · Ads console trailing 30d (Jul 7 – Aug 5) · $3,866 ad sales · 4.21x ROAS · 15 purchases · 1,144 clicks</div></div>
+<div class="card kpi"><div class="label">TikTok Ads (→ TT Shop)</div><div class="value">$1,489.00</div><div class="delta">GMV Max · 9 SKU orders · $165.44 CPA · 1.47 ROI · $2,189.36 gross revenue · trailing 30d Jul 7 – Aug 6 · <strong>live again after 18 days held</strong> · read from Seller Center → Ads dashboard (Ads Manager campaign list shows all 7 non-GMV-Max campaigns paused at $0)</div></div>
 </div>
 
 
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Meta via Windsor.ai (act 1247070696411670), trailing 30d Jul 5 – Aug 3 · TikTok GMV Max via Seller Center Ads dashboard, MTD Jul 1–19 (Windsor can't see GMV Max spend; the Ads Manager dashboard returned a network error again on Aug 3) · Amazon PPC live from the Ads console (trailing 30d Jul 4 – Aug 3) · Supplier purchase orders. Generated 2026-08-03.</div>
+<div class="note" style="margin-top:14px"><strong>Source:</strong> Meta via Windsor.ai (act 1247070696411670), trailing 30d Jul 7 &ndash; Aug 5 &middot; TikTok GMV Max read live from Seller Center &rarr; Ads dashboard (trailing 30d Jul 7 &ndash; Aug 6) &mdash; Windsor still can&rsquo;t see GMV Max spend, and the Ads Manager campaign list is a separate surface showing all 7 non-GMV-Max campaigns paused at $0 &middot; Amazon PPC live from the Ads console (trailing 30d Jul 7 &ndash; Aug 5) &middot; Supplier purchase orders. Generated 2026-08-06 9:05 AM ET.</div>
 </section>
 
 
@@ -309,16 +309,16 @@ drawCooee();
 </section>
 
 <section>
-<h2 class="section">Last 7 Days <span class="sub">// July 30 – August 6, 2026 · all channels (Shopify + TikTok + Amazon)</span></h2>
+<h2 class="section">Last 7 Days <span class="sub">// July 30 – August 5, 2026 · all channels (Shopify + TikTok + Amazon)</span></h2>
 <div class="grid kpi">
 <div class="card kpi"><div class="label">Revenue · all channels</div><div class="value">$5,027</div><div class="delta">Shopify+TikTok $3,862 · Amazon $1,165 (Jul 26–Aug 1 wk, live Aug 6)</div></div>
 <div class="card kpi"><div class="label">Orders · all channels</div><div class="value teal">21</div><div class="delta">~3.0/day · 16 Shopify+TikTok · 5 Amazon</div></div>
-<div class="card kpi"><div class="label">Sessions · Shopify</div><div class="value">1,332</div><div class="delta">Web traffic · 7-day</div></div>
-<div class="card kpi"><div class="label">Conversion · Shopify</div><div class="value teal">1.20%</div><div class="delta">Orders ÷ sessions</div></div>
+<div class="card kpi"><div class="label">Sessions · Shopify</div><div class="value">1,315</div><div class="delta">Web traffic · 7-day</div></div>
+<div class="card kpi"><div class="label">Conversion · Shopify</div><div class="value teal">1.22%</div><div class="delta">Orders ÷ sessions</div></div>
 </div>
-<div class="delta" style="margin-top:8px;font-size:12px;opacity:.75">Amazon slice live from the Aug 6 6:13 AM Sales &amp; Traffic pull (latest complete week Jul 26–Aug 1: $1,164.95 / 5 order items; the Aug 2 partial week adds $465.98 / 2). Shopify + TikTok figures are exact through Aug 6 6:11 AM (Aug 5 closed at $903.58 / 4 orders on 184 sessions; Aug 4 recorded no orders, so there is no day-over-day delta).</div>
+<div class="delta" style="margin-top:8px;font-size:12px;opacity:.75">Amazon slice live from the Aug 6 9:03 AM Sales &amp; Traffic pull (latest complete week Jul 26&ndash;Aug 1: $1,164.95 / 5 order items; the Aug 2 partial week adds $465.98 / 2). Shopify + TikTok figures are exact through Aug 6 9:00 AM. <strong>Correction to the 6:15 AM run:</strong> that run reported &ldquo;Aug 4 recorded no orders&rdquo; because the SINCE -2d query returned zeros; a day-by-day series shows Aug 4 actually closed at $976.60 / 4 orders on 218 sessions. So the real day-over-day is Aug 5 $903.58 / 4 orders on 184 sessions &mdash; revenue &minus;7.5%, sessions &minus;15.6%, orders flat.</div>
 <div class="grid kpi" style="margin-top:14px">
-<div class="card kpi"><div class="label">Shopify payout balance</div><div class="value">$1,814.51</div><div class="delta">Live Aug 6 (6:12 AM) &mdash; read from Finance &rarr; Payout balance (/payouts still 404s)</div></div>
+<div class="card kpi"><div class="label">Shopify payout balance</div><div class="value">$1,814.51</div><div class="delta">Live Aug 6 (9:02 AM) &mdash; read from Finance &rarr; Payout balance (/payouts still 404s)</div></div>
 <div class="card kpi"><div class="label">Orders to fulfill</div><div class="value teal">28</div><div class="delta">Shopify queue · paid, incl. in-progress</div></div>
 <div class="card kpi"><div class="label">Top region (30d)</div><div class="value" style="font-size:18px;line-height:1.6">Florida</div><div class="delta">By order count · 11 orders, next: CA (7)</div></div>
 <div class="card kpi"><div class="label">Returning customer rate</div><div class="value">3.7%</div><div class="delta">Last 30 days</div></div>
@@ -329,8 +329,8 @@ drawCooee();
 <h2 class="section">Website Visitors <span class="sub">// Shopify · Last 90 days · May 4, 2026 – August 6, 2026</span></h2>
 <div class="card visitor-card">
 <div class="visitor-headline">
-<div><div class="num teal">24,237</div><div class="lbl">Total sessions</div></div>
-<div><div class="num">20,960</div><div class="lbl">Unique visitors</div></div>
+<div><div class="num teal">24,256</div><div class="lbl">Total sessions</div></div>
+<div><div class="num">20,976</div><div class="lbl">Unique visitors</div></div>
 <div><div class="num" style="color:#1F7A35">▲ 15.6%</div><div class="lbl">vs prior 90 days (20,975)</div></div>
 </div>
 <div class="visitor-chart-wrap"><canvas id="visitorChart"></canvas></div>
@@ -358,28 +358,28 @@ drawCooee();
 </section>
 
 <section>
-<h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · May 10 – Aug 2, 2026 · scraped from Seller Central</span></h2>
+<h2 class="section">Amazon Page Views <span class="sub">// Last 90 days · May 10 – Aug 5, 2026 · scraped from Seller Central</span></h2>
 <div class="card visitor-card" style="border-color:#D85A30">
 <div class="visitor-headline">
-<div><div class="num" style="color:#D85A30">6,838</div><div class="lbl">Total page views</div></div>
+<div><div class="num" style="color:#D85A30">6,980</div><div class="lbl">Total page views</div></div>
 <div><div class="num">5,316</div><div class="lbl">Total sessions</div></div>
 <div><div class="num" style="color:#1F7A35">1.40%</div><div class="lbl">Order item session rate</div></div>
 </div>
 <div class="visitor-chart-wrap"><canvas id="amazonPageViewsChart"></canvas></div>
-      <div class="note" style="margin-top:14px"><strong>Re-read Aug 6 (6:13 AM) &mdash; byte-identical to the 1:10 AM pull.</strong> The By Week view returned all <strong>13 buckets (May 10 &ndash; Aug 2)</strong> again: sessions <strong>5,316</strong>, ordered product sales <strong>$16,493.46</strong> (76 units / 74 order items), order-item session rate <strong>1.40%</strong>, average sale per order item $225.68. Weekly sessions read 393 &middot; 125 &middot; 503 &middot; 393 &middot; 392 &middot; 287 &middot; 737 &middot; 473 &middot; 583 &middot; 407 &middot; 377 &middot; 459 &middot; 187 &mdash; unchanged, which is expected five hours on with the series still ending at the Aug 2 bucket. <strong>The chart below plots page views and is still held from the Aug 4 9:35 AM pull</strong> &mdash; the Page Views column is not offered in the Sales &amp; Traffic report (it lives in the by-ASIN Detail Page report), so the 6,838 total and the per-week bars are unchanged; that figure was measured when sessions read 5,206. For scale, the RVT 3.0 listing on its own shows <strong>2,322 page views</strong> over its trailing 30 days on the Manage Inventory page. Final bucket (Aug 2) is a partial week.</div>
+<div class="note" style="margin-top:14px"><strong>Re-pulled Aug 6 (9:03 AM) with the window extended to Aug 5.</strong> The By Week view returned all <strong>13 buckets (May 10 &ndash; Aug 5)</strong>: sessions <strong>5,316</strong>, page views <strong>6,980</strong>, ordered product sales <strong>$16,493.46</strong> (74 order items), order-item session rate <strong>1.40%</strong>, average sale per order item $222.88. <strong>Correction:</strong> earlier runs noted that Page Views is not available in the Sales &amp; Traffic report and held the chart from Aug 4. It <em>is</em> available &mdash; column 17 (Page Views &ndash; Total) &mdash; so the chart below is now live, not held. Only the final bucket moved: Aug 2 went from 104 to 246 page views as that week filled in. Weekly sessions read 393 &middot; 125 &middot; 503 &middot; 393 &middot; 392 &middot; 287 &middot; 737 &middot; 473 &middot; 583 &middot; 407 &middot; 377 &middot; 459 &middot; 187. For scale, the RVT 3.0 listing on its own shows <strong>2,322 page views</strong> over its trailing 30 days on the Manage Inventory page. Final bucket (Aug 2) is still a partial week and Amazon flags Aug 5 as not fully settled.</div>
 </div>
 </section>
 <section style="margin-top:24px">
 <h2 class="section">Amazon daily sales <span class="sub">// Seller Central · last 30 days</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">30-day sales</div><div class="value teal">$6,656</div><div class="delta">Marketplace total · Jul 5 &ndash; Aug 3 (live Aug 6)</div></div>
-<div class="card kpi"><div class="label">Units sold</div><div class="value">29</div><div class="delta">~1.0/day · sells in bursts</div></div>
+<div class="card kpi"><div class="label">30-day sales</div><div class="value teal">$6,656</div><div class="delta">Marketplace total · Jul 7 &ndash; Aug 4 (live Aug 6, 9:03 AM)</div></div>
+<div class="card kpi"><div class="label">Units sold</div><div class="value">29</div><div class="delta">~1.0/day · sells in bursts · units column not pulled this run, held from Aug 6 1:10 AM</div></div>
 <div class="card kpi"><div class="label">Avg sale</div><div class="value">$247</div><div class="delta">Per order item · 27 order items</div></div>
 </div>
 <div class="card visitor-card" style="margin-top:14px;border-color:#D8A23A">
 <div style="position:relative;height:260px"><canvas id="amzDailyChart"></canvas></div>
 </div>
-<div class="note" style="margin-top:14px"><strong>Source:</strong> Seller Central · Sales &amp; Traffic By Day, live as of 2026-08-06 1:10 AM (marketplace total · Jul 5 – Aug 3: $6,655.91 / 29 units / 27 order items / 2,013 sessions / 1.42% order-item session rate). Per-day chart refreshed from this pull. Note the window shifted from the previous run: this is all listings, not the RVT 3.0 listing alone (that listing reads $5,970 / 28 units over its own trailing 30 days, which is the figure the Cashflow section uses). Aug 4 – Aug 5 still settling and are excluded.</div>
+<div class="note" style="margin-top:14px"><strong>Source:</strong> Seller Central &middot; Sales &amp; Traffic By Day, live as of 2026-08-06 9:03 AM (marketplace total &middot; Jul 7 &ndash; Aug 4: $6,655.91 / 27 order items / 2,373 page views / 1,833 sessions / 1.52% order-item session rate). Per-day chart refreshed from this pull; the window rolled forward two days from the 1:10 AM run and the dollar total happens to be unchanged because Jul 5&ndash;6 and Aug 4 all recorded $0. This is all listings, not the RVT 3.0 listing alone (that listing reads $5,970 / 28 units over its own trailing 30 days, which is the figure the Cashflow section uses). Units sold (29) is held from the 1:10 AM pull &mdash; the units column was not in this run&rsquo;s column set. Aug 5 excluded: Amazon flags it as still settling.</div>
 </section>
 
 
@@ -396,9 +396,9 @@ drawCooee();
 <section>
 <h2 class="section">Amazon &amp; TikTok Snapshot <span class="sub">// Balances and inventory at refresh time</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Amazon balance</div><div class="value">$1,199.80</div><div class="delta">$1,086.56 deferred + $113.24 standard orders (all available now) · last payout $179.30 on Aug 4 · live Aug 6 (6:13 AM)</div></div>
-<div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$833.71</div><div class="delta">$586.05 hold + $247.66 net earnings due · $424.64 paid this week · reserve level 10% · live Aug 6 (6:14 AM)</div></div>
-<div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$3,848.02</div><div class="delta">Amazon $1,199.80 + TikTok $833.71 + Shopify $1,814.51 &mdash; all three live Aug 6 (6:12&ndash;6:14 AM)</div></div>
+<div class="card kpi"><div class="label">Amazon balance</div><div class="value">$1,199.80</div><div class="delta">$1,086.56 deferred + $113.24 standard orders (all available now) · last payout $179.30 on Aug 4 · live Aug 6 (9:01 AM)</div></div>
+<div class="card kpi"><div class="label">TikTok pending + hold</div><div class="value">$833.71</div><div class="delta">$586.05 hold + $247.66 net earnings due · $424.64 paid this week · reserve level 10% · live Aug 6 (9:04 AM)</div></div>
+<div class="card kpi"><div class="label">Total payouts in flight</div><div class="value teal">$3,848.02</div><div class="delta">Amazon $1,199.80 + TikTok $833.71 + Shopify $1,814.51 &mdash; all three live Aug 6 (9:01&ndash;9:04 AM)</div></div>
 <div class="card kpi"><div class="label">Total inventory at cost</div><div class="value">$47,396</div><div class="delta">578 units · $82.00 landed</div></div>
 </div>
 <div class="card" style="margin-top:14px">
@@ -439,23 +439,23 @@ drawCooee();
 <section style="margin-top:24px">
 <h2 class="section">Efficiency &amp; health <span class="sub">// blended · trailing 30 days</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Blended MER</div><div class="value teal">3.7x</div><div class="delta">Revenue $18,843 ÷ total ad spend $5,054 (ad spend not re-pulled this run; incl. held GMV Max)</div></div>
-<div class="card kpi"><div class="label">Blended AOV</div><div class="value">$227</div><div class="delta">~83 orders · trailing 30 days</div></div>
-<div class="card kpi"><div class="label">Inventory cover</div><div class="value">~7.0 mo</div><div class="delta">578 units ÷ ~83 sold/mo · ~$47.4K cash tied up</div></div>
+<div class="card kpi"><div class="label">Blended MER</div><div class="value teal">3.5x</div><div class="delta">Revenue $19,529 ÷ total ad spend $5,642 (Meta + Amazon PPC + TikTok GMV Max — all three live this run)</div></div>
+<div class="card kpi"><div class="label">Blended AOV</div><div class="value">$238</div><div class="delta">82 orders · trailing 30 days</div></div>
+<div class="card kpi"><div class="label">Inventory cover</div><div class="value">~7.0 mo</div><div class="delta">578 units ÷ ~82 sold/mo · ~$47.4K cash tied up</div></div>
 </div>
 </section>
 
 <section style="margin-top:24px">
 <h2 class="section">Conversion funnel <span class="sub">// Shopify · last 30 days</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Sessions</div><div class="value">7,125</div><div class="delta">Store visits</div></div>
-<div class="card kpi"><div class="label">Added to cart</div><div class="value">122</div><div class="delta">1.7% of sessions ▼ (5–10% healthy)</div></div>
-<div class="card kpi"><div class="label">Reached checkout</div><div class="value">98</div><div class="delta">1.4% of sessions</div></div>
-<div class="card kpi"><div class="label">Purchased</div><div class="value teal">45</div><div class="delta">0.63% conversion rate</div></div>
+<div class="card kpi"><div class="label">Sessions</div><div class="value">6,951</div><div class="delta">Store visits</div></div>
+<div class="card kpi"><div class="label">Added to cart</div><div class="value">117</div><div class="delta">1.7% of sessions ▼ (5–10% healthy)</div></div>
+<div class="card kpi"><div class="label">Reached checkout</div><div class="value">95</div><div class="delta">1.4% of sessions</div></div>
+<div class="card kpi"><div class="label">Purchased</div><div class="value teal">43</div><div class="delta">0.62% conversion rate</div></div>
 </div>
 <div class="grid kpi" style="margin-top:14px">
 <div class="card kpi"><div class="label">Cart abandonment</div><div class="value">63%</div><div class="delta">Added to cart, didn't buy</div></div>
-<div class="card kpi"><div class="label">Checkout abandonment</div><div class="value">54%</div><div class="delta">Reached checkout, didn't buy</div></div>
+<div class="card kpi"><div class="label">Checkout abandonment</div><div class="value">55%</div><div class="delta">Reached checkout, didn't buy</div></div>
 </div>
 <div class="note" style="margin-top:14px"><strong>Leak:</strong> Only 1.6% of visitors add to cart (5–10% is healthy) and 56% who reach checkout don't finish. Recovering checkout is the fastest revenue lever — and your Klaviyo "Abandoned Checkout" flow is currently in draft.</div>
 </section>
@@ -484,10 +484,10 @@ drawCooee();
 <section style="margin-top:24px">
 <h2 class="section">Customer &amp; retention <span class="sub">// Shopify · all-time + trailing 90d</span></h2>
 <div class="grid kpi">
-<div class="card kpi"><div class="label">Customer LTV</div><div class="value teal">$204</div><div class="delta">Revenue ÷ 789 customers</div></div>
-<div class="card kpi"><div class="label">Blended CAC</div><div class="value">~$62</div><div class="delta">Ad spend (incl. held GMV Max) ÷ ~82 new cust/mo</div></div>
-<div class="card kpi"><div class="label">LTV : CAC</div><div class="value">2.4x</div><div class="delta">Gross-profit basis · target ≥ 3x ▼</div></div>
-<div class="card kpi"><div class="label">Repeat rate</div><div class="value">~2.5%</div><div class="delta">4 of 163 customers (90d)</div></div>
+<div class="card kpi"><div class="label">Customer LTV</div><div class="value teal">$204</div><div class="delta">Revenue ÷ 793 customers</div></div>
+<div class="card kpi"><div class="label">Blended CAC</div><div class="value">~$69</div><div class="delta">Ad spend $5,642 (all live) ÷ 82 new cust/mo</div></div>
+<div class="card kpi"><div class="label">LTV : CAC</div><div class="value">2.2x</div><div class="delta">Gross-profit basis · target ≥ 3x ▼</div></div>
+<div class="card kpi"><div class="label">Repeat rate</div><div class="value">~2.4%</div><div class="delta">4 of 166 customers (90d)</div></div>
 </div>
 <div class="note" style="margin-top:14px"><strong>Retention gap:</strong> ~98% of customers buy once (1.03 orders each), so there's almost no LTV beyond the first order. Cheaper Meta CAC lifted LTV:CAC to ~2.2x, still short of the 3:1 benchmark. Activating post-purchase + winback flows is the highest-leverage growth move.</div>
 </section>
@@ -525,7 +525,7 @@ drawCooee();
 function tryDraw(){
 if (typeof Chart==='undefined'){setTimeout(tryDraw,100);return;}
 var labels = ["May 4", "May 11", "May 18", "May 25", "Jun 1", "Jun 8", "Jun 15", "Jun 22", "Jun 29", "Jul 6", "Jul 13", "Jul 20", "Jul 27", "Aug 3"];
-var data=[1252,2484,1801,1682,1552,1091,1431,2670,2983,2380,1531,1290,1505,585];
+var data=[1252,2484,1801,1682,1552,1091,1431,2670,2983,2380,1531,1290,1505,604];
 new Chart(document.getElementById('visitorChart').getContext('2d'),{
 type:'bar',
 data:{labels:labels,datasets:[{label:'Sessions per week',data:data,backgroundColor:'rgba(47,192,207,0.55)',borderColor:'#178A95',borderWidth:1.5,borderRadius:3}]},
@@ -538,7 +538,7 @@ data:{labels:labels,datasets:[{label:'Avg seconds on site',data:engData,backgrou
 options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y+' sec avg'}}}},scales:{y:{beginAtZero:true,grid:{color:'rgba(71,21,14,0.08)'},ticks:{color:'#7A3322',callback:function(v){return v+'s'}}},x:{grid:{display:false},ticks:{color:'#7A3322'}}}}
 });
 var amzLabels = ["May 10", "May 17", "May 24", "May 31", "Jun 7", "Jun 14", "Jun 21", "Jun 28", "Jul 5", "Jul 12", "Jul 19", "Jul 26", "Aug 2"];
-var amzData=[524,183,677,489,492,393,954,656,791,512,481,582,104];
+var amzData=[524,183,677,489,492,393,954,656,791,512,481,582,246];
 new Chart(document.getElementById('amazonPageViewsChart').getContext('2d'),{
 type:'bar',
 data:{labels:amzLabels,datasets:[{label:'Page views per week',data:amzData,backgroundColor:'rgba(216,90,48,0.55)',borderColor:'#A03A1C',borderWidth:1.5,borderRadius:3}]},
@@ -569,7 +569,7 @@ PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
 <div class="cf-item">
 <div class="cf-label">Payouts incoming</div>
 <div class="cf-value teal">$1,785.85</div>
-<div class="cf-note">Amazon $1,199.80 + TikTok on hold $586.05 &mdash; both live Aug 6 (6:13 AM)</div>
+<div class="cf-note">Amazon $1,199.80 + TikTok on hold $586.05 &mdash; both live Aug 6 (9:01 AM)</div>
 </div>
 <div class="cf-item">
 <div class="cf-label">Total near-term liquidity</div>
@@ -631,8 +631,8 @@ PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
     var el=document.getElementById('amzDailyChart');
     if(!el){return;}
     new Chart(el.getContext('2d'),{type:'bar',
-      data:{labels:['7/5','7/6','7/7','7/8','7/9','7/10','7/11','7/12','7/13','7/14','7/15','7/16','7/17','7/18','7/19','7/20','7/21','7/22','7/23','7/24','7/25','7/26','7/27','7/28','7/29','7/30','7/31','8/1','8/2','8/3'],
-      datasets:[{label:'Amazon sales',data:[0,0,1070.15,0,0,0,931.96,232.99,465.98,698.97,465.98,229.99,232.99,0,0,462.98,232.99,0,0,0,0,232.99,698.97,0,0,0,0,232.99,232.99,232.99],backgroundColor:'rgba(216,162,58,0.55)',borderColor:'#D8A23A',borderWidth:1}]},
+      data:{labels:['7/7','7/8','7/9','7/10','7/11','7/12','7/13','7/14','7/15','7/16','7/17','7/18','7/19','7/20','7/21','7/22','7/23','7/24','7/25','7/26','7/27','7/28','7/29','7/30','7/31','8/1','8/2','8/3','8/4'],
+      datasets:[{label:'Amazon sales',data:[1070.15,0,0,0,931.96,232.99,465.98,698.97,465.98,229.99,232.99,0,0,462.98,232.99,0,0,0,0,232.99,698.97,0,0,0,0,232.99,232.99,232.99,0],backgroundColor:'rgba(216,162,58,0.55)',borderColor:'#D8A23A',borderWidth:1}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
   }
   draw();
