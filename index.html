@@ -49,6 +49,13 @@ footer{margin-top:40px;padding-top:20px;border-top:2px dashed var(--line);font-s
 footer .badge{display:inline-block;padding:4px 10px;border:1px solid var(--brown);border-radius:4px;margin:0 4px;background:var(--cream-2)}
 .note{background:rgba(255,175,65,0.18);border-left:4px solid var(--gold);padding:10px 14px;border-radius:4px;font-size:12px;color:var(--brown)}
 .note.stale{background:rgba(214,68,59,0.10);border-left-color:var(--red)}
+details.freshness{margin-top:14px;border-left:4px solid var(--red);background:rgba(214,68,59,0.07);border-radius:4px;overflow:hidden}
+details.freshness>summary{cursor:pointer;padding:9px 14px;font-size:12px;font-weight:bold;color:var(--brown);list-style:none;user-select:none}
+details.freshness>summary::-webkit-details-marker{display:none}
+details.freshness>summary::before{content:"\25B8 ";color:var(--red)}
+details.freshness[open]>summary::before{content:"\25BE "}
+details.freshness>summary:hover{background:rgba(214,68,59,0.10)}
+details.freshness .note.stale{margin-top:0 !important;border-left:none;border-radius:0;background:transparent}
 .visitor-card{padding:24px;background:linear-gradient(135deg,#FFF8EA 0%,#FBF2E1 100%);border:2px solid var(--teal-deep)}
 .visitor-headline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
 .visitor-headline .num{font-family:var(--font-lcd);font-size:36px;font-weight:bold;color:var(--brown);line-height:1}
@@ -603,5 +610,21 @@ draw();
 <span class="badge">Source: Windsor.ai → YouTube</span>
 <div style="margin-top:10px">RetroVision Tech · Sales Dashboard · Generated Saturday, August 8, 2026, 11:51 AM ET · Currency USD</div>
 </footer>
+<script>
+(function(){
+function collapseFreshness(){
+  var n=document.querySelector('.note.stale');
+  if(!n||n.dataset.fresh||n.closest('details.freshness'))return;
+  n.dataset.fresh='1';
+  var d=document.createElement('details');d.className='freshness';
+  var s=document.createElement('summary');
+  var m=(n.textContent.match(/Generated [^\u2014\u2013]*?(?:AM|PM) ET/)||[])[0];
+  s.textContent='Data freshness & known issues'+(m?' \u2014 '+m.replace('Generated ',''):'');
+  n.parentNode.insertBefore(d,n);d.appendChild(s);d.appendChild(n);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',collapseFreshness);
+else collapseFreshness();
+})();
+</script>
 </body>
-                                                                                                                                                </html>
+    </html>
