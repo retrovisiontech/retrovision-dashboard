@@ -3,7 +3,7 @@
 <head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Poppins:wght@700;900&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RetroVision Tech — Sales Dashboard</title>
@@ -74,6 +74,21 @@ details.freshness .note.stale{margin-top:0 !important;border-left:none;border-ra
 .cf-bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
 .cf-bar-fill.warn{background:linear-gradient(90deg,var(--gold),#E88B00)}
 .cf-bar-fill.danger{background:linear-gradient(90deg,var(--red),#A0322B)}
+/* ---- quick-read strip (Sep 13 2026) ---- */
+.qr{margin-top:14px;background:var(--paper);border:2px solid #D9C39A;border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.qr-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.qr-title{font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--brown)}
+.qr-btn{border:0;cursor:pointer;background:var(--brown);color:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:bold;font-family:inherit}
+.qr-btn.ghost{background:var(--cream-2);color:var(--brown);border:1px solid var(--line)}
+.qr-btn.on{background:var(--teal-deep);color:#fff}
+.qr-lights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}
+.qr-chip{border-radius:12px;padding:12px 14px;color:#fff;font-weight:bold;font-size:15px;line-height:1.35}
+.qr-chip small{display:block;font-weight:normal;font-size:13px;opacity:.95;margin-top:2px}
+.qr-g{background:#2E8B57}.qr-y{background:#C98A1B}.qr-r{background:#C8443B}
+.qr-say{margin-top:12px;border-left:6px solid #2E8B57;background:var(--cream);padding:12px 16px;border-radius:8px;font-size:16px;line-height:1.7}
+.qr-say p{margin:0 0 6px}
+body.easy-read{font-family:"Lexend",Verdana,Arial,sans-serif!important;font-size:17px;line-height:1.75;letter-spacing:.02em;word-spacing:.08em}
+body.easy-read .delta,body.easy-read .note,body.easy-read table.data{font-size:15px!important;line-height:1.7}
 </style>
 </head>
 <body>
@@ -93,6 +108,47 @@ details.freshness .note.stale{margin-top:0 !important;border-left:none;border-ra
 <h1 class="display">Sales Dashboard</h1>
 <div class="meta">Generated Sunday, September 13, 2026 (1:30 PM ET) · Amazon · Shopify · TikTok Shop · Walmart · YouTube · <a href="organic.html" style="color:#2fc0cf;text-decoration:underline;">Organic content tracker →</a></div>
 </div>
+
+<div class="qr" id="quickRead">
+<div class="qr-head">
+<div class="qr-title">🎛️ Today in 20 seconds <span style="font-weight:normal;font-size:13px;color:var(--brown-soft)">· Sunday, Sep 13</span></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button class="qr-btn" id="qrListen" type="button">🔊 Listen (1 min)</button>
+<button class="qr-btn ghost" id="qrEasy" type="button">🎨 Easy-read font</button>
+</div>
+</div>
+<div class="qr-lights">
+<div class="qr-chip qr-g">🟢 CASH — healthy<small>≈ $5,600 of payouts on the way</small></div>
+<div class="qr-chip qr-g">🟢 AMAZON — making money<small>+$28 profit per unit · sales up this week</small></div>
+<div class="qr-chip qr-y">🟡 SHOPIFY — OK overall<small>+$46 per unit blended · Meta-driven sales ≈ break-even</small></div>
+<div class="qr-chip qr-r">🔴 TIKTOK SHOP — losing money<small>−$45 per unit · GMV Max ads still running</small></div>
+</div>
+<div class="qr-say" id="qrSay">
+<p>🗣️ <strong>Plain-English read.</strong> Sales across all channels were about $5,500 this week, up from $4,100 the week before. Amazon is doing well and is profitable again. Shopify is fine overall, but each sale that comes from Meta ads barely breaks even, so more ad spend will not add profit right now.</p>
+<p>TikTok Shop is the problem child. GMV Max ads spent about $1,400 in the last month for 14 orders, and each of those units loses about $45. That is the one decision to make this week.</p>
+<p>Stock is fine: about 1,500 units in hand, worth $112,000 at cost, with more on the way from the supplier. The supplier is still waiting on the signed payment form.</p>
+</div>
+</div>
+<script>
+(function(){
+var say=document.getElementById('qrSay'),btn=document.getElementById('qrListen'),easy=document.getElementById('qrEasy');
+var speaking=false;
+function stop(){try{window.speechSynthesis.cancel();}catch(e){} speaking=false; btn.textContent='🔊 Listen (1 min)';}
+btn.addEventListener('click',function(){
+  if(!('speechSynthesis' in window)){btn.textContent='Speech not supported here';return;}
+  if(speaking){stop();return;}
+  var text=say.innerText.replace(/🗣️/g,'');
+  var u=new SpeechSynthesisUtterance(text); u.rate=0.95; u.lang='en-US';
+  u.onend=stop; u.onerror=stop;
+  window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
+  speaking=true; btn.textContent='⏹ Stop';
+});
+function setEasy(on){document.body.classList.toggle('easy-read',on); easy.classList.toggle('on',on); easy.textContent=on?'🎨 Easy-read font: ON':'🎨 Easy-read font'; try{localStorage.setItem('rvEasyRead',on?'1':'0');}catch(e){}}
+easy.addEventListener('click',function(){setEasy(!document.body.classList.contains('easy-read'));});
+var saved=null; try{saved=localStorage.getItem('rvEasyRead');}catch(e){}
+if(saved==='1')setEasy(true);
+})();
+</script>
 
     <div class="note stale" style="margin-top:14px"><strong>Heads up:</strong> Generated Sunday, September 13, 2026, 1:30 PM ET &mdash; <strong>full pass, every section re-read</strong> (Shopify MCP + Klaviyo API + Windsor.ai + Chrome + supplier WhatsApp + the supplier order &amp; fee file). <strong>Live: Shopify via MCP</strong> &mdash; yesterday (Sat Sep 12) closed at $719.26 / 3 orders on 221 sessions, 0.45% conversion (Sep 11 was a zero-order day, so no day-over-day %), and today already has 3 more web orders in by noon (#1900&ndash;#1902). 7-day $3,128.98 / 16 orders (Sep 6&ndash;13), sessions 1,581 (7d, 0.76% conversion, 12 completed checkouts &mdash; more traffic than last week&rsquo;s 1,276 but a lower rate) / 21,707 (90d, &#9660;10.4% vs prior 90d&rsquo;s 24,219; the last chart bucket, Sep 7, is a partial week). Lifetime $180,133.81 / 901 orders (+18 since Sep 4). Top region stays <strong>CA</strong> (8 orders, TX 6, WI 4). Fulfillment queue: <strong>5 real web orders, all from Sat night / Sun morning (#1898&ndash;#1902) and all &ldquo;in progress&rdquo;</strong>; the old #1766 from Jul 11 has finally cleared. The raw count of 22 includes 17 TikTok-synced orders FBT ships (their fulfilled status never syncs back). Payout balance <strong>$1,532.33</strong> (live in Chrome) &middot; $197.93 paid Sep 12 &middot; <strong>$630.15 + $197.93 land tomorrow, Sep 14</strong>. Returning customer rate <strong>1.54%</strong> (65 customers, 30d). <strong>Amazon via Windsor.ai (SP-API):</strong> 90d (Jun 14 &ndash; Sep 12) $14,539.57 / 61 order items / 6,595 sessions / 8,427 page views / 0.92% order-item session rate; 30d (Aug 14 &ndash; Sep 12) $3,922.83 / 17 units &mdash; up from $2,291.90 / 10 a week ago. <strong>&#9650; Best Amazon week since July:</strong> Sep 6&ndash;12 sold <strong>10 units / $2,329.90</strong> (3 on Sep 7, 3 on Sep 10, 3 on Sep 12) on normal traffic of ~65 sessions/day &mdash; the late-August traffic spike has fully faded (1,206 sessions the week of Aug 30, back to 402 this week) and conversion recovered to 2.5% for the week. Sep 12 traffic hasn&rsquo;t posted yet (sales have). <strong>FBA inventory (SP-API, live):</strong> <strong>the 500-unit RVT 3.0 restock has landed</strong> &mdash; RVT 3.0 now reads <strong>284 available / 28 reserved</strong> / 1 unfulfillable, 100 still &ldquo;working&rdquo; and ~178 in receiving/transfer (SP-API total 591), up from 94 available on Sep 4. The Digitizer Starter Kit is mostly received too: <strong>277 available + 20 reserved</strong>, 120 inbound-shipped, 40 receiving (SP-API total 499). <strong>TikTok via Windsor.ai:</strong> $839.96 estimated unsettled across 5 orders (Sep 4 &ndash; Sep 13, all $205.60 orders), <strong>$820.92 paid out Sep 7</strong> (the biggest payout since early August &mdash; likely part of the on-hold reserve releasing), earlier $18.33 (Aug 31) and $134.56 (Aug 24). Amazon Payments live (Chrome, 12:30 PM): <strong>$2,348.47</strong> all-accounts total &mdash; standard $296.54 + $2,051.93 deferred &middot; funds available $296.54, transfer scheduled Sep 17 &middot; last payout $224.88 (Sep 3) &middot; one $213.99 refund in the current period. <strong>TikTok Seller Center live (Chrome, 1:05 PM):</strong> net earnings <strong>$307.93</strong>, on hold <strong>$1,013.33</strong> (down from $1,287.18 on Aug 28 &mdash; the Sep 7 payout released part of the reserve), reserve level 10% / Level 1; <strong>FBT stock 430 units across 8 FCs</strong>, 0 in transit &mdash; the &ldquo;509&rdquo; Windsor figure from Sep 4 included 93 units at a non-FBT warehouse ID, so the inventory table was over-counting; ONT3 shows all 74 units reserved. <strong>Walmart live (Chrome, 1:10 PM):</strong> $403.93 still on hold &mdash; the Sep 8 payout did not go out, 0 new orders, inventory 17. <strong>&#9888; Biggest correction this pass: TikTok GMV Max was never off.</strong> Ads Manager shows every campaign paused, but the GMV Max dashboard shows $1,409.76 spent Aug 14 &ndash; Sep 13 for 14 orders ($100.70 each, ROI 2.04) &mdash; so blended ad spend is $6,252/mo, not ~$4,800; MER is 3.3× (was 4.8×), blended CAC ~$65 (was ~$48), LTV:CAC 1.6×, and the TikTok profit-per-unit card flipped to about &minus;$45. <strong>Also refreshed live:</strong> Cooee panel through Sep 13 (Meta 2.18× lifetime, last two weeks 1.67× / 1.75×; TikTok GMV $8,003 / 36 orders), Meta 30d (2.07×, $107.97 CPA, post-click 0.46%, 81/18 FB/IG), Amazon PPC 30d (<strong>recovered to 1.87× ROAS</strong>, $1,495 / 12 purchases, $87.96 per unit), Profit per unit (Amazon +$27.91, Shopify +$45.57 blended / ≈ +$3 on Meta-attributed orders, TikTok &minus;$44.69), Conversion funnel (<strong>checkout abandonment 60%</strong>, was 54%), Landing pages (0.93% blended; /pages/digitizer 77% of traffic at 0.78%; digitizer-easy getting no traffic), Website Engagement (31s, unchanged), Customer &amp; retention, Klaviyo (<strong>Winback live again Sep 8</strong>; Abandoned Checkout still deleted; flows $1,413 / 7 orders), YouTube via Windsor (245 subs, but 28d views <strong>fell 62% to 8,626</strong>) and TikTok organic via Windsor (47,245 views, &#9660;34%), Meta organic via Business Suite (36,496 views, &#9660;78%). <strong>Meta organic read live in Chrome (Business Suite, 1:45 PM):</strong> 36,496 views on 22 posts, 133 saves &mdash; down 78% from the Aug 8 window; combined organic is now 92,367 views, &#9660;65%. <strong>Held:</strong> Walmart profit-per-unit column (Aug 23), TikTok Ads Manager relaunch (not started). <strong>All-time combined card re-read live this pass: $286,946.13</strong> &mdash; Amazon $106,812.32 (Seller Central Sales &amp; Traffic, Aug 1 2025 &ndash; Sep 12 2026, monthly view; the old $95,531.61 slice was about $9K stale) + Shopify $180,133.81 (now the same total-sales figure as the Lifetime section; the old $153,798.96 slice was on a different, older basis). <strong>Cooee check-in log still ends Aug 21</strong> (Slack not re-read this pass). <strong>Cashflow Outlook stays removed per your Aug 8 call.</strong></div>
 
